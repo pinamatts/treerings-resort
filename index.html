@@ -385,9 +385,9 @@
 <section class="pad promise">
   <div class="wrap in-view">
     <h2>The pool, the shore and the karaoke, <em>closed to everyone but your group.</em></h2>
-    <p class="lede">Book a room for two or take the whole house for twenty-seven. Bring the food you love and cook it here: the kitchen, the grill and the smoker are already waiting.</p>
+    <p class="lede">Book a room for two or take the whole house for up to thirty. Bring the food you love and cook it here: the kitchen, the grill and the smoker are already waiting.</p>
     <ul class="facts">
-      <li>Up to 27 guests</li><li>Six air-conditioned rooms</li><li>Five-foot infinity pool</li>
+      <li>Up to 30 guests with extra beds</li><li>Six air-conditioned rooms</li><li>Five-foot infinity pool</li>
       <li>Steps from the beach</li><li>Starlink Wi-Fi</li><li>No corkage fee</li>
     </ul>
   </div>
@@ -494,7 +494,7 @@
   <img src="img/air-coast.jpg" alt="The resort from the air, the coastline running north past the property." loading="lazy">
   <div class="wrap in-view">
     <h2>Celebrations, with the whole place to yourselves.</h2>
-    <p>Weddings, debuts, reunions and company planning days. Twenty-seven guests across six rooms, with the pool, the terrace and the shoreline closed to everyone else. We sit on a residential stretch of coast, so the music comes down at 10:30.</p>
+    <p>Weddings, debuts, reunions and company planning days. Up to thirty guests across six rooms with extra beds, and the pool, the terrace and the shoreline closed to everyone else. We sit on a residential stretch of coast, so the music comes down at 10:30.</p>
     <a class="btn gold" href="#contact">Plan an event</a>
   </div>
 </section>
@@ -600,9 +600,9 @@
       { key: 'Ipil', name: 'Ipil Deluxe Room', cap: 2, wd: 2500, we: 3500, img: 'img/room-ipil.jpg', floor: 'Ground floor', beds: '1 queen bed' },
     ],
     excl: [
-      { name: 'One night', wd: 25000, we: 30000, det: 'Five rooms for up to 27 guests. Check in 2 PM, check out 11 AM. Nobody else comes through the gate.' },
+      { name: 'One night', wd: 25000, we: 30000, det: 'Five rooms for 27 guests, up to 30 with extra beds. Check in 2 PM, check out 11 AM. Nobody else comes through the gate.' },
       /* the rate guide prices a Friday-and-Saturday stay between the two */
-      { name: 'Three days, two nights', wd: 45000, we: 55000, mid: 50000, det: 'Five rooms for up to 27 guests. A Friday and Saturday stay is ₱50,000.' },
+      { name: 'Three days, two nights', wd: 45000, we: 55000, mid: 50000, det: 'Five rooms for 27 guests, up to 30 with extra beds. A Friday and Saturday stay is ₱50,000.' },
     ],
     house: { name: 'The entire house', wd: 55000, we: 60000, img: 'img/g-housepool.jpg', det: 'All six rooms, adding the Couple and Masters rooms. Outdoor refrigerator included. Check out 11 AM.' },
     addons: [['Karaoke, room bookings', '₱1,000 a day'], ['Use of gasul', '₱500'], ['Refrigerator, room bookings', '₱500'], ['Towel', '₱50'],
@@ -614,7 +614,7 @@
       house: 'Saturday and Sunday nights are weekend rates. Holidays may differ, and rates may change with demand.',
     },
   };
-  const PAGE = '61572305588687', PHONE = '+639358588508', MAX = 27;
+  const PAGE = '61572305588687', PHONE = '+639358588508', MAX = 30, INCLUDED = 27; /* packages cover 27; extra beds take it to 30 at the extra-adult rate */
   const peso = n => '₱' + n.toLocaleString('en-PH');
 
   /* ---------- header and phone bar ---------- */
@@ -812,15 +812,19 @@
     const nights = [];
     if (d && d > a) for (let t = new Date(a); t < d; t.setDate(t.getDate() + 1)) nights.push(new Date(t));
     if (!nights.length) {
-      const pk = RATES.day.find(p => p.cap >= guests), price = isWE(a) ? pk.we : pk.wd;
+      const pk = RATES.day.find(p => p.cap >= Math.min(guests, INCLUDED)), base = isWE(a) ? pk.we : pk.wd;
+      const extra = Math.max(0, guests - INCLUDED), price = base + extra * 250;
       return { what: 'Day use · ' + fmt(a), total: price,
-               lines: [['Day package, ' + pk.name.toLowerCase(), peso(price)], [isWE(a) ? 'Weekend rate' : 'Weekday rate', '']],
+               lines: [['Day package, ' + pk.name.toLowerCase(), peso(base)],
+                       ...(extra ? [[extra + ' extra adult' + (extra > 1 ? 's' : '') + ' at ₱250', peso(extra * 250)]] : []),
+                       [isWE(a) ? 'Weekend rate' : 'Weekday rate', '']],
                note: 'One session, 8 AM to 5 PM or 1 PM to 8 PM.', summary: 'Day use on ' + fmt(a) + ' for ' + guests };
     }
     const span = fmt(a) + ' to ' + fmt(d);
     const sleeps = RATES.rooms.reduce((t, r) => t + r.cap, 0);
     const r = guests <= sleeps ? bestRooms(guests, nights) : null;
-    const x = exclusive(nights);
+    const extraX = Math.max(0, guests - INCLUDED) * 500 * nights.length;
+    const x = exclusive(nights) + extraX;
     const rows = nights.map(n => [fmt(n) + ' night', isWE(n) ? 'weekend' : 'weekday']);
     if (r && r.cost < x) {
       const names = r.set.map(s => s.key).join(' + ');
@@ -828,8 +832,9 @@
                alt: 'Or close the whole property to your group: ' + peso(x) + ' for exclusive use.',
                summary: names + ', ' + span + ', for ' + guests };
     }
-    return { what: 'Exclusive use · ' + span, total: x, lines: [['Five rooms, the pool and the shore to yourselves', peso(x)], ...rows],
-             note: 'Check-out at 11 AM.', summary: 'Exclusive use, ' + span + ', for ' + guests };
+    return { what: 'Exclusive use · ' + span, total: x, lines: [['Five rooms, the pool and the shore to yourselves', peso(x - extraX)],
+                     ...(extraX ? [[(guests - INCLUDED) + ' extra bed' + (guests - INCLUDED > 1 ? 's' : '') + ' at ₱500 a night', peso(extraX)]] : []), ...rows],
+             note: 'Check-out at 11 AM.' + (extraX ? ' Extra beds are priced as adults; children cost less.' : ''), summary: 'Exclusive use, ' + span + ', for ' + guests };
   }
 
   const messenger = t => 'https://m.me/' + PAGE + '?text=' + encodeURIComponent(t);
@@ -858,7 +863,7 @@
     if (q.big) {
       const msg = 'Hi Tree Rings! I am planning something for ' + g + ' guests on ' + fmt(a) + '. What can you offer?';
       qEl.innerHTML = '<div><p class="what">Big group · ' + g + ' guests</p><p class="alt">That is more than we sleep or seat for a day visit (' + MAX +
-        '). Send us the date and we will tell you what can work.</p></div><div>' + sendButtons(msg) + '</div>';
+        '), even with extra beds. Send us the date and we will tell you what can work.</p></div><div>' + sendButtons(msg) + '</div>';
       return;
     }
     const msg = 'Hi Tree Rings! Is this open? ' + q.summary + ' guests. The site quoted ' + peso(q.total) + '.';
