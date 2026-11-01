@@ -218,6 +218,44 @@
   .addons li { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); break-inside: avoid; font-size: 15px; }
   .addons .v { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
+  /* ---------- how booking works ---------- */
+  .steps { display: grid; gap: 14px; margin: 50px 0 0; padding: 0; list-style: none; counter-reset: st; }
+  @media (min-width: 860px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+  .steps li { counter-increment: st; border-top: 1px solid var(--line-d); padding-top: 22px; }
+  .steps li::before { content: counter(st); display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
+                      border: 1px solid var(--gold); color: var(--gold); font: 400 1.3rem var(--display); }
+  .steps h3 { font-size: 1.5rem; margin-top: 18px; }
+  .steps p { color: var(--mist); margin-top: 10px; font-size: 15.5px; }
+  .steps b { color: var(--gold-2); font-weight: 400; }
+
+  /* ---------- open dates ---------- */
+  .cal { margin-top: 44px; display: grid; gap: 28px; }
+  @media (min-width: 860px) { .cal { grid-template-columns: 1fr 1fr; } }
+  .calbar { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; margin-top: 34px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 14.5px; color: var(--ink-2); }
+  .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 7px; }
+  .legend .o { background: #fff; border: 1px solid var(--line); } .legend .b { background: var(--ivory-2); background-image: repeating-linear-gradient(135deg, transparent 0 4px, rgba(12,26,75,.18) 4px 5px); }
+  .legend .p { background: var(--navy); }
+  .month h3 { font-size: 1.6rem; margin-bottom: 12px; }
+  .grid7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .grid7 .dow { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); text-align: center; padding-bottom: 4px; }
+  .grid7 button { aspect-ratio: 1; border: 1px solid var(--line); background: #fff; border-radius: 10px; font: 400 15px var(--ui); color: var(--ink);
+                  cursor: pointer; transition: background .2s, color .2s, border-color .2s; padding: 0; }
+  .grid7 button:hover:not(:disabled) { border-color: var(--navy); }
+  .grid7 button:disabled { cursor: not-allowed; color: #A3A8BA; background: var(--ivory-2); border-color: transparent; }
+  .grid7 button.booked { color: #8D93AA; text-decoration: line-through; background-color: var(--ivory-2);
+                         background-image: repeating-linear-gradient(135deg, transparent 0 4px, rgba(12,26,75,.14) 4px 5px); border-color: transparent; }
+  .grid7 button.sel, .grid7 button.edge { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
+  .grid7 button.mid { background: #DDE1EF; border-color: #DDE1EF; }
+  .grid7 .wk { color: var(--gold-ink, #8A6A22); }
+  .calnote { color: var(--ink-2); font-size: 14.5px; margin-top: 18px; }
+  .calnav { display: flex; gap: 8px; }
+  .calnav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; display: grid; place-items: center; }
+  .calnav button:hover { background: var(--navy); color: var(--ivory); }
+  .quote .warn { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: #FBEFD9; color: #6B4A10; font-size: 14.5px; }
+  .quote .dp { margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: var(--ivory-2); font-size: 15px; display: grid; gap: 4px; }
+  .quote .dp b { font: 400 1.5rem var(--display); }
+
   /* ---------- rooms ---------- */
   .roomhead { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: end; }
   .arrows { display: flex; gap: 10px; }
@@ -353,7 +391,7 @@
       <span><b>Tree Rings</b><small>Beach Resort</small></span>
     </a>
     <nav aria-label="Sections">
-      <a href="#day">The place</a><a href="#rates">Rates</a><a href="#rooms">Rooms</a>
+      <a href="#day">The place</a><a href="#rates">Rates</a><a href="#book">Booking</a><a href="#rooms">Rooms</a>
       <a href="#gallery">Gallery</a><a href="#events">Events</a><a href="#contact">Contact</a>
     </nav>
     <a class="btn gold" href="#top" data-goquote>Get a quote</a>
@@ -427,10 +465,10 @@
     </div>
     <div class="ratetools">
       <div class="seg" role="tablist" id="tabs" aria-label="Kind of stay">
-        <button role="tab" aria-selected="true" data-p="day">Day use</button>
-        <button role="tab" aria-selected="false" data-p="rooms">Rooms</button>
-        <button role="tab" aria-selected="false" data-p="excl">Exclusive use</button>
+        <button role="tab" aria-selected="true" data-p="excl">Exclusive use</button>
         <button role="tab" aria-selected="false" data-p="house">Entire house</button>
+        <button role="tab" aria-selected="false" data-p="rooms">Rooms</button>
+        <button role="tab" aria-selected="false" data-p="day">Day use</button>
       </div>
       <div class="seg small" id="switch" role="group" aria-label="Day of the week">
         <button type="button" aria-pressed="true" data-d="wd">Weekday</button>
@@ -443,6 +481,39 @@
       <li>Pool and showers</li><li>Beach access</li><li>Karaoke</li><li>Kitchen and utensils</li><li>Refrigerator</li>
       <li>Griller and smoker</li><li>A gallon of water</li><li>Tables and chairs</li><li>Wi-Fi in rooms</li><li>Parking</li>
     </ul>
+  </div>
+</section>
+
+<section class="pad" id="book">
+  <div class="wrap">
+    <div class="in-view">
+      <h2>How booking works.</h2>
+      <p class="lede">Four steps from your first message to the gate. Half now to lock your date, the rest when you arrive.</p>
+    </div>
+    <ol class="steps in-view">
+      <li><h3>See your price</h3><p>Pick your dates and guests at the top of this page. The price is worked out from our current rates.</p></li>
+      <li><h3>Send it to us</h3><p>Tap Send on Messenger. We check the date and reply with the confirmed price and payment details.</p></li>
+      <li><h3>Lock your date</h3><p>A <b>50% down payment</b> secures the booking. Until it arrives, the date stays open to other guests.</p></li>
+      <li><h3>Settle at the resort</h3><p>Pay the balance at the resort on or before your stay. Bring a valid ID and a <b>&#8369;1,000 cash deposit</b>, returned in full when you leave.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pad light" id="dates" hidden>
+  <div class="wrap">
+    <div class="in-view">
+      <h2>See which dates are open.</h2>
+      <p class="lede">Tap the day you arrive, then the day you leave. We fill in the price for you.</p>
+    </div>
+    <div class="calbar">
+      <div class="legend"><span><i class="o"></i>Open</span><span><i class="b"></i>Booked</span><span><i class="p"></i>Your dates</span></div>
+      <div class="calnav">
+        <button type="button" data-cal="-1" aria-label="Earlier months"><svg class="ic" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" data-cal="1" aria-label="Later months"><svg class="ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <div class="cal" id="cal"></div>
+    <p class="calnote" id="calnote"></p>
   </div>
 </section>
 
@@ -503,9 +574,18 @@
   <div class="wrap know">
     <div class="in-view"><h2>Good to know before you come.</h2></div>
     <div class="in-view">
-      <details open><summary>Booking and payment</summary><div class="in">
-        <p>Fifty per cent is paid on check-in, with a valid ID. A &#8369;1,000 cash security deposit is collected and returned in full when you leave.</p>
-        <p>Rates may change with demand and availability, and holidays can differ.</p>
+      <details open><summary>How do I book?</summary><div class="in">
+        <p>Get your price at the top of this page and send it to us on Messenger, or message us your dates and guest count. We confirm the date and the price, then send the payment details.</p>
+      </div></details>
+      <details><summary>How much is the down payment?</summary><div class="in">
+        <p>Fifty per cent of the total. It secures your booking, and the date is only held for you once it is received.</p>
+        <p>The remaining balance is settled at the resort on or before your stay or event date.</p>
+      </div></details>
+      <details><summary>Is there a security deposit?</summary><div class="in">
+        <p>Yes. A &#8369;1,000 cash security deposit is collected at check-in with a valid ID, and returned in full when you leave.</p>
+      </div></details>
+      <details><summary>Can the price change?</summary><div class="in">
+        <p>Rates may change with demand and availability, and holidays can be priced differently. The price we confirm on Messenger is the one you pay.</p>
       </div></details>
       <details><summary>Check-in and check-out</summary><div class="in">
         <p>Rooms: check in from 2 PM, check out at 12 noon. Exclusive and whole-house bookings check out at 11 AM.</p>
@@ -649,7 +729,7 @@
   }
 
   /* ---------- rates ---------- */
-  let tab = 'day', when = 'wd';
+  let tab = 'excl', when = 'wd';
   const rowsEl = $('#rows'), fineEl = $('#fine');
   function rowsFor(t) {
     if (t === 'day') return RATES.day.map(r => ({ h: r.name, det: r.det, wd: r.wd, we: r.we, unit: 'per session' }));
@@ -866,14 +946,77 @@
         '), even with extra beds. Send us the date and we will tell you what can work.</p></div><div>' + sendButtons(msg) + '</div>';
       return;
     }
+    const clash = bookedIn(a, parse(depart.value));
     const msg = 'Hi Tree Rings! Is this open? ' + q.summary + ' guests. The site quoted ' + peso(q.total) + '.';
     qEl.innerHTML =
       '<div><p class="what">' + q.what + ' · ' + g + ' guests</p><p class="total">' + peso(q.total) + '</p>' +
       '<ul>' + q.lines.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul>' +
       (q.alt ? '<p class="alt">' + q.alt + '</p>' : '') +
+      (clash ? '<p class="warn">Heads up: ' + clash + ' already shows as booked on our calendar. Send it anyway and we will suggest the nearest open dates.</p>' : '') +
+      '<div class="dp"><span>To lock the date: 50% down payment</span><b>' + peso(Math.ceil(q.total / 2)) + '</b><span>Balance of ' + peso(q.total - Math.ceil(q.total / 2)) + ' at the resort, on or before your stay.</span></div>' +
       '<p class="note">' + (q.note ? q.note + ' ' : '') + 'Holidays may be priced higher. We confirm the date and the price when we reply.</p></div>' +
       '<div><p class="note" style="margin:0 0 12px">Send this to the resort and we will check the date for you.</p>' + sendButtons(msg) + '</div>';
   });
+
+  /* ---------- open dates, from booked.json (written every hour from the Airbnb calendar) ----------
+     Each range is [first night, check-out day), so the check-out day itself stays open. */
+  let BOOKED = new Set();
+  const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  function bookedIn(a, d) {
+    if (!a || !BOOKED.size) return '';
+    const end = d && d > a ? d : new Date(a.getFullYear(), a.getMonth(), a.getDate() + 1);
+    const hit = [];
+    for (let t = new Date(a); t < end; t.setDate(t.getDate() + 1)) if (BOOKED.has(iso(t))) hit.push(fmt(t));
+    return hit.length ? hit.join(', ') : '';
+  }
+  const calEl = $('#cal');
+  let calStart = new Date(); calStart.setDate(1); calStart.setHours(0, 0, 0, 0);
+  let pickA = null, pickD = null;
+  const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  function paintCal() {
+    const t0 = new Date(); t0.setHours(0, 0, 0, 0);
+    calEl.innerHTML = [0, 1].map(k => {
+      const m = new Date(calStart.getFullYear(), calStart.getMonth() + k, 1);
+      const days = new Date(m.getFullYear(), m.getMonth() + 1, 0).getDate();
+      let cells = DOW.map(d => '<span class="dow">' + d + '</span>').join('') + '<span></span>'.repeat(m.getDay());
+      for (let i = 1; i <= days; i++) {
+        const d = new Date(m.getFullYear(), m.getMonth(), i), key = iso(d);
+        const past = d < t0, booked = BOOKED.has(key);
+        let cls = booked ? 'booked' : '';
+        if (pickA && key === iso(pickA)) cls += ' edge';
+        else if (pickD && key === iso(pickD)) cls += ' edge';
+        else if (pickA && pickD && d > pickA && d < pickD) cls += ' mid';
+        if (isWE(d) && !booked && !cls.trim()) cls += ' wk';
+        cells += '<button type="button" data-d="' + key + '" class="' + cls.trim() + '"' + (past ? ' disabled' : '') +
+                 ' aria-label="' + fmt(d) + (booked ? ', booked' : ', open') + '">' + i + '</button>';
+      }
+      return '<div class="month"><h3>' + m.toLocaleDateString('en-PH', { month: 'long', year: 'numeric' }) + '</h3><div class="grid7">' + cells + '</div></div>';
+    }).join('');
+  }
+  calEl.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-d]'); if (!b || b.disabled) return;
+    const d = parse(b.dataset.d);
+    const dayVisit = pickA && !pickD && iso(d) === iso(pickA);
+    if (!dayVisit) { if (!pickA || pickD || d < pickA) { pickA = d; pickD = null; } else pickD = d; }
+    paintCal();
+    arrive.value = iso(pickA); depart.value = pickD ? iso(pickD) : '';
+    $('#calnote').textContent = pickD ? 'Arrive ' + fmt(pickA) + ', leave ' + fmt(pickD) + '. Your price is at the top of the page.'
+                                      : 'Arrive ' + fmt(pickA) + '. Now tap the day you leave, or tap the same day again for a day visit.';
+    if (dayVisit) $('#calnote').textContent = 'Day visit on ' + fmt(pickA) + '. Your price is at the top of the page.';
+    if (pickD || dayVisit) {
+      $('#bookbar').requestSubmit();
+      scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    }
+  });
+  $$('[data-cal]').forEach(b => b.addEventListener('click', () => { calStart.setMonth(calStart.getMonth() + +b.dataset.cal); paintCal(); }));
+  fetch('booked.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => {
+    if (!j || !Array.isArray(j.booked)) return;
+    j.booked.forEach(([s, e]) => { for (let t = parse(s), end = parse(e); t < end; t.setDate(t.getDate() + 1)) BOOKED.add(iso(t)); });
+    $('#dates').hidden = false;
+    $('#calnote').textContent = 'Calendar last changed ' + new Date(j.updated).toLocaleString('en-PH', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) +
+      '. We always confirm your date on Messenger.';
+    paintCal();
+  }).catch(() => {});
 
   $('#enquiryform').addEventListener('submit', (e) => {
     e.preventDefault();
