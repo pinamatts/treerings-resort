@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A private beach house in Luyang, Carmen, Cebu. Six rooms above an infinity pool, two hours from Cebu City. Day use, overnight rooms and exclusive use. No corkage.">
+<meta property="og:title" content="Tree Rings Beach Resort, Carmen, Cebu">
+<meta property="og:description" content="Six rooms above an infinity pool, two hours up the coast from Cebu City. Get an instant quote for your dates.">
+<meta property="og:image" content="https://pinamatts.github.io/treerings-resort/img/hero.jpg">
+<meta property="og:url" content="https://pinamatts.github.io/treerings-resort/">
+<meta property="og:type" content="website">
+<title>Tree Rings Beach Resort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap">
+
+<style>
+  /* Paper-white page; the photographs carry every colour. Wide margins, one
+     hairline rule family, outlined controls. Rates are the centre of gravity:
+     tabbed by stay type, with a weekday/weekend switch that moves the prices. */
+  :root {
+    --paper:   #FCFBF8;
+    --paper-2: #F4F1EA;
+    --ink:     #23282A;
+    --ink-2:   #5E676B;
+    --rule:    #DEDAD0;
+    --sea:     #1F5E63;
+    --ease:    cubic-bezier(.16,1,.3,1);
+
+    --shadow-lift: 0 18px 50px rgba(35,40,42,.12);
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --ui: 'Jost', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--ui);
+         font-weight: 300; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { width: 100%; max-width: 1240px; margin-inline: auto;
+          padding-left: max(16px, env(safe-area-inset-left, 0px));
+          padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  h1,h2,h3 { font-family: var(--display); font-weight: 300; line-height: 1.1; margin: 0; text-wrap: balance; }
+  h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
+  h3 { font-size: 1.4rem; }
+  p { margin: 0; }
+  .kicker { font-family: var(--ui); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-2); }
+  .lede { color: var(--ink-2); max-width: 62ch; margin-top: 16px; }
+  .head { margin-bottom: 40px; }
+  section.pad { padding-block: clamp(58px, 8.5vw, 104px); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
+         font-family: var(--ui); font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+         padding: 13px 26px; border: 1px solid var(--ink); color: var(--ink); background: transparent;
+         text-decoration: none; cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease); }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn:active { transform: translateY(1px); }
+  .btn.solid { background: var(--sea); border-color: var(--sea); color: #fff; }
+  .btn.solid:hover { background: #17484C; border-color: #17484C; }
+  :focus-visible { outline: 2px solid var(--sea); outline-offset: 3px; }
+
+  .masthead { position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+              background: transparent; border-bottom: 1px solid transparent;
+              transition: background .45s var(--ease), border-color .45s var(--ease),
+                          box-shadow .45s var(--ease), padding .45s var(--ease);
+              padding-top: env(safe-area-inset-top, 0px); }
+  .masthead .wordmark, .masthead nav a { color: #fff; }
+  .masthead .wordmark span { color: rgba(255,255,255,.72); }
+  .masthead nav a::after { background: #fff; }
+  .masthead .btn.solid { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.6);
+                         backdrop-filter: blur(6px); }
+  .masthead .btn.solid:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .masthead.stuck { background: var(--paper); border-bottom-color: var(--rule);
+                    box-shadow: 0 10px 34px rgba(35,40,42,.09); }
+  .masthead.stuck .wordmark { color: var(--ink); }
+  .masthead.stuck .wordmark span { color: var(--ink-2); }
+  .masthead.stuck nav a { color: var(--ink-2); }
+  .masthead.stuck nav a:hover { color: var(--ink); }
+  .masthead.stuck nav a::after { background: var(--ink); }
+  .masthead.stuck .btn.solid { background: var(--sea); border-color: var(--sea); color: #fff; backdrop-filter: none; }
+  .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+                    padding-block: 14px; flex-wrap: wrap; }
+  .wordmark { font-family: var(--display); font-size: 1.3rem; letter-spacing: .04em; text-decoration: none;
+              color: var(--ink); white-space: nowrap; }
+  .wordmark span { display: block; font-family: var(--ui); font-size: 9.5px; letter-spacing: .3em;
+                   text-transform: uppercase; color: var(--ink-2); }
+  nav { display: flex; gap: 20px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  nav a { color: var(--ink-2); text-decoration: none; position: relative; padding-bottom: 2px; }
+  nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+                 background: var(--ink); transform: scaleX(0); transform-origin: left;
+                 transition: transform .3s var(--ease); }
+  nav a:hover { color: var(--ink); }
+  nav a:hover::after { transform: scaleX(1); }
+  @media (max-width: 1040px) { nav { display: none; } }
+
+  .booking { background: var(--paper-2); border-bottom: 1px solid var(--rule); }
+  .booking form { display: grid; gap: 12px; padding-block: 14px; grid-template-columns: 1fr; align-items: end; }
+  @media (min-width: 760px) { .booking form { grid-template-columns: 1fr 1fr 1fr auto; } }
+  .bk { display: grid; gap: 5px; min-width: 0; }
+  .bk label { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); }
+  .bk input, .bk select { font-family: var(--ui); font-size: 15px; font-weight: 300; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--rule); padding: 10px 12px; width: 100%; min-width: 0;
+    border-radius: 0; transition: border-color .25s var(--ease); }
+  .bk input:focus, .bk select:focus { border-color: var(--sea); outline: none; }
+
+  /* the quote: what the bar just worked out, priced from the rate cards below */
+  .quote { border-top: 1px solid var(--rule); padding-block: 22px 26px; display: grid; gap: 22px;
+           grid-template-columns: 1fr; animation: panelIn .45s var(--ease) both; }
+  @media (min-width: 860px) { .quote { grid-template-columns: 1.3fr 1fr; align-items: end; } }
+  @media (prefers-reduced-motion: reduce) { .quote { animation: none; } }
+  .quote .what { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--sea); }
+  .quote .total { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1;
+                  font-variant-numeric: tabular-nums; margin-top: 6px; }
+  .quote .lines { list-style: none; margin: 14px 0 0; padding: 0; font-size: 14.5px; color: var(--ink-2); }
+  .quote .lines li { display: flex; justify-content: space-between; gap: 16px; padding: 7px 0;
+                     border-bottom: 1px solid var(--rule); }
+  .quote .lines .v { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .quote .alt { font-size: 14px; color: var(--ink-2); margin-top: 12px; }
+  .quote .note { font-size: 13px; color: var(--ink-2); margin-top: 12px; }
+  .send { display: flex; gap: 10px; flex-wrap: wrap; }
+  .send .btn { flex: 1 1 auto; }
+
+  /* The arrival: footage at full height, the name wiped up out of it. */
+  .hero { position: relative; isolation: isolate; overflow: hidden; height: 92dvh; min-height: 520px; }
+  .hero img, .hero video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .hero .herovid { position: absolute; inset: 0; }
+  .hero .heroshot { position: absolute; inset: 0; }
+  @media (prefers-reduced-motion: reduce) { .hero .herovid { display: none; } }
+  .hero .over { position: absolute; inset: 0; display: flex; align-items: flex-end;
+                padding-block: 0 clamp(44px, 9vh, 92px);
+                background:
+                  linear-gradient(180deg, rgba(18,22,23,.52) 0%, rgba(18,22,23,.12) 26%,
+                                  rgba(18,22,23,.30) 56%, rgba(18,22,23,.88) 100%),
+                  linear-gradient(100deg, rgba(18,22,23,.60) 0%, rgba(18,22,23,.18) 48%,
+                                  rgba(18,22,23,0) 78%); }
+  .hero h1, .hero .sub { text-shadow: 0 2px 26px rgba(10,14,15,.45); }
+  .hero h1 { color: #fff; font-size: clamp(2.9rem, 8.2vw, 6.2rem); letter-spacing: -.012em; line-height: .98; }
+  .hero .sub { color: rgba(255,255,255,.92); margin-top: 18px; max-width: 42ch;
+               font-size: clamp(1rem, 2.1vw, 1.22rem); }
+  .hero .cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero .btn { border-color: rgba(255,255,255,.62); color: #fff; backdrop-filter: blur(3px); }
+  .hero .btn:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .hero .btn.solid { background: var(--sea); border-color: var(--sea); }
+  .hero .btn.solid:hover { background: #fff; color: var(--ink); }
+
+  /* each line sits in a mask and rises into view */
+  .line { display: block; overflow: hidden; }
+  .line > * { display: block; transform: translateY(104%); animation: rise 1.05s var(--ease) forwards; }
+  .line.d1 > * { animation-delay: .34s } .line.d2 > * { animation-delay: .46s }
+  .line.d3 > * { animation-delay: .62s } .line.d4 > * { animation-delay: .74s }
+  @keyframes rise { to { transform: none; } }
+
+  /* the curtain: lifts once, leaves no trace */
+  #curtain { position: fixed; inset: 0; z-index: 90; background: var(--ink); pointer-events: none;
+             animation: lift 1.15s var(--ease) forwards; }
+  @keyframes lift { 0%,18% { opacity: 1 } 100% { opacity: 0; visibility: hidden } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .line > * { transform: none; animation: none; }
+    #curtain { display: none; }
+  }
+
+  /* filmic grain, fixed and inert */
+  #grain { position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: .035;
+           background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"); }
+
+  .facts { border-bottom: 1px solid var(--rule); }
+  .facts ul { list-style: none; margin: 0; padding-block: 30px; display: grid; gap: 22px 30px; grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 820px) { .facts ul { grid-template-columns: repeat(4, 1fr); } }
+  .facts .n { font-family: var(--display); font-size: 2.1rem; line-height: 1; display: block; }
+  .facts .t { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+
+  /* ---------- rates ---------- */
+  .rates { background: var(--paper-2); }
+  .ratebar { display: flex; gap: 20px; justify-content: space-between; align-items: flex-end;
+             flex-wrap: wrap; margin-bottom: 26px; }
+  .tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
+  .tab { font-family: var(--ui); font-size: 12.5px; letter-spacing: .13em; text-transform: uppercase;
+         background: none; border: 0; color: var(--ink-2); padding: 12px 16px; cursor: pointer;
+         position: relative; transition: color .25s var(--ease); }
+  .tab::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -1px; height: 2px;
+                background: var(--sea); transform: scaleX(0); transition: transform .32s var(--ease); }
+  .tab[aria-selected="true"] { color: var(--ink); }
+  .tab[aria-selected="true"]::after { transform: scaleX(1); }
+
+  .switch { display: inline-flex; border: 1px solid var(--rule); background: var(--paper); position: relative; }
+  .switch button { font-family: var(--ui); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+                   background: none; border: 0; padding: 10px 18px; cursor: pointer; color: var(--ink-2);
+                   position: relative; z-index: 1; transition: color .3s var(--ease); }
+  .switch button[aria-pressed="true"] { color: #fff; }
+  .switch .pill { position: absolute; top: 0; bottom: 0; left: 0; width: 50%; background: var(--sea);
+                  transition: transform .38s var(--ease); }
+  .switch.we .pill { transform: translateX(100%); }
+  @media (prefers-reduced-motion: reduce) { .switch .pill, .tab::after { transition: none; } }
+
+  .panel { display: none; }
+  .panel.on { display: block; animation: panelIn .45s var(--ease) both; }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .panel.on { animation: none; } }
+
+  .rgrid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .rgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .rgrid.three { grid-template-columns: repeat(3, 1fr); } }
+
+  .rcard { background: var(--paper); border: 1px solid var(--rule); display: flex; flex-direction: column;
+           min-width: 0; overflow: hidden; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .rcard:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(35,40,42,.10); }
+  @media (prefers-reduced-motion: reduce) { .rcard:hover { transform: none; } }
+  .rcard .shot { overflow: hidden; }
+  .rcard .shot img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: zoom-in;
+                     transition: transform .7s var(--ease); }
+  .rcard:hover .shot img { transform: scale(1.05); }
+  .rcard .body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+  .rcard .tier { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--sea); }
+  .rcard .beds { font-size: 14px; color: var(--ink-2); }
+  .rcard .cap { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .money { font-family: var(--display); font-size: 2.1rem; line-height: 1; font-variant-numeric: tabular-nums;
+           transition: opacity .28s var(--ease), transform .28s var(--ease); }
+  .money.swap { opacity: 0; transform: translateY(-6px); }
+  .money small { font-family: var(--ui); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+                 color: var(--ink-2); display: block; margin-top: 5px; }
+  .fine { font-size: 13.5px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 14px; margin-top: 22px; }
+
+  /* included grid */
+  .incl { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 26px;
+          grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 680px) { .incl { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 980px) { .incl { grid-template-columns: repeat(5, 1fr); } }
+  .incl div { background: var(--paper); padding: 18px 14px; font-size: 13px; letter-spacing: .06em;
+              color: var(--ink-2); text-align: center; transition: background .3s var(--ease), color .3s var(--ease); }
+  .incl div:hover { background: var(--sea); color: #fff; }
+
+  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 30vw); gap: 18px;
+          overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
+  .room { scroll-snap-align: start; min-width: 0; }
+  .room .shot { overflow: hidden; }
+  .room img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; max-width: 100%;
+              cursor: zoom-in; transition: transform .7s var(--ease); }
+  .room:hover img { transform: scale(1.05); }
+  .room h3 { margin-top: 14px; }
+  .room .meta { font-size: 13.5px; color: var(--ink-2); }
+
+  .split { display: grid; gap: clamp(28px, 5vw, 62px); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
+  .split img { width: 100%; height: auto; display: block; max-width: 100%; }
+  .split ul { list-style: none; margin: 22px 0 0; padding: 0; }
+  .split li { padding: 11px 0; border-bottom: 1px solid var(--rule); color: var(--ink-2); font-size: 15px; }
+
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .chip { font-family: var(--ui); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+          padding: 8px 16px; border: 1px solid var(--rule); background: transparent; color: var(--ink-2);
+          cursor: pointer; transition: border-color .25s var(--ease), color .25s var(--ease); }
+  .chip[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
+  .gal { display: grid; gap: 10px; grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 720px) { .gal { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1040px) { .gal { grid-template-columns: repeat(4, 1fr); } }
+  .gal button { padding: 0; border: 0; background: none; cursor: zoom-in; display: block; min-width: 0;
+                overflow: hidden; }
+  .gal img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+             transition: transform .7s var(--ease), opacity .3s var(--ease); }
+  .gal button:hover img { transform: scale(1.06); }
+
+  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(16,19,20,.95);
+        display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
+        padding: max(16px, env(safe-area-inset-left, 0px)); animation: fade .25s ease both; }
+  @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
+  .lb img { max-width: 100%; max-height: 78vh; object-fit: contain; }
+  .lb .cap { color: rgba(255,255,255,.82); font-size: 14px; text-align: center; max-width: 60ch; }
+  .lb .x, .lb .pv, .lb .nx { position: absolute; background: none; border: 1px solid rgba(255,255,255,.45);
+        color: #fff; width: 44px; height: 44px; cursor: pointer; font-size: 18px; line-height: 1;
+        transition: background .25s var(--ease); }
+  .lb .x:hover, .lb .pv:hover, .lb .nx:hover { background: rgba(255,255,255,.16); }
+  .lb .x { top: max(16px, env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
+  .lb .pv { left: max(12px, env(safe-area-inset-left, 0px)); }
+  .lb .nx { right: max(12px, env(safe-area-inset-right, 0px)); }
+  .lb .count { color: rgba(255,255,255,.6); font-size: 12px; letter-spacing: .2em; }
+
+  .reviews { background: var(--paper-2); }
+  .scores { display: grid; gap: 18px; grid-template-columns: 1fr; }
+  @media (min-width: 680px) { .scores { grid-template-columns: repeat(2, 1fr); } }
+  .score { background: var(--paper); border: 1px solid var(--rule); padding: 28px 24px; display: flex;
+           align-items: baseline; gap: 16px; flex-wrap: wrap; transition: transform .35s var(--ease); }
+  .score:hover { transform: translateY(-3px); }
+  .score .big { font-family: var(--display); font-size: 3rem; line-height: 1; }
+  .score .where { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .score .sub { font-size: 14px; color: var(--ink-2); width: 100%; }
+  .score a { color: var(--sea); }
+
+  .band { position: relative; isolation: isolate; overflow: hidden; }
+  .band img { width: 100%; height: clamp(320px, 52vh, 520px); object-fit: cover; display: block; }
+  .band .over { position: absolute; inset: 0; display: flex; align-items: center;
+    background:
+      linear-gradient(90deg, rgba(20,24,25,.74) 0%, rgba(20,24,25,.30) 62%, rgba(20,24,25,.06) 100%),
+      linear-gradient(180deg, rgba(31,58,92,.38) 0%, rgba(176,92,96,.22) 58%, rgba(232,150,84,.30) 100%); }
+  .band h2, .band p { color: #fff; }
+  .band p { margin-top: 14px; max-width: 46ch; }
+  .band .btn { margin-top: 24px; border-color: #fff; color: #fff; }
+  .band .btn:hover { background: #fff; color: var(--ink); }
+
+  details { border-bottom: 1px solid var(--rule); }
+  details summary { cursor: pointer; padding: 18px 0; font-size: 1.05rem; list-style: none;
+                    display: flex; justify-content: space-between; gap: 18px; align-items: center;
+                    transition: color .25s var(--ease); }
+  details summary:hover { color: var(--sea); }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after { content: "+"; font-family: var(--display); font-size: 1.5rem; color: var(--ink-2);
+                           transition: transform .3s var(--ease); }
+  details[open] summary::after { content: "\2212"; }
+  details .inner { padding-bottom: 20px; color: var(--ink-2); font-size: 15px; display: grid; gap: 8px;
+                   animation: panelIn .35s var(--ease) both; }
+  @media (prefers-reduced-motion: reduce) { details .inner { animation: none; } }
+
+  .twocol { display: grid; gap: 34px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .twocol { grid-template-columns: 1fr 1fr; } }
+  .pricelist { list-style: none; margin: 18px 0 0; padding: 0; }
+  .pricelist li { display: flex; justify-content: space-between; gap: 18px; padding: 11px 0;
+                  border-bottom: 1px solid var(--rule); font-size: 15px; }
+  .pricelist .v { font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+  .pricelist .k { color: var(--ink-2); }
+
+  form.enq { display: grid; gap: 14px; min-width: 0; }
+  .f { display: grid; gap: 5px; min-width: 0; }
+  .f label { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); }
+  .f input, .f textarea { font-family: var(--ui); font-weight: 300; font-size: 15px; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--rule); padding: 11px 13px; width: 100%; min-width: 0;
+    border-radius: 0; transition: border-color .25s var(--ease); }
+  .f input:focus, .f textarea:focus { border-color: var(--sea); outline: none; }
+  .f textarea { min-height: 104px; resize: vertical; }
+  .said { font-size: 14px; color: var(--sea); border-left: 2px solid var(--sea); padding-left: 12px; }
+  .contact dl { margin: 22px 0 0; }
+  .contact dt { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); padding-top: 14px; }
+  .contact dd { margin: 2px 0 0; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .contact a { color: var(--sea); }
+
+  footer { border-top: 1px solid var(--rule); }
+  footer .wrap { padding-block: 30px 40px; display: flex; gap: 14px; justify-content: space-between;
+                 flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
+
+  .gal img, .room img, .rcard .shot img, .split img, .band img {
+    filter: saturate(1.05) contrast(1.03); }
+  .wipe { clip-path: inset(0 0 0 0); transition: clip-path 1s var(--ease), transform 1s var(--ease); }
+  body.js .wipe.pending { clip-path: inset(0 0 100% 0); transform: scale(1.04); }
+  @media (prefers-reduced-motion: reduce) { body.js .wipe.pending { clip-path: none; transform: none; } }
+
+  .reveal { transition: opacity .65s var(--ease), transform .65s var(--ease); }
+  body.js .reveal.pending { opacity: 0; transform: translateY(18px); }
+  @media (prefers-reduced-motion: reduce) {
+    body.js .reveal.pending { opacity: 1; transform: none; }
+    .reveal { transition: none; }
+  }
+</style>
+
+<div id="curtain"></div>
+<div id="grain"></div>
+
+<header class="masthead" id="mast">
+  <div class="wrap">
+    <a class="wordmark" href="#top">Tree Rings<span>Beach Resort &middot; Carmen, Cebu</span></a>
+    <nav>
+      <a href="#rates">Rates</a><a href="#rooms">Rooms</a><a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a><a href="#events">Events</a><a href="#know">Good to know</a><a href="#enquire">Contact</a>
+    </nav>
+    <a class="btn solid" href="#enquire">Check availability</a>
+  </div>
+</header>
+
+
+<section class="hero" id="top">
+  <img class="heroshot" src="img/hero-poster.jpg" alt="Tree Rings from the air, the pool set among palms above the beach.">
+  <video class="herovid" autoplay muted loop playsinline poster="img/hero-poster.jpg" aria-hidden="true">
+    <source src="img/hero.mp4" type="video/mp4">
+  </video>
+  <div class="over"><div class="wrap">
+    <p class="kicker line d1" style="color:rgba(255,255,255,.78)"><span>Luyang &middot; Carmen &middot; Cebu</span></p>
+    <h1>
+      <span class="line d2"><span>A beach house</span></span>
+      <span class="line d3"><span>you can take whole.</span></span>
+    </h1>
+    <p class="sub line d4"><span>Six rooms above an infinity pool, two hours up the coast from Cebu City. No corkage, ever.</span></p>
+    <div class="cta line d4"><span>
+      <a class="btn solid" href="#rates">See the rates</a>
+      <a class="btn" href="#gallery">Look around</a>
+    </span></div>
+  </div></div>
+</section>
+
+<div class="booking">
+  <div class="wrap">
+    <form id="bookbar">
+      <div class="bk"><label for="arrive">Arrive</label><input id="arrive" name="arrive" type="date"></div>
+      <div class="bk"><label for="depart">Depart</label><input id="depart" name="depart" type="date"></div>
+      <div class="bk"><label for="party">Guests</label>
+        <input id="party" name="party" type="number" inputmode="numeric" min="1" max="200" value="10" required>
+      </div>
+      <button class="btn solid" type="submit">Get a quote</button>
+    </form>
+    <div class="quote" id="quote" hidden aria-live="polite"></div>
+  </div>
+</div>
+
+<section class="facts">
+  <div class="wrap"><ul>
+    <li><span class="n">27</span><span class="t">Guests, exclusive use</span></li>
+    <li><span class="n">6</span><span class="t">Rooms at full house</span></li>
+    <li><span class="n">2 hrs</span><span class="t">From Cebu City</span></li>
+    <li><span class="n">5 ft</span><span class="t">Infinity pool</span></li>
+  </ul></div>
+</section>
+
+<section class="pad rates" id="rates">
+  <div class="wrap">
+    <div class="head reveal pending">
+      <p class="kicker">Rates</p>
+      <h2>What it costs.</h2>
+      <p class="lede">Everything below includes the pool, the beach, the kitchen and the karaoke. Bring your own food and drink; there is no corkage fee.</p>
+    </div>
+
+    <div class="ratebar reveal pending">
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab" role="tab" aria-selected="true"  data-p="day">Day use</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="night">Overnight rooms</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="excl">Exclusive use</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="house">Entire house</button>
+      </div>
+      <div class="switch" id="switch">
+        <span class="pill"></span>
+        <button type="button" aria-pressed="true"  data-d="wd">Weekday</button>
+        <button type="button" aria-pressed="false" data-d="we">Weekend</button>
+      </div>
+    </div>
+
+    <div class="panel on" id="p-day">
+      <div class="rgrid three">
+        <div class="rcard"><div class="body">
+          <span class="tier">Day use</span><h3>10 guests</h3>
+          <div class="money" data-wd="&#8369;4,500" data-we="&#8369;5,500">&#8369;4,500<small>per session</small></div>
+          <p class="beds">Eight in the morning to five, or one in the afternoon to eight.</p>
+        </div></div>
+        <div class="rcard"><div class="body">
+          <span class="tier">Day use</span><h3>15 guests</h3>
+          <div class="money" data-wd="&#8369;6,500" data-we="&#8369;8,500">&#8369;6,500<small>per session</small></div>
+          <p class="beds">Nine hours at most, extension at &#8369;1,000 an hour.</p>
+        </div></div>
+        <div class="rcard"><div class="body">
+          <span class="tier">Day use</span><h3>27 guests</h3>
+          <div class="money" data-wd="&#8369;12,500" data-we="&#8369;15,000">&#8369;12,500<small>per session</small></div>
+          <p class="beds">The largest day package. Strict check-out at 8 PM.</p>
+        </div></div>
+      </div>
+      <p class="fine">Extra adult &#8369;250 each. Twelve and under &#8369;100. Seven and under free, up to four children. Karaoke with an LED screen and two microphones is included.</p>
+    </div>
+
+    <div class="panel" id="p-night">
+      <div class="rgrid three">
+        <div class="rcard"><div class="shot"><img src="img/room-magkono.jpg" data-lb alt="Magkono Prestige Suite, bunk beds against a panelled wall."></div><div class="body">
+          <span class="tier">2nd floor &middot; Beach view &middot; Suite</span><h3>Magkono Prestige Suite</h3>
+          <p class="beds">3 bunk beds &middot; TV &middot; private bath</p>
+          <div class="money" data-wd="&#8369;8,000" data-we="&#8369;9,000">&#8369;8,000<small>per night</small></div>
+          <p class="cap">Good for 7</p>
+        </div></div>
+        <div class="rcard"><div class="shot"><img src="img/room-narra.jpg" data-lb alt="Narra Premier, a king and a queen bed."></div><div class="body">
+          <span class="tier">2nd floor &middot; Beach view &middot; Premier</span><h3>Narra Premier</h3>
+          <p class="beds">1 king + 1 queen &middot; TV &middot; private bath</p>
+          <div class="money" data-wd="&#8369;5,500" data-we="&#8369;6,500">&#8369;5,500<small>per night</small></div>
+          <p class="cap">Good for 4</p>
+        </div></div>
+        <div class="rcard"><div class="shot"><img src="img/room-yakal.jpg" data-lb alt="Yakal Signature Escape, two queen beds."></div><div class="body">
+          <span class="tier">2nd floor &middot; Beach view</span><h3>Yakal Signature Escape</h3>
+          <p class="beds">2 queen beds &middot; TV &middot; private bath</p>
+          <div class="money" data-wd="&#8369;5,000" data-we="&#8369;6,000">&#8369;5,000<small>per night</small></div>
+          <p class="cap">Good for 4</p>
+        </div></div>
+        <div class="rcard"><div class="shot"><img src="img/room-tugas.jpg" data-lb alt="Tugas Poolside Room, two bunk beds."></div><div class="body">
+          <span class="tier">Ground floor &middot; Poolside</span><h3>Tugas Poolside Room</h3>
+          <p class="beds">2 bunk beds &middot; TV &middot; private bath</p>
+          <div class="money" data-wd="&#8369;4,000" data-we="&#8369;5,000">&#8369;4,000<small>per night</small></div>
+          <p class="cap">Good for 4</p>
+        </div></div>
+        <div class="rcard"><div class="shot"><img src="img/room-ipil.jpg" data-lb alt="Ipil Deluxe Room, one queen bed."></div><div class="body">
+          <span class="tier">Ground floor &middot; Deluxe</span><h3>Ipil Deluxe Room</h3>
+          <p class="beds">1 queen bed &middot; TV &middot; private bath</p>
+          <div class="money" data-wd="&#8369;2,500" data-we="&#8369;3,500">&#8369;2,500<small>per night</small></div>
+          <p class="cap">Good for 2</p>
+        </div></div>
+      </div>
+      <p class="fine">Every room has a private bath, a coffee set, bath towels and Wi-Fi. Breakfast is not included. Extra adult &#8369;500, twelve and under &#8369;250, seven and under free, up to two per room. Check in 2 PM, out at noon.</p>
+    </div>
+
+    <div class="panel" id="p-excl">
+      <div class="rgrid">
+        <div class="rcard"><div class="body">
+          <span class="tier">Five rooms &middot; 27 guests</span><h3>One night</h3>
+          <div class="money" data-wd="&#8369;25,000" data-we="&#8369;30,000">&#8369;25,000<small>for the property</small></div>
+          <p class="beds">Check in 2 PM, check out 11 AM. Nobody else comes through the gate.</p>
+        </div></div>
+        <div class="rcard"><div class="body">
+          <span class="tier">Five rooms &middot; 27 guests</span><h3>Three days, two nights</h3>
+          <div class="money" data-wd="&#8369;45,000" data-we="&#8369;55,000">&#8369;45,000<small>for the property</small></div>
+          <p class="beds">Friday to Saturday is &#8369;50,000. Check in 2 PM, check out 11 AM.</p>
+        </div></div>
+      </div>
+      <p class="fine">Extra adult &#8369;500. Twelve and under &#8369;250. Seven and under &#8369;250. Children four to seven come free, up to four.</p>
+    </div>
+
+    <div class="panel" id="p-house">
+      <div class="rgrid">
+        <div class="rcard"><div class="shot"><img src="img/g-housepool.jpg" data-lb alt="The full house seen across the pool."></div><div class="body">
+          <span class="tier">Six rooms &middot; 27 guests</span><h3>The entire house</h3>
+          <div class="money" data-wd="&#8369;55,000" data-we="&#8369;60,000">&#8369;55,000<small>per night, whole property</small></div>
+          <p class="beds">Adds the Couple and Masters rooms to the five. The outdoor refrigerator is included. Check in 2 PM, check out 11 AM.</p>
+        </div></div>
+        <div class="rcard"><div class="body">
+          <span class="tier">Add-ons</span><h3>Hired on the day</h3>
+          <ul class="pricelist" style="margin-top:4px">
+            <li><span class="k">Karaoke, room only</span><span class="v">&#8369;1,000/day</span></li>
+            <li><span class="k">Use of gasul</span><span class="v">&#8369;500</span></li>
+            <li><span class="k">Refrigerator, room only</span><span class="v">&#8369;500</span></li>
+            <li><span class="k">Towel</span><span class="v">&#8369;50</span></li>
+            <li><span class="k">Extra pillow</span><span class="v">&#8369;30</span></li>
+            <li><span class="k">Laundry</span><span class="v">&#8369;70/kg</span></li>
+            <li><span class="k">Fresh buko</span><span class="v">&#8369;50</span></li>
+            <li><span class="k">Pabili fee, within Carmen</span><span class="v">&#8369;150</span></li>
+          </ul>
+        </div></div>
+      </div>
+      <p class="fine">Weekend and holiday rate covers Friday to Sunday. Rates may change with demand and availability.</p>
+    </div>
+
+    <div class="incl reveal pending">
+      <div>Pool and shower</div><div>Beach access</div><div>Karaoke</div><div>Kitchen and utensils</div>
+      <div>Refrigerator</div><div>Griller and smoker</div><div>One gallon of water</div><div>Tables and chairs</div>
+      <div>Wi-Fi in rooms</div><div>No corkage fee</div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="rooms">
+  <div class="wrap">
+    <div class="head reveal pending">
+      <p class="kicker">Rooms</p>
+      <h2>Named for hardwoods.</h2>
+      <p class="lede">Three upstairs face the beach, which is where the sunrise lands first. Two sit on the ground floor with no stairs to climb. Every one is air-conditioned with its own bath, a coffee set and towels.</p>
+    </div>
+    <div class="rail reveal pending">
+      <article class="room"><div class="shot"><img src="img/room-magkono.jpg" data-lb alt="Magkono Prestige Suite, bunk beds against a panelled wall."></div><h3>Magkono</h3><p class="meta">Prestige Suite &middot; 7 guests</p></article>
+      <article class="room"><div class="shot"><img src="img/room-narra.jpg" data-lb alt="Narra Premier, a king and a queen bed."></div><h3>Narra</h3><p class="meta">Premier &middot; 4 guests</p></article>
+      <article class="room"><div class="shot"><img src="img/room-yakal.jpg" data-lb alt="Yakal Signature Escape, two queen beds."></div><h3>Yakal</h3><p class="meta">Signature Escape &middot; 4 guests</p></article>
+      <article class="room"><div class="shot"><img src="img/room-tugas.jpg" data-lb alt="Tugas Poolside Room, two bunk beds."></div><h3>Tugas</h3><p class="meta">Poolside &middot; 4 guests</p></article>
+      <article class="room"><div class="shot"><img src="img/room-ipil.jpg" data-lb alt="Ipil Deluxe Room, one queen bed."></div><h3>Ipil</h3><p class="meta">Deluxe &middot; 2 guests</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="resort" style="background: var(--paper-2)">
+  <div class="wrap split">
+    <div class="reveal pending"><img class="wipe pending" src="img/pool-dusk.jpg" alt="The pool lit at dusk, with the house and palms behind it."></div>
+    <div class="reveal pending">
+      <p class="kicker">The resort</p>
+      <h2>What is already here.</h2>
+      <p class="lede">Nothing to hire in, nothing to bring except the food you want to cook.</p>
+      <ul>
+        <li>Infinity pool, five feet deep</li>
+        <li>Outdoor kitchen, utensils and a refrigerator</li>
+        <li>Griller and smoker</li>
+        <li>Karaoke with an LED screen and two microphones</li>
+        <li>Tables and chairs set out for your group</li>
+        <li>Wi-Fi in the rooms</li>
+        <li>Parking on site</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="gallery">
+  <div class="wrap">
+    <div class="head reveal pending">
+      <p class="kicker">Gallery</p>
+      <h2>The property, room by room.</h2>
+      <p class="lede">Tap any photograph to open it.</p>
+    </div>
+    <div class="filters reveal pending" id="filters">
+      <button class="chip" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" data-f="pool" aria-pressed="false">Pool and shore</button>
+      <button class="chip" data-f="rooms" aria-pressed="false">Rooms</button>
+      <button class="chip" data-f="living" aria-pressed="false">Kitchen and living</button>
+    </div>
+    <div class="gal reveal pending" id="gal"></div>
+  </div>
+</section>
+
+<section class="pad reviews" id="reviews">
+  <div class="wrap">
+    <div class="head reveal pending">
+      <p class="kicker">Reviews</p>
+      <h2>What guests have said.</h2>
+      <p class="lede">Scores below are the public ratings on each platform, not a selection made here.</p>
+    </div>
+    <div class="scores reveal pending">
+      <div class="score">
+        <span class="big">5.0</span><span class="where">Google &middot; 7 reviews</span>
+        <span class="sub">Read them on <a href="https://www.google.com/travel/hotels/entity/CgsI6c-ZufKE9M-gARAB" target="_blank" rel="noopener">the Google listing</a>.</span>
+      </div>
+      <div class="score">
+        <span class="big">100%</span><span class="where">Facebook &middot; 10 reviews recommend</span>
+        <span class="sub">Read them on <a href="https://www.facebook.com/p/Tree-Rings-Beach-Resort-61572305588687/" target="_blank" rel="noopener">the Facebook page</a>.</span>
+      </div>
+    </div>
+    <!-- Quote cards go here once Matt supplies real guest quotes with names and
+         permission to publish. Nothing invented. -->
+  </div>
+</section>
+
+<section class="band" id="events">
+  <img class="wipe pending" src="img/air-coast.jpg" alt="The resort from the air, the coastline running north past the property.">
+  <div class="over"><div class="wrap"><div class="reveal pending">
+    <p class="kicker" style="color: rgba(255,255,255,.8)">Events</p>
+    <h2>Take it whole.</h2>
+    <p>Weddings, debuts, reunions, company planning days. Twenty-seven guests across six rooms, with the pool, the terrace and the shoreline closed to everyone else. Karaoke runs until half past ten, since we sit on a residential stretch of coast.</p>
+    <a class="btn" href="#enquire">Plan an event</a>
+  </div></div></div>
+</section>
+
+<section class="pad" id="know" style="background: var(--paper-2)">
+  <div class="wrap">
+    <div class="head reveal pending"><p class="kicker">Good to know</p><h2>Before you book.</h2></div>
+    <div class="reveal pending">
+      <details><summary>Booking and payment</summary><div class="inner">
+        <p>Fifty per cent is paid on check-in, with a valid ID. A &#8369;1,000 cash security deposit is collected and returned in full when you leave.</p>
+        <p>Rates may change with demand and availability, and holidays can differ.</p>
+      </div></details>
+      <details><summary>Check-in and check-out</summary><div class="inner">
+        <p>Rooms: check in from 2 PM, check out at 12 noon. Exclusive and whole-house bookings check out at 11 AM.</p>
+        <p>Day use runs 8 AM to 5 PM or 1 PM to 8 PM, nine hours at most, with a strict 8 PM close. Extra hours are &#8369;1,000 each.</p>
+      </div></details>
+      <details><summary>Extra guests and children</summary><div class="inner">
+        <p>Rooms: extra adult &#8369;500, twelve and under &#8369;250, seven and under free, up to two per room.</p>
+        <p>Day use: extra adult &#8369;250, twelve and under &#8369;100, seven and under free, up to four children.</p>
+        <p>Exclusive use: extra adult &#8369;500, twelve and under &#8369;250, seven and under &#8369;250. Children four to seven come free, up to four.</p>
+      </div></details>
+      <details><summary>Evening hours</summary><div class="inner">
+        <p>Beach access closes at 10 PM. Gates and pool lights close at 10:30 PM, and karaoke volume comes down at the same time. We sit in a residential area, so this one matters.</p>
+      </div></details>
+      <details><summary>In the pool</summary><div class="inner">
+        <p>Proper swimming attire only. No jewellery, and no clothing with buttons. There is no lifeguard, so children need watching.</p>
+      </div></details>
+      <details><summary>Food and drink</summary><div class="inner">
+        <p>No corkage fee, so bring what you like. The kitchen, utensils, refrigerator, griller and smoker are yours to use, along with a gallon of drinking water.</p>
+        <p>Breakfast is not included with rooms.</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<section class="pad enquire" id="enquire">
+  <div class="wrap split">
+    <div class="contact reveal pending">
+      <p class="kicker">Contact</p>
+      <h2>Tell us your dates.</h2>
+      <p class="lede">Send what you are looking at and how many are coming, and we will come back with what is open.</p>
+      <dl>
+        <dt>Phone</dt><dd><a href="tel:+639358588508">0935 858 8508</a></dd>
+        <dt>Social</dt><dd><a href="https://www.facebook.com/p/Tree-Rings-Beach-Resort-61572305588687/" target="_blank" rel="noopener">@treeringsbeachresort</a></dd>
+        <dt>Address</dt><dd>Luyang, Carmen, Cebu, Philippines</dd>
+        <dt>Getting here</dt><dd>About two hours north of Cebu City by road</dd>
+        <dt>Check in</dt><dd>2:00 PM</dd>
+        <dt>Check out</dt><dd>12:00 noon, or 11:00 AM for exclusive bookings</dd>
+      </dl>
+    </div>
+    <form class="enq reveal pending" id="enquiryform">
+      <div class="f"><label for="nm">Name</label><input id="nm" name="nm" type="text" required></div>
+      <div class="f"><label for="em">Email or mobile</label><input id="em" name="em" type="text" required></div>
+      <div class="f"><label for="dt">Dates</label><input id="dt" name="dt" type="text" placeholder="12 to 14 December" required></div>
+      <div class="f"><label for="gs">How many guests</label><input id="gs" name="gs" type="text" placeholder="24" required></div>
+      <div class="f"><label for="ms">What is the occasion</label><textarea id="ms" name="ms"></textarea></div>
+      <button class="btn solid" type="submit">Send enquiry</button>
+      <div class="said" id="said" hidden></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Tree Rings Beach Resort, Luyang, Carmen, Cebu &middot; 0935 858 8508</div>
+    <div>Where nature, comfort, and exclusivity meet.</div>
+  </div>
+</footer>
+
+<script>
+  document.body.classList.add('js');
+  setTimeout(() => document.getElementById('curtain')?.remove(), 1400);
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* the header turns solid once the footage has scrolled by */
+  const mast = document.getElementById('mast');
+  const heroEl = document.getElementById('top');
+  new IntersectionObserver(([e]) => mast.classList.toggle('stuck', !e.isIntersecting),
+    { rootMargin: '-72px 0px 0px 0px', threshold: 0 }).observe(heroEl);
+
+  /* rate tabs */
+  const tabs = document.getElementById('tabs');
+  tabs.addEventListener('click', (e) => {
+    const t = e.target.closest('.tab'); if (!t) return;
+    tabs.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', String(x === t)));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+    document.getElementById('p-' + t.dataset.p).classList.add('on');
+  });
+
+  /* weekday / weekend switch: prices fade out, change, fade back */
+  const sw = document.getElementById('switch');
+  sw.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-d]'); if (!b) return;
+    const day = b.dataset.d;
+    sw.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    sw.classList.toggle('we', day === 'we');
+    const money = document.querySelectorAll('.money');
+    money.forEach(m => m.classList.add('swap'));
+    setTimeout(() => {
+      money.forEach(m => {
+        const small = m.querySelector('small');
+        m.textContent = m.dataset[day];
+        if (small) m.appendChild(small);
+        m.classList.remove('swap');
+      });
+    }, reduce ? 0 : 280);
+  });
+
+  /* gallery + lightbox */
+  const PHOTOS = [
+    ['img/air-pool.jpg','pool','The pool from directly above, palms printed on the water.'],
+    ['img/air-coast.jpg','pool','The coastline running past the property.'],
+    ['img/hero.jpg','pool','The house behind the pool, with the sea beyond the wall.'],
+    ['img/g-poolsea.jpg','pool','The pool looking out to open water.'],
+    ['img/pool-dusk.jpg','pool','The pool lit at dusk.'],
+    ['img/pool-edge.jpg','pool','The pool edge meeting the sea horizon.'],
+    ['img/g-housepool.jpg','pool','The house and pool from the garden side.'],
+    ['img/g-poolpalm.jpg','pool','Palms along the pool deck.'],
+    ['img/g-poollounge.jpg','pool','Loungers set out along the water.'],
+    ['img/daybeds.jpg','pool','Woven daybeds under a wide umbrella.'],
+    ['img/cabana.jpg','pool','A shaded cabana above the shoreline.'],
+    ['img/g-poolsteps.jpg','pool','The steps into the pool.'],
+    ['img/aerial.jpg','pool','The property from the air, on the beach among palms.'],
+    ['img/room-magkono.jpg','rooms','Magkono Prestige Suite, three bunk beds.'],
+    ['img/room-narra.jpg','rooms','Narra Premier, a king and a queen bed.'],
+    ['img/room-yakal.jpg','rooms','Yakal Signature Escape, two queen beds.'],
+    ['img/room-tugas.jpg','rooms','Tugas Poolside Room, two bunk beds.'],
+    ['img/room-ipil.jpg','rooms','Ipil Deluxe Room, one queen bed.'],
+    ['img/lounge.jpg','living','The open-air lounge on the upper terrace.'],
+    ['img/dining.jpg','living','The long dining table beside the pool.'],
+    ['img/g-dining2.jpg','living','The covered dining area set for a group.'],
+    ['img/g-kitchen.jpg','living','The kitchen counter and cabinets.'],
+    ['img/g-grill.jpg','living','The grill on the terrace.'],
+    ['img/g-entertain.jpg','living','The screen and sound system in the common area.'],
+    ['img/g-vests.jpg','living','Life vests on the rack by the pool.'],
+  ];
+  const gal = document.getElementById('gal');
+  let shown = PHOTOS;
+
+  function paint(filter) {
+    shown = filter === 'all' ? PHOTOS : PHOTOS.filter(p => p[1] === filter);
+    gal.textContent = '';
+    shown.forEach((p, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Open photograph: ' + p[2]);
+      const im = document.createElement('img');
+      im.src = p[0]; im.alt = p[2]; im.loading = i < 8 ? 'eager' : 'lazy';
+      b.appendChild(im);
+      b.addEventListener('click', () => openAt(i));
+      b.style.animation = reduce ? '' : `panelIn .5s var(--ease) ${Math.min(i, 8) * 40}ms both`;
+      gal.appendChild(b);
+    });
+  }
+  document.getElementById('filters').addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip'); if (!chip) return;
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+    paint(chip.dataset.f);
+  });
+
+  let lb = null, idx = 0;
+  function render() {
+    const p = shown[idx];
+    lb.querySelector('img').src = p[0];
+    lb.querySelector('img').alt = p[2];
+    lb.querySelector('.cap').textContent = p[2];
+    lb.querySelector('.count').textContent = (idx + 1) + ' / ' + shown.length;
+  }
+  function openAt(i) {
+    idx = i;
+    if (!lb) {
+      lb = document.createElement('div');
+      lb.className = 'lb';
+      lb.innerHTML = '<button class="x" aria-label="Close">&#10005;</button>' +
+        '<button class="pv" aria-label="Previous">&#8249;</button>' +
+        '<button class="nx" aria-label="Next">&#8250;</button>' +
+        '<img alt=""><p class="cap"></p><p class="count"></p>';
+      lb.querySelector('.x').addEventListener('click', shut);
+      lb.querySelector('.pv').addEventListener('click', () => step(-1));
+      lb.querySelector('.nx').addEventListener('click', () => step(1));
+      lb.addEventListener('click', (e) => { if (e.target === lb) shut(); });
+      document.body.appendChild(lb);
+    }
+    lb.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    render();
+    lb.querySelector('.x').focus();
+  }
+  function shut() { if (lb) lb.hidden = true; document.documentElement.style.overflow = ''; }
+  function step(d) { idx = (idx + d + shown.length) % shown.length; render(); }
+  document.addEventListener('keydown', (e) => {
+    if (!lb || lb.hidden) return;
+    if (e.key === 'Escape') shut();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+
+  /* any room or rate photo opens the lightbox at the matching picture */
+  document.querySelectorAll('img[data-lb]').forEach((im) => {
+    im.style.cursor = 'zoom-in';
+    im.addEventListener('click', () => {
+      const file = im.getAttribute('src');
+      const i = shown.findIndex(p => p[0] === file);
+      if (i >= 0) openAt(i);
+    });
+  });
+
+  paint('all');
+
+  /* photographs wipe up from their own frame. Watch the frame, not the photo:
+     a photo clipped to nothing never counts as on screen, so it would never open. */
+  document.querySelectorAll('.wipe').forEach(el => {
+    if (reduce) { el.classList.remove('pending'); return; }
+    new IntersectionObserver(([e], o) => {
+      if (!e.isIntersecting) return;
+      el.classList.remove('pending'); o.disconnect();
+    }, { threshold: 0.2 }).observe(el.parentElement);
+  });
+
+  /* the four headline numbers count up once */
+  document.querySelectorAll('.facts .n').forEach(el => {
+    const raw = el.textContent.trim();
+    const m = raw.match(/^(\d+)(.*)$/);
+    if (!m || reduce) return;
+    const end = parseInt(m[1], 10), tail = m[2];
+    let started = false;
+    new IntersectionObserver(([e], o) => {
+      if (!e.isIntersecting || started) return;
+      started = true; o.disconnect();
+      const t0 = performance.now(), dur = 1100;
+      (function tick(now) {
+        const k = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(end * eased) + tail;
+        if (k < 1) requestAnimationFrame(tick);
+      })(t0);
+    }, { threshold: 0.6 }).observe(el);
+  });
+
+  const targets = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.remove('pending'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.remove('pending'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+    targets.forEach(el => io.observe(el));
+    requestAnimationFrame(() => {
+      targets.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.remove('pending'); });
+    });
+  }
+
+  /* ---------- quotes ----------
+     Prices come from the rate cards on this page, so the cards stay the one
+     place to change a rate. A night is weekend-priced when it starts on a
+     Saturday or Sunday; a day visit when it falls on one. Holidays are not
+     known here, which the quote says. */
+  const PAGE = '61572305588687';
+  const PHONE = '+639358588508';
+  const peso = n => '₱' + n.toLocaleString('en-PH');
+  const num = s => parseInt(String(s).replace(/[^\d]/g, ''), 10);
+  const cards = [...document.querySelectorAll('.rcard')].map(c => {
+    const m = c.querySelector('.money');
+    return m && { panel: c.closest('.panel').id, name: c.querySelector('h3').textContent.trim(),
+                  cap: num((c.querySelector('.cap') || c.querySelector('h3')).textContent),
+                  wd: num(m.dataset.wd), we: num(m.dataset.we) };
+  }).filter(Boolean);
+  const day = cards.filter(c => c.panel === 'p-day').sort((a, b) => a.cap - b.cap);
+  const rooms = cards.filter(c => c.panel === 'p-night');
+  const [excl1, excl2] = cards.filter(c => c.panel === 'p-excl');
+  const MAX = 27;
+  const isWE = d => d.getDay() === 0 || d.getDay() === 6;
+  const fmt = d => d.toLocaleDateString('en-PH', { weekday: 'short', month: 'short', day: 'numeric' });
+  const parse = v => { if (!v) return null; const [y, m, d] = v.split('-').map(Number); return new Date(y, m - 1, d); };
+
+  /* cheapest set of rooms that sleeps everyone, by trying every combination (5 rooms, 31 sets) */
+  function bestRooms(guests, nights) {
+    let best = null;
+    for (let mask = 1; mask < 1 << rooms.length; mask++) {
+      const set = rooms.filter((_, i) => mask & (1 << i));
+      if (set.reduce((t, r) => t + r.cap, 0) < guests) continue;
+      const cost = nights.reduce((t, n) => t + set.reduce((u, r) => u + (isWE(n) ? r.we : r.wd), 0), 0);
+      if (!best || cost < best.cost) best = { set, cost };
+    }
+    return best;
+  }
+  function exclusive(nights) {
+    const we = nights.filter(isWE).length;
+    if (nights.length === 2 && excl2) return { cost: we === 0 ? excl2.wd : we === 2 ? excl2.we : 50000, label: excl2.name };
+    return { cost: nights.reduce((t, n) => t + (isWE(n) ? excl1.we : excl1.wd), 0), label: nights.length + (nights.length === 1 ? ' night' : ' nights') };
+  }
+
+  let lastQuote = '';
+  function quote(a, d, guests) {
+    const lines = [];
+    if (!a) return { err: 'Pick the day you arrive.' };
+    if (guests > MAX) return { big: true, text: guests + ' guests is more than we sleep or seat for a day visit (' + MAX + '). Send us the date and we will tell you what can work.' };
+    const nights = [];
+    if (d && d > a) for (let t = new Date(a); t < d; t.setDate(t.getDate() + 1)) nights.push(new Date(t));
+    if (!nights.length) {
+      const pk = day.find(p => p.cap >= guests);
+      const price = isWE(a) ? pk.we : pk.wd;
+      return { what: 'Day use · ' + fmt(a), total: price,
+               lines: [[pk.name.replace(/guests?/, 'guest package'), peso(price)], [isWE(a) ? 'Weekend rate' : 'Weekday rate', '']],
+               note: 'One session, 8 AM to 5 PM or 1 PM to 8 PM.',
+               summary: 'Day use on ' + fmt(a) + ' for ' + guests };
+    }
+    const span = fmt(a) + ' to ' + fmt(d);
+    const r = guests <= rooms.reduce((t, x) => t + x.cap, 0) ? bestRooms(guests, nights) : null;
+    const x = exclusive(nights);
+    const rows = nights.map(n => [fmt(n) + ' night', isWE(n) ? 'weekend' : 'weekday']);
+    if (r && r.cost < x.cost) {
+      return { what: 'Rooms · ' + span, total: r.cost,
+               lines: [[r.set.map(s => s.name.split(' ')[0]).join(' + '), peso(r.cost)], ...rows],
+               alt: 'Or close the whole property to your group: ' + peso(x.cost) + ' exclusive use.',
+               summary: r.set.map(s => s.name.split(' ')[0]).join(' + ') + ', ' + span + ', for ' + guests };
+    }
+    return { what: 'Exclusive use · ' + span, total: x.cost,
+             lines: [['Five rooms, the pool and the shore to yourselves', peso(x.cost)], ...rows],
+             note: 'Check-out at 11 AM.',
+             summary: 'Exclusive use, ' + span + ', for ' + guests };
+  }
+
+  function messenger(text) { return 'https://m.me/' + PAGE + '?text=' + encodeURIComponent(text); }
+  function sms(text) { return 'sms:' + PHONE + (/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?') + 'body=' + encodeURIComponent(text); }
+  function sendButtons(text) {
+    return '<div class="send">' +
+      '<a class="btn solid" target="_blank" rel="noopener" href="' + messenger(text) + '">Send on Messenger</a>' +
+      '<a class="btn" href="' + sms(text) + '">Send as text</a>' +
+      '<button class="btn" type="button" data-copy>Copy</button></div>';
+  }
+  document.addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    try { await navigator.clipboard.writeText(b.closest('[data-msg]').dataset.msg); b.textContent = 'Copied'; }
+    catch { b.textContent = 'Copy failed'; }
+  });
+
+  const qEl = document.getElementById('quote');
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const arrive = document.getElementById('arrive'), depart = document.getElementById('depart');
+  const today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+  arrive.min = depart.min = today.toISOString().slice(0, 10);
+  arrive.addEventListener('change', () => { depart.min = arrive.value; if (depart.value && depart.value < arrive.value) depart.value = ''; });
+
+  document.getElementById('bookbar').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const g = Math.max(1, num(document.getElementById('party').value) || 1);
+    const q = quote(parse(arrive.value), parse(depart.value), g);
+    qEl.hidden = false;
+    if (q.err) { qEl.innerHTML = '<p class="note">' + q.err + '</p>'; arrive.focus(); return; }
+    if (q.big) {
+      const msg = 'Hi Tree Rings! I am planning something for ' + g + ' guests on ' + fmt(parse(arrive.value)) + '. What can you offer?';
+      qEl.innerHTML = '<div><p class="what">Big group</p><p class="alt">' + q.text + '</p></div><div data-msg="' + esc(msg) + '">' + sendButtons(msg) + '</div>';
+      return;
+    }
+    const msg = 'Hi Tree Rings! Is this open? ' + q.summary + ' guests. The site quoted ' + peso(q.total) + '.';
+    qEl.innerHTML =
+      '<div><p class="what">' + q.what + ' · ' + g + ' guests</p>' +
+      '<p class="total">' + peso(q.total) + '</p>' +
+      '<ul class="lines">' + q.lines.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul>' +
+      (q.alt ? '<p class="alt">' + q.alt + '</p>' : '') +
+      '<p class="note">' + (q.note ? q.note + ' ' : '') + 'Holidays may be priced higher. We confirm the date and the price when we reply.</p></div>' +
+      '<div data-msg="' + esc(msg) + '"><p class="note" style="margin:0 0 10px">Send this to the resort and we will check the date.</p>' + sendButtons(msg) + '</div>';
+  });
+
+  document.getElementById('enquiryform').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const msg = 'Hi Tree Rings! This is ' + v('nm') + '. Dates: ' + v('dt') + '. Guests: ' + v('gs') + '.' +
+                (v('ms') ? ' Occasion: ' + v('ms') + '.' : '') + ' Reach me at ' + v('em') + '.';
+    const el = document.getElementById('said');
+    el.dataset.msg = msg;
+    el.innerHTML = '<p style="margin-bottom:12px">Your message is ready. Choose how to send it:</p>' + sendButtons(msg);
+    el.hidden = false;
+  });
+</script>
