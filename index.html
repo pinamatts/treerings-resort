@@ -2,6 +2,7 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0C1A4B">
 <meta name="description" content="A private beach house in Luyang, Carmen, Cebu. Six rooms above an infinity pool, two hours from Cebu City. Day use, overnight rooms and exclusive use. No corkage.">
 <meta property="og:title" content="Tree Rings Beach Resort, Carmen, Cebu">
 <meta property="og:description" content="Six rooms above an infinity pool, two hours up the coast from Cebu City. Get an instant quote for your dates.">
@@ -9,640 +10,519 @@
 <meta property="og:url" content="https://pinamatts.github.io/treerings-resort/">
 <meta property="og:type" content="website">
 <title>Tree Rings Beach Resort</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%230C1A4B'/%3E%3Cg fill='none' stroke='%23C9A24F' stroke-width='9' stroke-linecap='round'%3E%3Ccircle cx='100' cy='100' r='78'/%3E%3Cpath d='M40 108a60 60 0 0 1 120 0M64 108a36 36 0 0 1 72 0M30 108q17-10 35 0t35 0t35 0t35 0M34 138q16-10 33 0t33 0t33 0t33 0'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Federo&family=Jost:wght@300;400;500&display=swap">
 
 <style>
-  /* Paper-white page; the photographs carry every colour. Wide margins, one
-     hairline rule family, outlined controls. Rates are the centre of gravity:
-     tabbed by stay type, with a weekday/weekend switch that moves the prices. */
+  /* Navy night and a gold sunrise, both taken from the Tree Rings logo.
+     Federo carries the logo's condensed deco lettering; Jost does the reading.
+     Gold is the only accent. Photographs stay full-bleed and do the selling. */
   :root {
-    --paper:   #FCFBF8;
-    --paper-2: #F4F1EA;
-    --ink:     #23282A;
-    --ink-2:   #5E676B;
-    --rule:    #DEDAD0;
-    --sea:     #1F5E63;
-    --ease:    cubic-bezier(.16,1,.3,1);
-
-    --shadow-lift: 0 18px 50px rgba(35,40,42,.12);
-    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    --ui: 'Jost', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color-scheme: light;
+    --night:  #071030;
+    --navy:   #0C1A4B;
+    --navy-2: #14245C;
+    --line-d: rgba(214,190,130,.24);
+    --gold:   #C9A24F;
+    --gold-2: #E2C27C;
+    --ivory:  #F6F2EA;
+    --ivory-2:#ECE5D6;
+    --ink:    #0C1A4B;
+    --ink-2:  #4A5478;
+    --line:   #D9CFBB;
+    --mist:   rgba(246,242,234,.76);
+    --ease:   cubic-bezier(.16,1,.3,1);
+    --display: 'Federo', 'Jost', sans-serif;
+    --ui: 'Jost', 'Helvetica Neue', Arial, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-color: var(--gold) var(--night); }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--ui);
-         font-weight: 300; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-  .wrap { width: 100%; max-width: 1240px; margin-inline: auto;
-          padding-left: max(16px, env(safe-area-inset-left, 0px));
-          padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  h1,h2,h3 { font-family: var(--display); font-weight: 300; line-height: 1.1; margin: 0; text-wrap: balance; }
-  h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
-  h3 { font-size: 1.4rem; }
+  body { margin: 0; background: var(--navy); color: var(--ivory); font-family: var(--ui); font-weight: 300;
+         font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  ::selection { background: var(--gold); color: var(--navy); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-underline-offset: 4px; }
   p { margin: 0; }
-  .kicker { font-family: var(--ui); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-2); }
-  .lede { color: var(--ink-2); max-width: 62ch; margin-top: 16px; }
-  .head { margin-bottom: 40px; }
-  section.pad { padding-block: clamp(58px, 8.5vw, 104px); }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.04; letter-spacing: .01em; text-wrap: balance; }
+  h2 { font-size: clamp(2.3rem, 5.4vw, 4.4rem); }
+  h3 { font-size: clamp(1.45rem, 2.4vw, 1.9rem); }
+  .wrap { width: 100%; max-width: 1280px; margin-inline: auto;
+          padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+  .lede { color: var(--mist); max-width: 58ch; margin-top: 22px; font-size: 1.08rem; }
+  .light { background: var(--ivory); color: var(--ink); }
+  .light .lede { color: var(--ink-2); }
+  section.pad { padding-block: clamp(84px, 11vw, 150px); }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
-         font-family: var(--ui); font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
-         padding: 13px 26px; border: 1px solid var(--ink); color: var(--ink); background: transparent;
-         text-decoration: none; cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease); }
-  .btn:hover { background: var(--ink); color: var(--paper); }
-  .btn:active { transform: translateY(1px); }
-  .btn.solid { background: var(--sea); border-color: var(--sea); color: #fff; }
-  .btn.solid:hover { background: #17484C; border-color: #17484C; }
-  :focus-visible { outline: 2px solid var(--sea); outline-offset: 3px; }
+  /* buttons: gold fill for the action, hairline for the rest */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap;
+         font-family: var(--ui); font-weight: 400; font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+         padding: 15px 28px; border-radius: 999px; border: 1px solid currentColor; background: transparent;
+         color: inherit; text-decoration: none; cursor: pointer;
+         transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .2s var(--ease); }
+  .btn:active { transform: scale(.98); }
+  .btn.gold { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  .btn.gold:hover { background: var(--gold-2); border-color: var(--gold-2); }
+  .btn.line:hover { background: var(--ivory); color: var(--navy); border-color: var(--ivory); }
+  .light .btn.line:hover, .quote .btn.line:hover, .said .btn.line:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
 
-  .masthead { position: fixed; top: 0; left: 0; right: 0; z-index: 40;
-              background: transparent; border-bottom: 1px solid transparent;
-              transition: background .45s var(--ease), border-color .45s var(--ease),
-                          box-shadow .45s var(--ease), padding .45s var(--ease);
-              padding-top: env(safe-area-inset-top, 0px); }
-  .masthead .wordmark, .masthead nav a { color: #fff; }
-  .masthead .wordmark span { color: rgba(255,255,255,.72); }
-  .masthead nav a::after { background: #fff; }
-  .masthead .btn.solid { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.6);
-                         backdrop-filter: blur(6px); }
-  .masthead .btn.solid:hover { background: #fff; color: var(--ink); border-color: #fff; }
-  .masthead.stuck { background: var(--paper); border-bottom-color: var(--rule);
-                    box-shadow: 0 10px 34px rgba(35,40,42,.09); }
-  .masthead.stuck .wordmark { color: var(--ink); }
-  .masthead.stuck .wordmark span { color: var(--ink-2); }
-  .masthead.stuck nav a { color: var(--ink-2); }
-  .masthead.stuck nav a:hover { color: var(--ink); }
-  .masthead.stuck nav a::after { background: var(--ink); }
-  .masthead.stuck .btn.solid { background: var(--sea); border-color: var(--sea); color: #fff; backdrop-filter: none; }
-  .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px;
-                    padding-block: 14px; flex-wrap: wrap; }
-  .wordmark { font-family: var(--display); font-size: 1.3rem; letter-spacing: .04em; text-decoration: none;
-              color: var(--ink); white-space: nowrap; }
-  .wordmark span { display: block; font-family: var(--ui); font-size: 9.5px; letter-spacing: .3em;
-                   text-transform: uppercase; color: var(--ink-2); }
-  nav { display: flex; gap: 20px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-  nav a { color: var(--ink-2); text-decoration: none; position: relative; padding-bottom: 2px; }
-  nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-                 background: var(--ink); transform: scaleX(0); transform-origin: left;
-                 transition: transform .3s var(--ease); }
-  nav a:hover { color: var(--ink); }
-  nav a:hover::after { transform: scaleX(1); }
-  @media (max-width: 1040px) { nav { display: none; } }
+  /* the mark, drawn from the logo: outer ring, two sunrise arcs, the sun, three waves */
+  .mark { overflow: visible; }
+  .mark .r { fill: none; stroke: var(--gold); stroke-width: 6.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
 
-  .booking { background: var(--paper-2); border-bottom: 1px solid var(--rule); }
-  .booking form { display: grid; gap: 12px; padding-block: 14px; grid-template-columns: 1fr; align-items: end; }
-  @media (min-width: 760px) { .booking form { grid-template-columns: 1fr 1fr 1fr auto; } }
-  .bk { display: grid; gap: 5px; min-width: 0; }
-  .bk label { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); }
-  .bk input, .bk select { font-family: var(--ui); font-size: 15px; font-weight: 300; color: var(--ink);
-    background: var(--paper); border: 1px solid var(--rule); padding: 10px 12px; width: 100%; min-width: 0;
-    border-radius: 0; transition: border-color .25s var(--ease); }
-  .bk input:focus, .bk select:focus { border-color: var(--sea); outline: none; }
+  /* ---------- header ---------- */
+  .mast { position: fixed; inset: 0 0 auto 0; z-index: 50; padding-top: env(safe-area-inset-top);
+          transition: background .5s var(--ease), box-shadow .5s var(--ease); }
+  .mast .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-block: 14px; }
+  .mast.stuck { background: rgba(7,16,48,.86); backdrop-filter: blur(14px) saturate(1.2);
+                -webkit-backdrop-filter: blur(14px) saturate(1.2); box-shadow: 0 1px 0 var(--line-d); }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand .mark { width: 40px; height: 40px; flex: none; }
+  .brand b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.3rem; letter-spacing: .1em; text-transform: uppercase; line-height: 1; }
+  .brand small { display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-top: 5px; }
+  .mast nav { display: flex; gap: 30px; font-size: 14.5px; letter-spacing: .06em; }
+  .mast nav a { text-decoration: none; color: var(--mist); transition: color .25s; }
+  .mast nav a:hover { color: var(--gold-2); }
+  .mast .btn { padding: 11px 22px; font-size: 13px; }
+  @media (max-width: 1020px) { .mast nav { display: none; } }
+  @media (max-width: 560px) { .mast .btn { display: none; } }
 
-  /* the quote: what the bar just worked out, priced from the rate cards below */
-  .quote { border-top: 1px solid var(--rule); padding-block: 22px 26px; display: grid; gap: 22px;
-           grid-template-columns: 1fr; animation: panelIn .45s var(--ease) both; }
-  @media (min-width: 860px) { .quote { grid-template-columns: 1.3fr 1fr; align-items: end; } }
-  @media (prefers-reduced-motion: reduce) { .quote { animation: none; } }
-  .quote .what { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--sea); }
-  .quote .total { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1;
-                  font-variant-numeric: tabular-nums; margin-top: 6px; }
-  .quote .lines { list-style: none; margin: 14px 0 0; padding: 0; font-size: 14.5px; color: var(--ink-2); }
-  .quote .lines li { display: flex; justify-content: space-between; gap: 16px; padding: 7px 0;
-                     border-bottom: 1px solid var(--rule); }
-  .quote .lines .v { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .quote .alt { font-size: 14px; color: var(--ink-2); margin-top: 12px; }
-  .quote .note { font-size: 13px; color: var(--ink-2); margin-top: 12px; }
-  .send { display: flex; gap: 10px; flex-wrap: wrap; }
-  .send .btn { flex: 1 1 auto; }
+  /* ---------- hero ---------- */
+  .hero { position: relative; min-height: 100svh; display: grid; grid-template-rows: 1fr auto; isolation: isolate; overflow: hidden; }
+  .hero > img, .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  @media (prefers-reduced-motion: reduce) { .hero video { display: none; } }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(120% 70% at 50% 40%, rgba(7,16,48,.2) 0%, rgba(7,16,48,.55) 62%, rgba(7,16,48,.88) 100%),
+      linear-gradient(180deg, rgba(7,16,48,.6) 0%, rgba(7,16,48,0) 24%, rgba(7,16,48,0) 55%, var(--navy) 100%); }
+  .hero .center { align-self: center; text-align: center; padding: 116px 20px 30px; display: grid; justify-items: center; }
+  .hero .mark { width: clamp(92px, 12vw, 140px); height: auto; filter: drop-shadow(0 6px 30px rgba(7,16,48,.6)); }
+  .hero h1 { font-size: clamp(2.8rem, 8vw, 6rem); line-height: 1; margin-top: 28px; max-width: 14ch;
+             text-shadow: 0 4px 40px rgba(7,16,48,.55); }
+  .hero .sub { margin-top: 22px; max-width: 48ch; color: rgba(246,242,234,.92); font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+               text-shadow: 0 2px 20px rgba(7,16,48,.7); }
 
-  /* The arrival: footage at full height, the name wiped up out of it. */
-  .hero { position: relative; isolation: isolate; overflow: hidden; height: 92dvh; min-height: 520px; }
-  .hero img, .hero video { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .hero .herovid { position: absolute; inset: 0; }
-  .hero .heroshot { position: absolute; inset: 0; }
-  @media (prefers-reduced-motion: reduce) { .hero .herovid { display: none; } }
-  .hero .over { position: absolute; inset: 0; display: flex; align-items: flex-end;
-                padding-block: 0 clamp(44px, 9vh, 92px);
-                background:
-                  linear-gradient(180deg, rgba(18,22,23,.52) 0%, rgba(18,22,23,.12) 26%,
-                                  rgba(18,22,23,.30) 56%, rgba(18,22,23,.88) 100%),
-                  linear-gradient(100deg, rgba(18,22,23,.60) 0%, rgba(18,22,23,.18) 48%,
-                                  rgba(18,22,23,0) 78%); }
-  .hero h1, .hero .sub { text-shadow: 0 2px 26px rgba(10,14,15,.45); }
-  .hero h1 { color: #fff; font-size: clamp(2.9rem, 8.2vw, 6.2rem); letter-spacing: -.012em; line-height: .98; }
-  .hero .sub { color: rgba(255,255,255,.92); margin-top: 18px; max-width: 42ch;
-               font-size: clamp(1rem, 2.1vw, 1.22rem); }
-  .hero .cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .hero .btn { border-color: rgba(255,255,255,.62); color: #fff; backdrop-filter: blur(3px); }
-  .hero .btn:hover { background: #fff; color: var(--ink); border-color: #fff; }
-  .hero .btn.solid { background: var(--sea); border-color: var(--sea); }
-  .hero .btn.solid:hover { background: #fff; color: var(--ink); }
+  /* the one authored moment: the sunrise draws itself, then the words come up out of the haze */
+  .js .hero .mark .r { animation: draw 1.6s var(--ease) both; }
+  .js .hero .mark .r:nth-of-type(2) { animation-delay: .25s } .js .hero .mark .r:nth-of-type(3) { animation-delay: .4s }
+  .js .hero .mark .r:nth-of-type(4) { animation-delay: .55s }
+  .js .hero .mark .w { animation-duration: 2s; } .js .hero .mark .w:nth-of-type(1) { animation-delay: .8s }
+  .js .hero .mark .w:nth-of-type(2) { animation-delay: .95s } .js .hero .mark .w:nth-of-type(3) { animation-delay: 1.1s }
+  @keyframes draw { from { stroke-dashoffset: 1; } }
+  .js .rise { animation: rise 1.3s var(--ease) both; }
+  .js .rise.d1 { animation-delay: .7s } .js .rise.d2 { animation-delay: .9s } .js .rise.d3 { animation-delay: 1.1s }
+  @keyframes rise { from { transform: translateY(26px); filter: blur(8px); } }
+  @media (prefers-reduced-motion: reduce) { .js .hero .mark .r, .js .rise { animation: none; } }
 
-  /* each line sits in a mask and rises into view */
-  .line { display: block; overflow: hidden; }
-  .line > * { display: block; transform: translateY(104%); animation: rise 1.05s var(--ease) forwards; }
-  .line.d1 > * { animation-delay: .34s } .line.d2 > * { animation-delay: .46s }
-  .line.d3 > * { animation-delay: .62s } .line.d4 > * { animation-delay: .74s }
-  @keyframes rise { to { transform: none; } }
-
-  /* the curtain: lifts once, leaves no trace */
-  #curtain { position: fixed; inset: 0; z-index: 90; background: var(--ink); pointer-events: none;
-             animation: lift 1.15s var(--ease) forwards; }
-  @keyframes lift { 0%,18% { opacity: 1 } 100% { opacity: 0; visibility: hidden } }
-
-  @media (prefers-reduced-motion: reduce) {
-    .line > * { transform: none; animation: none; }
-    #curtain { display: none; }
+  /* quote bar docked at the foot of the hero */
+  .dock { padding-bottom: clamp(22px, 5vh, 46px); }
+  .bar { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; align-items: end;
+         background: rgba(7,16,48,.6); border: 1px solid rgba(214,190,130,.3); border-radius: 22px; padding: 14px;
+         backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
+         box-shadow: 0 30px 60px -20px rgba(3,8,26,.6); }
+  .fld { display: grid; gap: 4px; min-width: 0; }
+  .fld:nth-child(3) { grid-column: 1 / -1; }
+  .fld label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-2); }
+  .fld input { font: 400 16px var(--ui); color: var(--ivory); background: rgba(246,242,234,.07); border: 1px solid rgba(246,242,234,.18);
+               border-radius: 12px; padding: 11px 12px; width: 100%; min-width: 0; color-scheme: dark; transition: border-color .25s;
+               -webkit-appearance: none; appearance: none; min-height: 46px; }
+  .fld input:focus { border-color: var(--gold); outline: none; }
+  .bar .btn { grid-column: 1 / -1; padding-block: 16px; }
+  @media (min-width: 820px) {
+    .bar { grid-template-columns: 1.1fr 1.1fr .7fr auto; padding: 10px 10px 10px 26px; border-radius: 999px; gap: 0; align-items: center; }
+    .fld:nth-child(3) { grid-column: auto; }
+    .bar .fld input { background: transparent; border-color: transparent; padding: 2px 0 0; min-height: 0; }
+    .bar .fld + .fld { border-left: 1px solid rgba(246,242,234,.18); padding-left: 22px; margin-left: 4px; }
+    .bar .btn { grid-column: auto; margin-left: 14px; }
   }
 
-  /* filmic grain, fixed and inert */
-  #grain { position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: .035;
-           background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"); }
+  .quote { margin-top: 12px; background: var(--ivory); color: var(--ink); border-radius: 24px; padding: clamp(22px, 3vw, 34px);
+           display: grid; gap: 26px; grid-template-columns: 1fr; box-shadow: 0 30px 60px -24px rgba(3,8,26,.7);
+           animation: pop .5s var(--ease) both; }
+  .quote[hidden] { display: none; }
+  @media (min-width: 860px) { .quote { grid-template-columns: 1.25fr 1fr; align-items: end; } }
+  @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.985); } }
+  @media (prefers-reduced-motion: reduce) { .quote { animation: none; } }
+  .quote .what { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .quote .total { font-family: var(--display); font-size: clamp(2.6rem, 6vw, 3.6rem); line-height: 1; margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .quote ul { list-style: none; margin: 16px 0 0; padding: 0; font-size: 15px; color: var(--ink-2); }
+  .quote li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .quote li .v { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .quote .alt { margin-top: 12px; font-size: 15px; }
+  .quote .note { margin-top: 10px; font-size: 13.5px; color: var(--ink-2); }
+  .send { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+  .send .btn:first-child { grid-column: 1 / -1; }
+  .quote .btn.line, .said .btn.line { color: var(--ink); }
 
-  .facts { border-bottom: 1px solid var(--rule); }
-  .facts ul { list-style: none; margin: 0; padding-block: 30px; display: grid; gap: 22px 30px; grid-template-columns: repeat(2, 1fr); }
-  @media (min-width: 820px) { .facts ul { grid-template-columns: repeat(4, 1fr); } }
-  .facts .n { font-family: var(--display); font-size: 2.1rem; line-height: 1; display: block; }
-  .facts .t { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  /* ---------- the promise ---------- */
+  .promise { text-align: center; }
+  .promise h2 { font-size: clamp(2.1rem, 5.2vw, 4.3rem); max-width: 19ch; margin-inline: auto; }
+  .promise h2 em { font-style: normal; color: var(--gold); }
+  .promise .lede { margin-inline: auto; }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 44px 0 0; padding: 0; list-style: none; }
+  .facts li { border: 1px solid var(--line-d); border-radius: 999px; padding: 10px 20px; font-size: 15px; color: var(--mist); }
+
+  /* ---------- a day here: one pinned stage, three times of day ---------- */
+  .day { position: relative; height: 330vh; background: var(--night); }
+  .stage { position: sticky; top: 0; height: 100svh; overflow: hidden; isolation: isolate; }
+  .stage .ph { position: absolute; inset: 0; opacity: 0; transform: scale(1.08); transition: opacity 1.1s var(--ease), transform 2.6s var(--ease); }
+  .stage .ph.on { opacity: 1; transform: none; }
+  .stage .ph img { width: 100%; height: 100%; object-fit: cover; }
+  .stage::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(90deg, rgba(7,16,48,.85) 0%, rgba(7,16,48,.4) 50%, rgba(7,16,48,.05) 85%),
+                linear-gradient(0deg, rgba(7,16,48,.75), rgba(7,16,48,0) 50%); }
+  .stage .copy { position: absolute; z-index: 2; inset: auto 0 0 0; padding-bottom: clamp(56px, 12vh, 120px); }
+  .holder { position: relative; min-height: 330px; }
+  .chap { position: absolute; left: 0; bottom: 0; max-width: 540px; opacity: 0; transform: translateY(24px);
+          transition: opacity .8s var(--ease), transform .9s var(--ease); }
+  .chap.on { opacity: 1; transform: none; }
+  .chap .time { font-family: var(--display); color: var(--gold); font-size: clamp(1.15rem, 2vw, 1.45rem); letter-spacing: .16em; text-transform: uppercase; }
+  .chap h3 { font-size: clamp(2.3rem, 5.4vw, 4.4rem); margin-top: 12px; }
+  .chap p:last-child { color: rgba(246,242,234,.88); margin-top: 18px; font-size: 1.08rem; max-width: 46ch; }
+  .ticks { position: absolute; z-index: 2; right: max(20px, env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); display: grid; gap: 12px; }
+  .ticks span { width: 3px; height: 30px; border-radius: 3px; background: rgba(246,242,234,.28); transition: background .4s, height .5s var(--ease); }
+  .ticks span.on { background: var(--gold); height: 56px; }
+  @media (prefers-reduced-motion: reduce) {
+    .day { height: auto; } .stage { position: relative; height: 80svh; }
+    .ph:not(:first-child), .chap:not(:first-child), .ticks { display: none; }
+  }
 
   /* ---------- rates ---------- */
-  .rates { background: var(--paper-2); }
-  .ratebar { display: flex; gap: 20px; justify-content: space-between; align-items: flex-end;
-             flex-wrap: wrap; margin-bottom: 26px; }
-  .tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
-  .tab { font-family: var(--ui); font-size: 12.5px; letter-spacing: .13em; text-transform: uppercase;
-         background: none; border: 0; color: var(--ink-2); padding: 12px 16px; cursor: pointer;
-         position: relative; transition: color .25s var(--ease); }
-  .tab::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -1px; height: 2px;
-                background: var(--sea); transform: scaleX(0); transition: transform .32s var(--ease); }
-  .tab[aria-selected="true"] { color: var(--ink); }
-  .tab[aria-selected="true"]::after { transform: scaleX(1); }
+  .seg { display: inline-flex; flex-wrap: wrap; padding: 4px; border-radius: 28px; background: var(--ivory-2); }
+  .seg button { font: 400 15px var(--ui); letter-spacing: .02em; border: 0; background: none; color: var(--ink-2);
+                padding: 11px 20px; border-radius: 999px; cursor: pointer; transition: background .3s var(--ease), color .3s var(--ease); }
+  .seg button:hover { color: var(--ink); }
+  .seg button[aria-pressed="true"], .seg button[aria-selected="true"] { background: var(--navy); color: var(--ivory); }
+  .seg.small button { padding: 9px 16px; font-size: 14px; }
+  .ratetools { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; margin-top: 54px; }
+  .rows { margin-top: 26px; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 8px 28px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--line);
+         animation: pop .5s var(--ease) both; }
+  .row .thumb { display: none; padding: 0; border: 0; width: 132px; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; cursor: zoom-in; background: var(--ivory-2); }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+  .row .thumb:hover img { transform: scale(1.07); }
+  @media (min-width: 760px) { .row.pic { grid-template-columns: 132px 1fr auto; } .row .thumb { display: block; } }
+  .row h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+  .row .det { color: var(--ink-2); font-size: 15px; margin-top: 6px; max-width: 60ch; }
+  .row .price { text-align: right; font-family: var(--display); font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1;
+                font-variant-numeric: tabular-nums; transition: opacity .25s var(--ease), transform .25s var(--ease); }
+  .row .price small { display: block; font-family: var(--ui); font-size: 12.5px; letter-spacing: .06em; color: var(--ink-2); margin-top: 6px; }
+  .rows.swap .price { opacity: 0; transform: translateY(-6px); }
+  .row.wide { display: block; }
+  .fine { color: var(--ink-2); font-size: 14.5px; margin-top: 22px; max-width: 80ch; }
+  .incl { display: flex; flex-wrap: wrap; gap: 10px; margin: 44px 0 0; padding: 0; list-style: none; }
+  .incl li { background: var(--ivory-2); border-radius: 999px; padding: 9px 18px; font-size: 14.5px; }
+  .addons { columns: 2 240px; column-gap: 44px; margin: 14px 0 0; padding: 0; list-style: none; }
+  .addons li { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); break-inside: avoid; font-size: 15px; }
+  .addons .v { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-  .switch { display: inline-flex; border: 1px solid var(--rule); background: var(--paper); position: relative; }
-  .switch button { font-family: var(--ui); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
-                   background: none; border: 0; padding: 10px 18px; cursor: pointer; color: var(--ink-2);
-                   position: relative; z-index: 1; transition: color .3s var(--ease); }
-  .switch button[aria-pressed="true"] { color: #fff; }
-  .switch .pill { position: absolute; top: 0; bottom: 0; left: 0; width: 50%; background: var(--sea);
-                  transition: transform .38s var(--ease); }
-  .switch.we .pill { transform: translateX(100%); }
-  @media (prefers-reduced-motion: reduce) { .switch .pill, .tab::after { transition: none; } }
+  /* ---------- rooms ---------- */
+  .roomhead { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: end; }
+  .arrows { display: flex; gap: 10px; }
+  .arrows button { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-d); background: none; color: var(--ivory);
+                   cursor: pointer; display: grid; place-items: center; transition: background .3s, border-color .3s, color .3s; }
+  .arrows button:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  svg.ic { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: min(80vw, 390px); gap: 20px; overflow-x: auto;
+          scroll-snap-type: x mandatory; margin-top: 50px; padding-bottom: 6px; scrollbar-width: none;
+          padding-inline: max(20px, calc((100vw - 1280px) / 2 + 20px)); scroll-padding-inline: max(20px, calc((100vw - 1280px) / 2 + 20px)); }
+  .rail::-webkit-scrollbar { display: none; }
+  .room { scroll-snap-align: start; position: relative; border: 0; padding: 0; margin: 0; text-align: left; color: inherit; font: inherit;
+          border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; cursor: zoom-in; isolation: isolate; background: var(--navy-2); }
+  .room img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.1s var(--ease); }
+  .room:hover img { transform: scale(1.06); }
+  .room::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(7,16,48,.94) 0%, rgba(7,16,48,0) 60%); }
+  .room .t { position: absolute; inset: auto 24px 24px 24px; display: block; }
+  .room .t b { display: block; font-family: var(--display); font-weight: 400; font-size: 2.2rem; line-height: 1; }
+  .room .t span { display: block; color: var(--mist); font-size: 15px; margin-top: 8px; }
+  .room .t i { display: block; font-style: normal; color: var(--gold-2); font-size: 14.5px; margin-top: 10px; }
 
-  .panel { display: none; }
-  .panel.on { display: block; animation: panelIn .45s var(--ease) both; }
-  @keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .panel.on { animation: none; } }
-
-  .rgrid { display: grid; gap: 16px; grid-template-columns: 1fr; }
-  @media (min-width: 700px) { .rgrid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1040px) { .rgrid.three { grid-template-columns: repeat(3, 1fr); } }
-
-  .rcard { background: var(--paper); border: 1px solid var(--rule); display: flex; flex-direction: column;
-           min-width: 0; overflow: hidden; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
-  .rcard:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(35,40,42,.10); }
-  @media (prefers-reduced-motion: reduce) { .rcard:hover { transform: none; } }
-  .rcard .shot { overflow: hidden; }
-  .rcard .shot img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: zoom-in;
-                     transition: transform .7s var(--ease); }
-  .rcard:hover .shot img { transform: scale(1.05); }
-  .rcard .body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
-  .rcard .tier { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--sea); }
-  .rcard .beds { font-size: 14px; color: var(--ink-2); }
-  .rcard .cap { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
-  .money { font-family: var(--display); font-size: 2.1rem; line-height: 1; font-variant-numeric: tabular-nums;
-           transition: opacity .28s var(--ease), transform .28s var(--ease); }
-  .money.swap { opacity: 0; transform: translateY(-6px); }
-  .money small { font-family: var(--ui); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
-                 color: var(--ink-2); display: block; margin-top: 5px; }
-  .fine { font-size: 13.5px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 14px; margin-top: 22px; }
-
-  /* included grid */
-  .incl { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 26px;
-          grid-template-columns: repeat(2, 1fr); }
-  @media (min-width: 680px) { .incl { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 980px) { .incl { grid-template-columns: repeat(5, 1fr); } }
-  .incl div { background: var(--paper); padding: 18px 14px; font-size: 13px; letter-spacing: .06em;
-              color: var(--ink-2); text-align: center; transition: background .3s var(--ease), color .3s var(--ease); }
-  .incl div:hover { background: var(--sea); color: #fff; }
-
-  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 30vw); gap: 18px;
-          overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
-  .room { scroll-snap-align: start; min-width: 0; }
-  .room .shot { overflow: hidden; }
-  .room img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; max-width: 100%;
-              cursor: zoom-in; transition: transform .7s var(--ease); }
-  .room:hover img { transform: scale(1.05); }
-  .room h3 { margin-top: 14px; }
-  .room .meta { font-size: 13.5px; color: var(--ink-2); }
-
-  .split { display: grid; gap: clamp(28px, 5vw, 62px); grid-template-columns: 1fr; align-items: center; }
-  @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
-  .split img { width: 100%; height: auto; display: block; max-width: 100%; }
-  .split ul { list-style: none; margin: 22px 0 0; padding: 0; }
-  .split li { padding: 11px 0; border-bottom: 1px solid var(--rule); color: var(--ink-2); font-size: 15px; }
-
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
-  .chip { font-family: var(--ui); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
-          padding: 8px 16px; border: 1px solid var(--rule); background: transparent; color: var(--ink-2);
-          cursor: pointer; transition: border-color .25s var(--ease), color .25s var(--ease); }
-  .chip[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
-  .gal { display: grid; gap: 10px; grid-template-columns: repeat(2, 1fr); }
-  @media (min-width: 720px) { .gal { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1040px) { .gal { grid-template-columns: repeat(4, 1fr); } }
-  .gal button { padding: 0; border: 0; background: none; cursor: zoom-in; display: block; min-width: 0;
-                overflow: hidden; }
-  .gal img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
-             transition: transform .7s var(--ease), opacity .3s var(--ease); }
+  /* ---------- gallery ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
+  .chips button { font: 400 14.5px var(--ui); border: 1px solid var(--line-d); background: none; color: var(--mist);
+                  border-radius: 999px; padding: 9px 18px; cursor: pointer; transition: all .3s var(--ease); }
+  .chips button:hover { color: var(--ivory); border-color: var(--gold); }
+  .chips button[aria-pressed="true"] { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .gal { display: grid; gap: 10px; margin-top: 30px; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 40vw; grid-auto-flow: dense; }
+  @media (min-width: 760px) { .gal { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 15vw; } }
+  @media (min-width: 1280px) { .gal { grid-auto-rows: 196px; } }
+  .gal button { padding: 0; border: 0; border-radius: 14px; overflow: hidden; cursor: zoom-in; background: var(--navy-2); min-width: 0; animation: pop .5s var(--ease) both; }
+  .gal button.big { grid-column: span 2; grid-row: span 2; }
+  .gal button.tall { grid-row: span 2; }
+  .gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
   .gal button:hover img { transform: scale(1.06); }
+  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(5,11,34,.96); display: grid; place-items: center;
+        padding: 70px 16px 24px; gap: 14px; grid-template-rows: 1fr auto; }
+  .lb[hidden] { display: none; }
+  .lb img { max-width: min(1200px, 100%); max-height: 76vh; object-fit: contain; border-radius: 10px; }
+  .lb p { color: var(--mist); font-size: 15px; text-align: center; max-width: 60ch; }
+  .lb button { position: absolute; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--line-d); background: rgba(7,16,48,.6);
+               color: var(--ivory); cursor: pointer; display: grid; place-items: center; }
+  .lb button:hover { background: var(--gold); color: var(--navy); }
+  .lb .x { top: 14px; right: 14px; } .lb .pv { left: 14px; top: calc(50% - 25px); } .lb .nx { right: 14px; top: calc(50% - 25px); }
 
-  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(16,19,20,.95);
-        display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
-        padding: max(16px, env(safe-area-inset-left, 0px)); animation: fade .25s ease both; }
-  @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
-  .lb img { max-width: 100%; max-height: 78vh; object-fit: contain; }
-  .lb .cap { color: rgba(255,255,255,.82); font-size: 14px; text-align: center; max-width: 60ch; }
-  .lb .x, .lb .pv, .lb .nx { position: absolute; background: none; border: 1px solid rgba(255,255,255,.45);
-        color: #fff; width: 44px; height: 44px; cursor: pointer; font-size: 18px; line-height: 1;
-        transition: background .25s var(--ease); }
-  .lb .x:hover, .lb .pv:hover, .lb .nx:hover { background: rgba(255,255,255,.16); }
-  .lb .x { top: max(16px, env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
-  .lb .pv { left: max(12px, env(safe-area-inset-left, 0px)); }
-  .lb .nx { right: max(12px, env(safe-area-inset-right, 0px)); }
-  .lb .count { color: rgba(255,255,255,.6); font-size: 12px; letter-spacing: .2em; }
+  /* ---------- reviews ---------- */
+  .reviews { display: grid; gap: 50px; grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 900px) { .reviews { grid-template-columns: 1fr 1fr; } }
+  .score { display: grid; grid-template-columns: auto 1fr; gap: 4px 28px; align-items: center; padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .score:first-child { border-top: 1px solid var(--line); }
+  .score b { font-family: var(--display); font-weight: 400; font-size: clamp(3.4rem, 7vw, 5rem); line-height: 1; grid-row: span 2; }
+  .score span { font-size: 1.2rem; align-self: end; }
+  .score a { color: var(--ink-2); font-size: 15px; text-decoration-color: var(--gold); align-self: start; }
 
-  .reviews { background: var(--paper-2); }
-  .scores { display: grid; gap: 18px; grid-template-columns: 1fr; }
-  @media (min-width: 680px) { .scores { grid-template-columns: repeat(2, 1fr); } }
-  .score { background: var(--paper); border: 1px solid var(--rule); padding: 28px 24px; display: flex;
-           align-items: baseline; gap: 16px; flex-wrap: wrap; transition: transform .35s var(--ease); }
-  .score:hover { transform: translateY(-3px); }
-  .score .big { font-family: var(--display); font-size: 3rem; line-height: 1; }
-  .score .where { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
-  .score .sub { font-size: 14px; color: var(--ink-2); width: 100%; }
-  .score a { color: var(--sea); }
+  /* ---------- events band: the aerial, warmed toward dusk ---------- */
+  .band { position: relative; isolation: isolate; overflow: hidden; min-height: 88svh; display: grid; align-items: end; }
+  .band > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .band::after { content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(12,26,75,.25) 0%, rgba(122,70,92,.2) 45%, rgba(214,140,80,.16) 68%, rgba(7,16,48,.94) 100%),
+                linear-gradient(90deg, rgba(7,16,48,.88) 0%, rgba(7,16,48,.55) 45%, rgba(7,16,48,0) 80%); }
+  .band .wrap { padding-block: clamp(70px, 12vh, 130px); }
+  .band h2 { max-width: 13ch; }
+  .band p { max-width: 50ch; margin-top: 22px; color: rgba(246,242,234,.92); font-size: 1.08rem; }
+  .band .btn { margin-top: 34px; }
 
-  .band { position: relative; isolation: isolate; overflow: hidden; }
-  .band img { width: 100%; height: clamp(320px, 52vh, 520px); object-fit: cover; display: block; }
-  .band .over { position: absolute; inset: 0; display: flex; align-items: center;
-    background:
-      linear-gradient(90deg, rgba(20,24,25,.74) 0%, rgba(20,24,25,.30) 62%, rgba(20,24,25,.06) 100%),
-      linear-gradient(180deg, rgba(31,58,92,.38) 0%, rgba(176,92,96,.22) 58%, rgba(232,150,84,.30) 100%); }
-  .band h2, .band p { color: #fff; }
-  .band p { margin-top: 14px; max-width: 46ch; }
-  .band .btn { margin-top: 24px; border-color: #fff; color: #fff; }
-  .band .btn:hover { background: #fff; color: var(--ink); }
+  /* ---------- good to know ---------- */
+  .know { display: grid; gap: 40px 70px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .know { grid-template-columns: .75fr 1.25fr; } }
+  details { border-bottom: 1px solid var(--line); }
+  details:first-of-type { border-top: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 24px 0; display: flex; justify-content: space-between; gap: 20px;
+            font-family: var(--display); font-size: clamp(1.3rem, 2.2vw, 1.65rem); }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: ""; width: 12px; height: 12px; flex: none; margin-top: 8px; border-right: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold);
+                   transform: rotate(45deg); transition: transform .35s var(--ease), margin .35s var(--ease); }
+  details[open] summary::after { transform: rotate(225deg); margin-top: 14px; }
+  details .in { padding-bottom: 26px; color: var(--ink-2); display: grid; gap: 10px; max-width: 64ch; }
 
-  details { border-bottom: 1px solid var(--rule); }
-  details summary { cursor: pointer; padding: 18px 0; font-size: 1.05rem; list-style: none;
-                    display: flex; justify-content: space-between; gap: 18px; align-items: center;
-                    transition: color .25s var(--ease); }
-  details summary:hover { color: var(--sea); }
-  details summary::-webkit-details-marker { display: none; }
-  details summary::after { content: "+"; font-family: var(--display); font-size: 1.5rem; color: var(--ink-2);
-                           transition: transform .3s var(--ease); }
-  details[open] summary::after { content: "\2212"; }
-  details .inner { padding-bottom: 20px; color: var(--ink-2); font-size: 15px; display: grid; gap: 8px;
-                   animation: panelIn .35s var(--ease) both; }
-  @media (prefers-reduced-motion: reduce) { details .inner { animation: none; } }
+  /* ---------- contact ---------- */
+  .contact { display: grid; gap: 56px 70px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .contact { grid-template-columns: 1fr 1fr; } }
+  .ways { display: grid; gap: 12px; margin-top: 36px; }
+  @media (min-width: 560px) { .ways { grid-template-columns: 1fr 1fr; } }
+  .info { margin: 40px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 14px 28px; font-size: 15.5px; }
+  .info dt { color: var(--gold-2); font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; padding-top: 3px; }
+  .info dd { margin: 0; color: var(--mist); }
+  .map { margin-top: 40px; border-radius: 20px; overflow: hidden; border: 1px solid var(--line-d); aspect-ratio: 16/10; background: var(--navy-2); }
+  .map iframe { width: 100%; height: 100%; border: 0; display: block; }
+  form.enq { background: var(--ivory); color: var(--ink); border-radius: 26px; padding: clamp(24px, 4vw, 44px); display: grid; gap: 16px; align-self: start; }
+  form.enq h3 { font-size: 2.1rem; }
+  form.enq > p { color: var(--ink-2); margin-top: -6px; }
+  .f { display: grid; gap: 6px; min-width: 0; }
+  .f label { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
+  .f input, .f textarea { font: 400 16px var(--ui); color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 12px;
+                          padding: 13px 14px; width: 100%; transition: border-color .25s, box-shadow .25s; }
+  .f input::placeholder, .f textarea::placeholder { color: #7A819C; }
+  .f input:focus, .f textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(201,162,79,.35); outline: none; }
+  .f textarea { min-height: 110px; resize: vertical; }
+  .two { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 560px) { .two { grid-template-columns: 1fr 1fr; } }
+  .said { display: grid; gap: 12px; }
+  .said[hidden] { display: none; }
 
-  .twocol { display: grid; gap: 34px; grid-template-columns: 1fr; }
-  @media (min-width: 900px) { .twocol { grid-template-columns: 1fr 1fr; } }
-  .pricelist { list-style: none; margin: 18px 0 0; padding: 0; }
-  .pricelist li { display: flex; justify-content: space-between; gap: 18px; padding: 11px 0;
-                  border-bottom: 1px solid var(--rule); font-size: 15px; }
-  .pricelist .v { font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
-  .pricelist .k { color: var(--ink-2); }
+  footer { background: var(--night); padding-block: 72px calc(44px + env(safe-area-inset-bottom)); }
+  footer .wrap { display: grid; gap: 24px; justify-items: center; text-align: center; }
+  footer .mark { width: 72px; height: 72px; }
+  footer p { color: var(--mist); font-size: 14.5px; }
+  footer .tag { font-family: var(--display); color: var(--gold); letter-spacing: .16em; text-transform: uppercase; font-size: 1rem; }
 
-  form.enq { display: grid; gap: 14px; min-width: 0; }
-  .f { display: grid; gap: 5px; min-width: 0; }
-  .f label { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); }
-  .f input, .f textarea { font-family: var(--ui); font-weight: 300; font-size: 15px; color: var(--ink);
-    background: var(--paper); border: 1px solid var(--rule); padding: 11px 13px; width: 100%; min-width: 0;
-    border-radius: 0; transition: border-color .25s var(--ease); }
-  .f input:focus, .f textarea:focus { border-color: var(--sea); outline: none; }
-  .f textarea { min-height: 104px; resize: vertical; }
-  .said { font-size: 14px; color: var(--sea); border-left: 2px solid var(--sea); padding-left: 12px; }
-  .contact dl { margin: 22px 0 0; }
-  .contact dt { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); padding-top: 14px; }
-  .contact dd { margin: 2px 0 0; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
-  .contact a { color: var(--sea); }
+  /* phone: booking stays one thumb away */
+  .mbar { position: fixed; z-index: 60; inset: auto 12px calc(12px + env(safe-area-inset-bottom)) 12px; display: none;
+          grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; border-radius: 999px; background: rgba(7,16,48,.9);
+          border: 1px solid var(--line-d); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+          transform: translateY(160%); transition: transform .5s var(--ease); }
+  .mbar.show { transform: none; }
+  .mbar .btn { padding: 13px 8px; font-size: 12.5px; letter-spacing: .1em; }
+  @media (max-width: 760px) { .mbar { display: grid; } footer { padding-bottom: calc(110px + env(safe-area-inset-bottom)); } }
 
-  footer { border-top: 1px solid var(--rule); }
-  footer .wrap { padding-block: 30px 40px; display: flex; gap: 14px; justify-content: space-between;
-                 flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
-
-  .gal img, .room img, .rcard .shot img, .split img, .band img {
-    filter: saturate(1.05) contrast(1.03); }
-  .wipe { clip-path: inset(0 0 0 0); transition: clip-path 1s var(--ease), transform 1s var(--ease); }
-  body.js .wipe.pending { clip-path: inset(0 0 100% 0); transform: scale(1.04); }
-  @media (prefers-reduced-motion: reduce) { body.js .wipe.pending { clip-path: none; transform: none; } }
-
-  .reveal { transition: opacity .65s var(--ease), transform .65s var(--ease); }
-  body.js .reveal.pending { opacity: 0; transform: translateY(18px); }
-  @media (prefers-reduced-motion: reduce) {
-    body.js .reveal.pending { opacity: 1; transform: none; }
-    .reveal { transition: none; }
-  }
+  /* sections settle in as they arrive; nothing is hidden unless the script is running */
+  .js .in-view { transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .js .in-view.pre { opacity: 0; transform: translateY(28px); }
+  @media (prefers-reduced-motion: reduce) { .js .in-view.pre { opacity: 1; transform: none; } }
 </style>
 
-<div id="curtain"></div>
-<div id="grain"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs><clipPath id="disc"><circle cx="100" cy="100" r="84"/></clipPath></defs>
+</svg>
 
-<header class="masthead" id="mast">
+<header class="mast" id="mast">
   <div class="wrap">
-    <a class="wordmark" href="#top">Tree Rings<span>Beach Resort &middot; Carmen, Cebu</span></a>
-    <nav>
-      <a href="#rates">Rates</a><a href="#rooms">Rooms</a><a href="#gallery">Gallery</a>
-      <a href="#reviews">Reviews</a><a href="#events">Events</a><a href="#know">Good to know</a><a href="#enquire">Contact</a>
+    <a class="brand" href="#top" aria-label="Tree Rings Beach Resort, back to top">
+      <svg class="mark" viewBox="0 0 200 200" aria-hidden="true"><circle class="r" pathLength="1" cx="100" cy="100" r="88"/><path class="r" pathLength="1" d="M36 110a64 64 0 0 1 128 0"/><path class="r" pathLength="1" d="M58 110a42 42 0 0 1 84 0"/><path class="r" pathLength="1" d="M80 110a20 20 0 0 1 40 0"/><g clip-path="url(#disc)"><path class="r w" pathLength="1" d="M4 110q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 134q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 158q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/></g></svg>
+      <span><b>Tree Rings</b><small>Beach Resort</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#day">The place</a><a href="#rates">Rates</a><a href="#rooms">Rooms</a>
+      <a href="#gallery">Gallery</a><a href="#events">Events</a><a href="#contact">Contact</a>
     </nav>
-    <a class="btn solid" href="#enquire">Check availability</a>
+    <a class="btn gold" href="#top" data-goquote>Get a quote</a>
   </div>
 </header>
 
-
+<main>
 <section class="hero" id="top">
-  <img class="heroshot" src="img/hero-poster.jpg" alt="Tree Rings from the air, the pool set among palms above the beach.">
-  <video class="herovid" autoplay muted loop playsinline poster="img/hero-poster.jpg" aria-hidden="true">
+  <img src="img/hero-poster.jpg" alt="Tree Rings from the air, the pool set among palms above the beach.">
+  <video autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
     <source src="img/hero.mp4" type="video/mp4">
   </video>
-  <div class="over"><div class="wrap">
-    <p class="kicker line d1" style="color:rgba(255,255,255,.78)"><span>Luyang &middot; Carmen &middot; Cebu</span></p>
-    <h1>
-      <span class="line d2"><span>A beach house</span></span>
-      <span class="line d3"><span>you can take whole.</span></span>
-    </h1>
-    <p class="sub line d4"><span>Six rooms above an infinity pool, two hours up the coast from Cebu City. No corkage, ever.</span></p>
-    <div class="cta line d4"><span>
-      <a class="btn solid" href="#rates">See the rates</a>
-      <a class="btn" href="#gallery">Look around</a>
-    </span></div>
-  </div></div>
-</section>
-
-<div class="booking">
-  <div class="wrap">
-    <form id="bookbar">
-      <div class="bk"><label for="arrive">Arrive</label><input id="arrive" name="arrive" type="date"></div>
-      <div class="bk"><label for="depart">Depart</label><input id="depart" name="depart" type="date"></div>
-      <div class="bk"><label for="party">Guests</label>
-        <input id="party" name="party" type="number" inputmode="numeric" min="1" max="200" value="10" required>
-      </div>
-      <button class="btn solid" type="submit">Get a quote</button>
+  <div class="center">
+    <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="The Tree Rings sunrise mark"><circle class="r" pathLength="1" cx="100" cy="100" r="88"/><path class="r" pathLength="1" d="M36 110a64 64 0 0 1 128 0"/><path class="r" pathLength="1" d="M58 110a42 42 0 0 1 84 0"/><path class="r" pathLength="1" d="M80 110a20 20 0 0 1 40 0"/><g clip-path="url(#disc)"><path class="r w" pathLength="1" d="M4 110q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 134q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 158q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/></g></svg>
+    <h1 class="rise d1">Tropical paradise next to your home.</h1>
+    <p class="sub rise d2">A private beach house in Luyang, Carmen. Six rooms above an infinity pool, two hours north of Cebu City, and no corkage, ever.</p>
+  </div>
+  <div class="dock wrap rise d3">
+    <form class="bar" id="bookbar" novalidate>
+      <div class="fld"><label for="arrive">Arrive</label><input id="arrive" name="arrive" type="date"></div>
+      <div class="fld"><label for="depart">Leave</label><input id="depart" name="depart" type="date"></div>
+      <div class="fld"><label for="party">Guests</label><input id="party" name="party" type="number" inputmode="numeric" min="1" max="200" value="10"></div>
+      <button class="btn gold" type="submit">See my price</button>
     </form>
     <div class="quote" id="quote" hidden aria-live="polite"></div>
   </div>
-</div>
-
-<section class="facts">
-  <div class="wrap"><ul>
-    <li><span class="n">27</span><span class="t">Guests, exclusive use</span></li>
-    <li><span class="n">6</span><span class="t">Rooms at full house</span></li>
-    <li><span class="n">2 hrs</span><span class="t">From Cebu City</span></li>
-    <li><span class="n">5 ft</span><span class="t">Infinity pool</span></li>
-  </ul></div>
 </section>
 
-<section class="pad rates" id="rates">
-  <div class="wrap">
-    <div class="head reveal pending">
-      <p class="kicker">Rates</p>
-      <h2>What it costs.</h2>
-      <p class="lede">Everything below includes the pool, the beach, the kitchen and the karaoke. Bring your own food and drink; there is no corkage fee.</p>
-    </div>
+<section class="pad promise">
+  <div class="wrap in-view">
+    <h2>The pool, the shore and the karaoke, <em>closed to everyone but your group.</em></h2>
+    <p class="lede">Book a room for two or take the whole house for twenty-seven. Bring the food you love and cook it here: the kitchen, the grill and the smoker are already waiting.</p>
+    <ul class="facts">
+      <li>Up to 27 guests</li><li>Six air-conditioned rooms</li><li>Five-foot infinity pool</li>
+      <li>Steps from the beach</li><li>Starlink Wi-Fi</li><li>No corkage fee</li>
+    </ul>
+  </div>
+</section>
 
-    <div class="ratebar reveal pending">
-      <div class="tabs" role="tablist" id="tabs">
-        <button class="tab" role="tab" aria-selected="true"  data-p="day">Day use</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="night">Overnight rooms</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="excl">Exclusive use</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="house">Entire house</button>
+<section class="day" id="day" aria-label="A day at Tree Rings">
+  <div class="stage">
+    <div class="ph on"><img src="img/pool-edge.jpg" alt="The pool edge meeting the sea horizon." loading="lazy"></div>
+    <div class="ph"><img src="img/g-poolsea.jpg" alt="The pool looking out to open water." loading="lazy"></div>
+    <div class="ph"><img src="img/pool-dusk.jpg" alt="The pool lit at dusk, with the house and palms behind it." loading="lazy"></div>
+    <div class="copy"><div class="wrap"><div class="holder">
+      <div class="chap on">
+        <p class="time">Morning</p>
+        <h3>The sun comes up on your side.</h3>
+        <p>The three upstairs rooms face the beach, so the sunrise reaches them first. There is a coffee set in every room.</p>
       </div>
-      <div class="switch" id="switch">
-        <span class="pill"></span>
-        <button type="button" aria-pressed="true"  data-d="wd">Weekday</button>
+      <div class="chap">
+        <p class="time">Afternoon</p>
+        <h3>A pool that runs out to the sea.</h3>
+        <p>Five feet deep, with loungers, daybeds and a cabana above the shoreline. The beach is a few steps past the wall.</p>
+      </div>
+      <div class="chap">
+        <p class="time">Evening</p>
+        <h3>Grill, sing, stay up late.</h3>
+        <p>The pool lights come on, the grill and smoker get going, and the karaoke has an LED screen and two microphones. Lights and volume come down at 10:30.</p>
+      </div>
+    </div></div></div>
+    <div class="ticks" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+  </div>
+</section>
+
+<section class="pad light" id="rates">
+  <div class="wrap">
+    <div class="in-view">
+      <h2>Simple rates, everything included.</h2>
+      <p class="lede">Every booking includes the pool, the beach, the kitchen and the karaoke. Bring your own food and drink; there is no corkage fee.</p>
+    </div>
+    <div class="ratetools">
+      <div class="seg" role="tablist" id="tabs" aria-label="Kind of stay">
+        <button role="tab" aria-selected="true" data-p="day">Day use</button>
+        <button role="tab" aria-selected="false" data-p="rooms">Rooms</button>
+        <button role="tab" aria-selected="false" data-p="excl">Exclusive use</button>
+        <button role="tab" aria-selected="false" data-p="house">Entire house</button>
+      </div>
+      <div class="seg small" id="switch" role="group" aria-label="Day of the week">
+        <button type="button" aria-pressed="true" data-d="wd">Weekday</button>
         <button type="button" aria-pressed="false" data-d="we">Weekend</button>
       </div>
     </div>
-
-    <div class="panel on" id="p-day">
-      <div class="rgrid three">
-        <div class="rcard"><div class="body">
-          <span class="tier">Day use</span><h3>10 guests</h3>
-          <div class="money" data-wd="&#8369;4,500" data-we="&#8369;5,500">&#8369;4,500<small>per session</small></div>
-          <p class="beds">Eight in the morning to five, or one in the afternoon to eight.</p>
-        </div></div>
-        <div class="rcard"><div class="body">
-          <span class="tier">Day use</span><h3>15 guests</h3>
-          <div class="money" data-wd="&#8369;6,500" data-we="&#8369;8,500">&#8369;6,500<small>per session</small></div>
-          <p class="beds">Nine hours at most, extension at &#8369;1,000 an hour.</p>
-        </div></div>
-        <div class="rcard"><div class="body">
-          <span class="tier">Day use</span><h3>27 guests</h3>
-          <div class="money" data-wd="&#8369;12,500" data-we="&#8369;15,000">&#8369;12,500<small>per session</small></div>
-          <p class="beds">The largest day package. Strict check-out at 8 PM.</p>
-        </div></div>
-      </div>
-      <p class="fine">Extra adult &#8369;250 each. Twelve and under &#8369;100. Seven and under free, up to four children. Karaoke with an LED screen and two microphones is included.</p>
-    </div>
-
-    <div class="panel" id="p-night">
-      <div class="rgrid three">
-        <div class="rcard"><div class="shot"><img src="img/room-magkono.jpg" data-lb alt="Magkono Prestige Suite, bunk beds against a panelled wall."></div><div class="body">
-          <span class="tier">2nd floor &middot; Beach view &middot; Suite</span><h3>Magkono Prestige Suite</h3>
-          <p class="beds">3 bunk beds &middot; TV &middot; private bath</p>
-          <div class="money" data-wd="&#8369;8,000" data-we="&#8369;9,000">&#8369;8,000<small>per night</small></div>
-          <p class="cap">Good for 7</p>
-        </div></div>
-        <div class="rcard"><div class="shot"><img src="img/room-narra.jpg" data-lb alt="Narra Premier, a king and a queen bed."></div><div class="body">
-          <span class="tier">2nd floor &middot; Beach view &middot; Premier</span><h3>Narra Premier</h3>
-          <p class="beds">1 king + 1 queen &middot; TV &middot; private bath</p>
-          <div class="money" data-wd="&#8369;5,500" data-we="&#8369;6,500">&#8369;5,500<small>per night</small></div>
-          <p class="cap">Good for 4</p>
-        </div></div>
-        <div class="rcard"><div class="shot"><img src="img/room-yakal.jpg" data-lb alt="Yakal Signature Escape, two queen beds."></div><div class="body">
-          <span class="tier">2nd floor &middot; Beach view</span><h3>Yakal Signature Escape</h3>
-          <p class="beds">2 queen beds &middot; TV &middot; private bath</p>
-          <div class="money" data-wd="&#8369;5,000" data-we="&#8369;6,000">&#8369;5,000<small>per night</small></div>
-          <p class="cap">Good for 4</p>
-        </div></div>
-        <div class="rcard"><div class="shot"><img src="img/room-tugas.jpg" data-lb alt="Tugas Poolside Room, two bunk beds."></div><div class="body">
-          <span class="tier">Ground floor &middot; Poolside</span><h3>Tugas Poolside Room</h3>
-          <p class="beds">2 bunk beds &middot; TV &middot; private bath</p>
-          <div class="money" data-wd="&#8369;4,000" data-we="&#8369;5,000">&#8369;4,000<small>per night</small></div>
-          <p class="cap">Good for 4</p>
-        </div></div>
-        <div class="rcard"><div class="shot"><img src="img/room-ipil.jpg" data-lb alt="Ipil Deluxe Room, one queen bed."></div><div class="body">
-          <span class="tier">Ground floor &middot; Deluxe</span><h3>Ipil Deluxe Room</h3>
-          <p class="beds">1 queen bed &middot; TV &middot; private bath</p>
-          <div class="money" data-wd="&#8369;2,500" data-we="&#8369;3,500">&#8369;2,500<small>per night</small></div>
-          <p class="cap">Good for 2</p>
-        </div></div>
-      </div>
-      <p class="fine">Every room has a private bath, a coffee set, bath towels and Wi-Fi. Breakfast is not included. Extra adult &#8369;500, twelve and under &#8369;250, seven and under free, up to two per room. Check in 2 PM, out at noon.</p>
-    </div>
-
-    <div class="panel" id="p-excl">
-      <div class="rgrid">
-        <div class="rcard"><div class="body">
-          <span class="tier">Five rooms &middot; 27 guests</span><h3>One night</h3>
-          <div class="money" data-wd="&#8369;25,000" data-we="&#8369;30,000">&#8369;25,000<small>for the property</small></div>
-          <p class="beds">Check in 2 PM, check out 11 AM. Nobody else comes through the gate.</p>
-        </div></div>
-        <div class="rcard"><div class="body">
-          <span class="tier">Five rooms &middot; 27 guests</span><h3>Three days, two nights</h3>
-          <div class="money" data-wd="&#8369;45,000" data-we="&#8369;55,000">&#8369;45,000<small>for the property</small></div>
-          <p class="beds">Friday to Saturday is &#8369;50,000. Check in 2 PM, check out 11 AM.</p>
-        </div></div>
-      </div>
-      <p class="fine">Extra adult &#8369;500. Twelve and under &#8369;250. Seven and under &#8369;250. Children four to seven come free, up to four.</p>
-    </div>
-
-    <div class="panel" id="p-house">
-      <div class="rgrid">
-        <div class="rcard"><div class="shot"><img src="img/g-housepool.jpg" data-lb alt="The full house seen across the pool."></div><div class="body">
-          <span class="tier">Six rooms &middot; 27 guests</span><h3>The entire house</h3>
-          <div class="money" data-wd="&#8369;55,000" data-we="&#8369;60,000">&#8369;55,000<small>per night, whole property</small></div>
-          <p class="beds">Adds the Couple and Masters rooms to the five. The outdoor refrigerator is included. Check in 2 PM, check out 11 AM.</p>
-        </div></div>
-        <div class="rcard"><div class="body">
-          <span class="tier">Add-ons</span><h3>Hired on the day</h3>
-          <ul class="pricelist" style="margin-top:4px">
-            <li><span class="k">Karaoke, room only</span><span class="v">&#8369;1,000/day</span></li>
-            <li><span class="k">Use of gasul</span><span class="v">&#8369;500</span></li>
-            <li><span class="k">Refrigerator, room only</span><span class="v">&#8369;500</span></li>
-            <li><span class="k">Towel</span><span class="v">&#8369;50</span></li>
-            <li><span class="k">Extra pillow</span><span class="v">&#8369;30</span></li>
-            <li><span class="k">Laundry</span><span class="v">&#8369;70/kg</span></li>
-            <li><span class="k">Fresh buko</span><span class="v">&#8369;50</span></li>
-            <li><span class="k">Pabili fee, within Carmen</span><span class="v">&#8369;150</span></li>
-          </ul>
-        </div></div>
-      </div>
-      <p class="fine">Weekend and holiday rate covers Friday to Sunday. Rates may change with demand and availability.</p>
-    </div>
-
-    <div class="incl reveal pending">
-      <div>Pool and shower</div><div>Beach access</div><div>Karaoke</div><div>Kitchen and utensils</div>
-      <div>Refrigerator</div><div>Griller and smoker</div><div>One gallon of water</div><div>Tables and chairs</div>
-      <div>Wi-Fi in rooms</div><div>No corkage fee</div>
-    </div>
+    <div class="rows" id="rows" role="tabpanel"></div>
+    <p class="fine" id="fine"></p>
+    <ul class="incl">
+      <li>Pool and showers</li><li>Beach access</li><li>Karaoke</li><li>Kitchen and utensils</li><li>Refrigerator</li>
+      <li>Griller and smoker</li><li>A gallon of water</li><li>Tables and chairs</li><li>Wi-Fi in rooms</li><li>Parking</li>
+    </ul>
   </div>
 </section>
 
 <section class="pad" id="rooms">
-  <div class="wrap">
-    <div class="head reveal pending">
-      <p class="kicker">Rooms</p>
-      <h2>Named for hardwoods.</h2>
-      <p class="lede">Three upstairs face the beach, which is where the sunrise lands first. Two sit on the ground floor with no stairs to climb. Every one is air-conditioned with its own bath, a coffee set and towels.</p>
+  <div class="wrap roomhead in-view">
+    <div>
+      <h2>Five rooms named for hardwoods.</h2>
+      <p class="lede">Three upstairs facing the beach, two on the ground floor beside the pool with no stairs to climb. All air-conditioned, each with its own bath, towels and a TV.</p>
     </div>
-    <div class="rail reveal pending">
-      <article class="room"><div class="shot"><img src="img/room-magkono.jpg" data-lb alt="Magkono Prestige Suite, bunk beds against a panelled wall."></div><h3>Magkono</h3><p class="meta">Prestige Suite &middot; 7 guests</p></article>
-      <article class="room"><div class="shot"><img src="img/room-narra.jpg" data-lb alt="Narra Premier, a king and a queen bed."></div><h3>Narra</h3><p class="meta">Premier &middot; 4 guests</p></article>
-      <article class="room"><div class="shot"><img src="img/room-yakal.jpg" data-lb alt="Yakal Signature Escape, two queen beds."></div><h3>Yakal</h3><p class="meta">Signature Escape &middot; 4 guests</p></article>
-      <article class="room"><div class="shot"><img src="img/room-tugas.jpg" data-lb alt="Tugas Poolside Room, two bunk beds."></div><h3>Tugas</h3><p class="meta">Poolside &middot; 4 guests</p></article>
-      <article class="room"><div class="shot"><img src="img/room-ipil.jpg" data-lb alt="Ipil Deluxe Room, one queen bed."></div><h3>Ipil</h3><p class="meta">Deluxe &middot; 2 guests</p></article>
+    <div class="arrows">
+      <button type="button" data-rail="-1" aria-label="Previous room"><svg class="ic" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" data-rail="1" aria-label="Next room"><svg class="ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </div>
+  <div class="rail" id="rail"></div>
 </section>
 
-<section class="pad" id="resort" style="background: var(--paper-2)">
-  <div class="wrap split">
-    <div class="reveal pending"><img class="wipe pending" src="img/pool-dusk.jpg" alt="The pool lit at dusk, with the house and palms behind it."></div>
-    <div class="reveal pending">
-      <p class="kicker">The resort</p>
-      <h2>What is already here.</h2>
-      <p class="lede">Nothing to hire in, nothing to bring except the food you want to cook.</p>
-      <ul>
-        <li>Infinity pool, five feet deep</li>
-        <li>Outdoor kitchen, utensils and a refrigerator</li>
-        <li>Griller and smoker</li>
-        <li>Karaoke with an LED screen and two microphones</li>
-        <li>Tables and chairs set out for your group</li>
-        <li>Wi-Fi in the rooms</li>
-        <li>Parking on site</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="pad" id="gallery">
+<section class="pad" id="gallery" style="padding-top:0">
   <div class="wrap">
-    <div class="head reveal pending">
-      <p class="kicker">Gallery</p>
-      <h2>The property, room by room.</h2>
-      <p class="lede">Tap any photograph to open it.</p>
-    </div>
-    <div class="filters reveal pending" id="filters">
-      <button class="chip" data-f="all" aria-pressed="true">All</button>
-      <button class="chip" data-f="pool" aria-pressed="false">Pool and shore</button>
-      <button class="chip" data-f="rooms" aria-pressed="false">Rooms</button>
-      <button class="chip" data-f="living" aria-pressed="false">Kitchen and living</button>
-    </div>
-    <div class="gal reveal pending" id="gal"></div>
-  </div>
-</section>
-
-<section class="pad reviews" id="reviews">
-  <div class="wrap">
-    <div class="head reveal pending">
-      <p class="kicker">Reviews</p>
-      <h2>What guests have said.</h2>
-      <p class="lede">Scores below are the public ratings on each platform, not a selection made here.</p>
-    </div>
-    <div class="scores reveal pending">
-      <div class="score">
-        <span class="big">5.0</span><span class="where">Google &middot; 7 reviews</span>
-        <span class="sub">Read them on <a href="https://www.google.com/travel/hotels/entity/CgsI6c-ZufKE9M-gARAB" target="_blank" rel="noopener">the Google listing</a>.</span>
-      </div>
-      <div class="score">
-        <span class="big">100%</span><span class="where">Facebook &middot; 10 reviews recommend</span>
-        <span class="sub">Read them on <a href="https://www.facebook.com/p/Tree-Rings-Beach-Resort-61572305588687/" target="_blank" rel="noopener">the Facebook page</a>.</span>
+    <div class="in-view">
+      <h2>Have a look around.</h2>
+      <div class="chips" id="chips">
+        <button data-f="all" aria-pressed="true">Everything</button>
+        <button data-f="pool" aria-pressed="false">Pool and shore</button>
+        <button data-f="rooms" aria-pressed="false">Rooms</button>
+        <button data-f="living" aria-pressed="false">Kitchen and living</button>
       </div>
     </div>
-    <!-- Quote cards go here once Matt supplies real guest quotes with names and
-         permission to publish. Nothing invented. -->
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<section class="pad light">
+  <div class="wrap reviews">
+    <div class="in-view">
+      <h2>Guests give it full marks.</h2>
+      <p class="lede">These are the public scores on each platform. Read every review there, not a selection picked here.</p>
+    </div>
+    <div class="in-view">
+      <div class="score"><b>5.0</b><span>out of 5 on Google</span>
+        <a href="https://www.google.com/travel/hotels/entity/CgsI6c-ZufKE9M-gARAB" target="_blank" rel="noopener">Read the Google reviews</a></div>
+      <div class="score"><b>100%</b><span>recommend it on Facebook</span>
+        <a href="https://www.facebook.com/p/Tree-Rings-Beach-Resort-61572305588687/" target="_blank" rel="noopener">Read the Facebook reviews</a></div>
+    </div>
   </div>
 </section>
 
 <section class="band" id="events">
-  <img class="wipe pending" src="img/air-coast.jpg" alt="The resort from the air, the coastline running north past the property.">
-  <div class="over"><div class="wrap"><div class="reveal pending">
-    <p class="kicker" style="color: rgba(255,255,255,.8)">Events</p>
-    <h2>Take it whole.</h2>
-    <p>Weddings, debuts, reunions, company planning days. Twenty-seven guests across six rooms, with the pool, the terrace and the shoreline closed to everyone else. Karaoke runs until half past ten, since we sit on a residential stretch of coast.</p>
-    <a class="btn" href="#enquire">Plan an event</a>
-  </div></div></div>
+  <img src="img/air-coast.jpg" alt="The resort from the air, the coastline running north past the property." loading="lazy">
+  <div class="wrap in-view">
+    <h2>Celebrations, with the whole place to yourselves.</h2>
+    <p>Weddings, debuts, reunions and company planning days. Twenty-seven guests across six rooms, with the pool, the terrace and the shoreline closed to everyone else. We sit on a residential stretch of coast, so the music comes down at 10:30.</p>
+    <a class="btn gold" href="#contact">Plan an event</a>
+  </div>
 </section>
 
-<section class="pad" id="know" style="background: var(--paper-2)">
-  <div class="wrap">
-    <div class="head reveal pending"><p class="kicker">Good to know</p><h2>Before you book.</h2></div>
-    <div class="reveal pending">
-      <details><summary>Booking and payment</summary><div class="inner">
+<section class="pad light" id="know">
+  <div class="wrap know">
+    <div class="in-view"><h2>Good to know before you come.</h2></div>
+    <div class="in-view">
+      <details open><summary>Booking and payment</summary><div class="in">
         <p>Fifty per cent is paid on check-in, with a valid ID. A &#8369;1,000 cash security deposit is collected and returned in full when you leave.</p>
         <p>Rates may change with demand and availability, and holidays can differ.</p>
       </div></details>
-      <details><summary>Check-in and check-out</summary><div class="inner">
+      <details><summary>Check-in and check-out</summary><div class="in">
         <p>Rooms: check in from 2 PM, check out at 12 noon. Exclusive and whole-house bookings check out at 11 AM.</p>
         <p>Day use runs 8 AM to 5 PM or 1 PM to 8 PM, nine hours at most, with a strict 8 PM close. Extra hours are &#8369;1,000 each.</p>
       </div></details>
-      <details><summary>Extra guests and children</summary><div class="inner">
+      <details><summary>Extra guests and children</summary><div class="in">
         <p>Rooms: extra adult &#8369;500, twelve and under &#8369;250, seven and under free, up to two per room.</p>
         <p>Day use: extra adult &#8369;250, twelve and under &#8369;100, seven and under free, up to four children.</p>
         <p>Exclusive use: extra adult &#8369;500, twelve and under &#8369;250, seven and under &#8369;250. Children four to seven come free, up to four.</p>
       </div></details>
-      <details><summary>Evening hours</summary><div class="inner">
+      <details><summary>Evening hours</summary><div class="in">
         <p>Beach access closes at 10 PM. Gates and pool lights close at 10:30 PM, and karaoke volume comes down at the same time. We sit in a residential area, so this one matters.</p>
       </div></details>
-      <details><summary>In the pool</summary><div class="inner">
+      <details><summary>In the pool</summary><div class="in">
         <p>Proper swimming attire only. No jewellery, and no clothing with buttons. There is no lifeguard, so children need watching.</p>
       </div></details>
-      <details><summary>Food and drink</summary><div class="inner">
+      <details><summary>Food and drink</summary><div class="in">
         <p>No corkage fee, so bring what you like. The kitchen, utensils, refrigerator, griller and smoker are yours to use, along with a gallon of drinking water.</p>
         <p>Breakfast is not included with rooms.</p>
       </div></details>
@@ -650,251 +530,271 @@
   </div>
 </section>
 
-<section class="pad enquire" id="enquire">
-  <div class="wrap split">
-    <div class="contact reveal pending">
-      <p class="kicker">Contact</p>
+<section class="pad" id="contact">
+  <div class="wrap contact">
+    <div class="in-view">
       <h2>Tell us your dates.</h2>
-      <p class="lede">Send what you are looking at and how many are coming, and we will come back with what is open.</p>
-      <dl>
-        <dt>Phone</dt><dd><a href="tel:+639358588508">0935 858 8508</a></dd>
-        <dt>Social</dt><dd><a href="https://www.facebook.com/p/Tree-Rings-Beach-Resort-61572305588687/" target="_blank" rel="noopener">@treeringsbeachresort</a></dd>
-        <dt>Address</dt><dd>Luyang, Carmen, Cebu, Philippines</dd>
-        <dt>Getting here</dt><dd>About two hours north of Cebu City by road</dd>
+      <p class="lede">Message us with what you have in mind and how many are coming. We reply with what is open.</p>
+      <div class="ways">
+        <a class="btn gold" href="https://m.me/61572305588687" target="_blank" rel="noopener">Message on Messenger</a>
+        <a class="btn line" href="tel:+639358588508">Call 0935 858 8508</a>
+      </div>
+      <dl class="info">
+        <dt>Where</dt><dd>Luyang, Carmen, Cebu, about two hours north of Cebu City by road</dd>
         <dt>Check in</dt><dd>2:00 PM</dd>
-        <dt>Check out</dt><dd>12:00 noon, or 11:00 AM for exclusive bookings</dd>
+        <dt>Check out</dt><dd>12 noon, or 11 AM for exclusive bookings</dd>
+        <dt>Follow</dt><dd><a href="https://www.facebook.com/p/Tree-Rings-Beach-Resort-61572305588687/" target="_blank" rel="noopener">Facebook</a> &middot; <a href="https://www.instagram.com/treeringsbeach/" target="_blank" rel="noopener">Instagram</a> &middot; <a href="https://www.tiktok.com/@treeringsbeachresort" target="_blank" rel="noopener">TikTok</a></dd>
       </dl>
+      <div class="map"><iframe title="Map to Tree Rings Beach Resort" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Tree%20Rings%20Beach%20Resort%2C%20Carmen%2C%20Cebu&amp;z=13&amp;output=embed"></iframe></div>
     </div>
-    <form class="enq reveal pending" id="enquiryform">
-      <div class="f"><label for="nm">Name</label><input id="nm" name="nm" type="text" required></div>
-      <div class="f"><label for="em">Email or mobile</label><input id="em" name="em" type="text" required></div>
-      <div class="f"><label for="dt">Dates</label><input id="dt" name="dt" type="text" placeholder="12 to 14 December" required></div>
-      <div class="f"><label for="gs">How many guests</label><input id="gs" name="gs" type="text" placeholder="24" required></div>
-      <div class="f"><label for="ms">What is the occasion</label><textarea id="ms" name="ms"></textarea></div>
-      <button class="btn solid" type="submit">Send enquiry</button>
+    <form class="enq in-view" id="enquiryform">
+      <h3>Send an enquiry</h3>
+      <p>Fill this in and we will write it up as a message you send from your phone.</p>
+      <div class="f"><label for="nm">Your name</label><input id="nm" name="nm" type="text" autocomplete="name" required></div>
+      <div class="f"><label for="em">Mobile or email</label><input id="em" name="em" type="text" autocomplete="tel" required></div>
+      <div class="two">
+        <div class="f"><label for="dt">Dates</label><input id="dt" name="dt" type="text" placeholder="Dec 12 to 14" required></div>
+        <div class="f"><label for="gs">Guests</label><input id="gs" name="gs" type="text" inputmode="numeric" placeholder="24" required></div>
+      </div>
+      <div class="f"><label for="ms">The occasion</label><textarea id="ms" name="ms" placeholder="A family reunion, a debut, a birthday weekend"></textarea></div>
+      <button class="btn gold" type="submit">Write my message</button>
       <div class="said" id="said" hidden></div>
     </form>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
-    <div>Tree Rings Beach Resort, Luyang, Carmen, Cebu &middot; 0935 858 8508</div>
-    <div>Where nature, comfort, and exclusivity meet.</div>
+    <svg class="mark" viewBox="0 0 200 200" aria-hidden="true"><circle class="r" pathLength="1" cx="100" cy="100" r="88"/><path class="r" pathLength="1" d="M36 110a64 64 0 0 1 128 0"/><path class="r" pathLength="1" d="M58 110a42 42 0 0 1 84 0"/><path class="r" pathLength="1" d="M80 110a20 20 0 0 1 40 0"/><g clip-path="url(#disc)"><path class="r w" pathLength="1" d="M4 110q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 134q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 158q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/></g></svg>
+    <p class="tag">Where nature, comfort, and exclusivity meet</p>
+    <p>Tree Rings Beach Resort &middot; Luyang, Carmen, Cebu &middot; <a href="tel:+639358588508">0935 858 8508</a></p>
   </div>
 </footer>
 
+<div class="mbar" id="mbar">
+  <a class="btn gold" href="#top" data-goquote>See my price</a>
+  <a class="btn line" href="https://m.me/61572305588687" target="_blank" rel="noopener">Message us</a>
+</div>
+
 <script>
-  document.body.classList.add('js');
-  setTimeout(() => document.getElementById('curtain')?.remove(), 1400);
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  /* the header turns solid once the footage has scrolled by */
-  const mast = document.getElementById('mast');
-  const heroEl = document.getElementById('top');
-  new IntersectionObserver(([e]) => mast.classList.toggle('stuck', !e.isIntersecting),
-    { rootMargin: '-72px 0px 0px 0px', threshold: 0 }).observe(heroEl);
+  /* ---------- the one place rates live: the rate list, the rooms and the quote all read this ---------- */
+  const RATES = {
+    day: [
+      { name: 'Up to 10 guests', cap: 10, wd: 4500, we: 5500, det: 'Eight in the morning to five, or one in the afternoon to eight.' },
+      { name: 'Up to 15 guests', cap: 15, wd: 6500, we: 8500, det: 'Nine hours at most, extension at ₱1,000 an hour.' },
+      { name: 'Up to 27 guests', cap: 27, wd: 12500, we: 15000, det: 'The largest day package. Strict check-out at 8 PM.' },
+    ],
+    rooms: [
+      { key: 'Magkono', name: 'Magkono Prestige Suite', cap: 7, wd: 8000, we: 9000, img: 'img/room-magkono.jpg', floor: 'Second floor, beach view', beds: '3 bunk beds' },
+      { key: 'Narra', name: 'Narra Premier', cap: 4, wd: 5500, we: 6500, img: 'img/room-narra.jpg', floor: 'Second floor, beach view', beds: '1 king and 1 queen bed' },
+      { key: 'Yakal', name: 'Yakal Signature Escape', cap: 4, wd: 5000, we: 6000, img: 'img/room-yakal.jpg', floor: 'Second floor, beach view', beds: '2 queen beds' },
+      { key: 'Tugas', name: 'Tugas Poolside Room', cap: 4, wd: 4000, we: 5000, img: 'img/room-tugas.jpg', floor: 'Ground floor, poolside', beds: '2 bunk beds' },
+      { key: 'Ipil', name: 'Ipil Deluxe Room', cap: 2, wd: 2500, we: 3500, img: 'img/room-ipil.jpg', floor: 'Ground floor', beds: '1 queen bed' },
+    ],
+    excl: [
+      { name: 'One night', wd: 25000, we: 30000, det: 'Five rooms for up to 27 guests. Check in 2 PM, check out 11 AM. Nobody else comes through the gate.' },
+      /* the rate guide prices a Friday-and-Saturday stay between the two */
+      { name: 'Three days, two nights', wd: 45000, we: 55000, mid: 50000, det: 'Five rooms for up to 27 guests. A Friday and Saturday stay is ₱50,000.' },
+    ],
+    house: { name: 'The entire house', wd: 55000, we: 60000, img: 'img/g-housepool.jpg', det: 'All six rooms, adding the Couple and Masters rooms. Outdoor refrigerator included. Check out 11 AM.' },
+    addons: [['Karaoke, room bookings', '₱1,000 a day'], ['Use of gasul', '₱500'], ['Refrigerator, room bookings', '₱500'], ['Towel', '₱50'],
+             ['Extra pillow', '₱30'], ['Laundry', '₱70 a kilo'], ['Fresh buko', '₱50'], ['Pabili within Carmen', '₱150']],
+    fine: {
+      day: 'Extra adult ₱250. Twelve and under ₱100. Seven and under free, up to four children.',
+      rooms: 'Private bath, coffee set, towels and Wi-Fi in every room. Breakfast is not included. Extra adult ₱500, twelve and under ₱250, seven and under free, up to two per room. Check in 2 PM, out at noon.',
+      excl: 'Extra adult ₱500. Twelve and under ₱250. Seven and under ₱250. Children four to seven come free, up to four.',
+      house: 'Saturday and Sunday nights are weekend rates. Holidays may differ, and rates may change with demand.',
+    },
+  };
+  const PAGE = '61572305588687', PHONE = '+639358588508', MAX = 27;
+  const peso = n => '₱' + n.toLocaleString('en-PH');
 
-  /* rate tabs */
-  const tabs = document.getElementById('tabs');
-  tabs.addEventListener('click', (e) => {
-    const t = e.target.closest('.tab'); if (!t) return;
-    tabs.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', String(x === t)));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
-    document.getElementById('p-' + t.dataset.p).classList.add('on');
+  /* ---------- header and phone bar ---------- */
+  const mast = $('#mast'), mbar = $('#mbar');
+  new IntersectionObserver(([e]) => { mast.classList.toggle('stuck', !e.isIntersecting); mbar.classList.toggle('show', !e.isIntersecting); },
+    { rootMargin: '-80px 0px 0px 0px' }).observe($('#top'));
+  $$('[data-goquote]').forEach(a => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    setTimeout(() => $('#arrive').focus({ preventScroll: true }), reduce ? 0 : 700);
+  }));
+
+  /* ---------- sections settle in (only the ones still below the fold) ---------- */
+  const settle = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.remove('pre'); settle.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px' });
+  $$('.in-view').forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); settle.observe(el); } });
+
+  /* ---------- a day here: how far through the tall section picks the time of day.
+     Read from scroll position, so a fast flick past it still lands on the right chapter. ---------- */
+  const day = $('#day'), phs = $$('.stage .ph'), chaps = $$('.chap'), ticks = $$('.ticks span');
+  let dayAt = 0, dayQueued = false;
+  const showStep = i => { if (i === dayAt) return; dayAt = i; [phs, chaps, ticks].forEach(set => set.forEach((el, j) => el.classList.toggle('on', i === j))); };
+  function dayTick() {
+    dayQueued = false;
+    const p = (scrollY - day.offsetTop) / Math.max(1, day.offsetHeight - innerHeight);
+    showStep(p < 0.34 ? 0 : p < 0.67 ? 1 : 2);
+  }
+  if (!reduce) {
+    addEventListener('scroll', () => { if (!dayQueued) { dayQueued = true; requestAnimationFrame(dayTick); } }, { passive: true });
+    dayTick();
+  }
+
+  /* ---------- rates ---------- */
+  let tab = 'day', when = 'wd';
+  const rowsEl = $('#rows'), fineEl = $('#fine');
+  function rowsFor(t) {
+    if (t === 'day') return RATES.day.map(r => ({ h: r.name, det: r.det, wd: r.wd, we: r.we, unit: 'per session' }));
+    if (t === 'rooms') return RATES.rooms.map(r => ({ h: r.name, det: r.floor + ' · ' + r.beds + ' · good for ' + r.cap, wd: r.wd, we: r.we, unit: 'per night', img: r.img }));
+    if (t === 'excl') return RATES.excl.map(r => ({ h: r.name, det: r.det, wd: r.wd, we: r.we, unit: 'whole property' }));
+    const h = RATES.house;
+    return [{ h: h.name, det: h.det, wd: h.wd, we: h.we, unit: 'per night', img: h.img }];
+  }
+  function paintRates() {
+    rowsEl.innerHTML = rowsFor(tab).map(r =>
+      '<div class="row' + (r.img ? ' pic' : '') + '">' +
+      (r.img ? '<button class="thumb" type="button" data-open="' + r.img + '" aria-label="Open photo: ' + esc(r.h) + '"><img src="' + r.img + '" alt="" loading="lazy"></button>' : '') +
+      '<div><h3>' + esc(r.h) + '</h3><p class="det">' + esc(r.det) + '</p></div>' +
+      '<p class="price" data-wd="' + r.wd + '" data-we="' + r.we + '">' + peso(r[when]) + '<small>' + r.unit + '</small></p></div>').join('') +
+      (tab === 'house' ? '<div class="row wide"><h3>Hired on the day</h3><ul class="addons">' +
+        RATES.addons.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul></div>' : '');
+    fineEl.textContent = RATES.fine[tab];
+  }
+  $('#tabs').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    tab = b.dataset.p;
+    $$('#tabs button').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+    paintRates();
   });
-
-  /* weekday / weekend switch: prices fade out, change, fade back */
-  const sw = document.getElementById('switch');
-  sw.addEventListener('click', (e) => {
-    const b = e.target.closest('button[data-d]'); if (!b) return;
-    const day = b.dataset.d;
-    sw.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-    sw.classList.toggle('we', day === 'we');
-    const money = document.querySelectorAll('.money');
-    money.forEach(m => m.classList.add('swap'));
+  $('#switch').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b || b.dataset.d === when) return;
+    when = b.dataset.d;
+    $$('#switch button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    rowsEl.classList.add('swap');
     setTimeout(() => {
-      money.forEach(m => {
-        const small = m.querySelector('small');
-        m.textContent = m.dataset[day];
-        if (small) m.appendChild(small);
-        m.classList.remove('swap');
-      });
-    }, reduce ? 0 : 280);
+      $$('.price', rowsEl).forEach(p => { p.firstChild.nodeValue = peso(+p.dataset[when]); });
+      rowsEl.classList.remove('swap');
+    }, reduce ? 0 : 250);
   });
+  paintRates();
 
-  /* gallery + lightbox */
+  /* ---------- rooms rail ---------- */
+  const rail = $('#rail');
+  rail.innerHTML = RATES.rooms.map(r =>
+    '<button class="room" type="button" data-open="' + r.img + '" aria-label="Open photo: ' + esc(r.name) + '">' +
+    '<img src="' + r.img + '" alt="" loading="lazy">' +
+    '<span class="t"><b>' + r.key + '</b><span>' + r.floor + ' · ' + r.beds + '</span>' +
+    '<i>From ' + peso(r.wd) + ' a night · good for ' + r.cap + '</i></span></button>').join('');
+  $$('[data-rail]').forEach(b => b.addEventListener('click', () => {
+    const card = $('.room', rail);
+    rail.scrollBy({ left: +b.dataset.rail * (card.offsetWidth + 20), behavior: reduce ? 'auto' : 'smooth' });
+  }));
+
+  /* ---------- gallery and lightbox ---------- */
   const PHOTOS = [
     ['img/air-pool.jpg','pool','The pool from directly above, palms printed on the water.'],
-    ['img/air-coast.jpg','pool','The coastline running past the property.'],
-    ['img/hero.jpg','pool','The house behind the pool, with the sea beyond the wall.'],
     ['img/g-poolsea.jpg','pool','The pool looking out to open water.'],
-    ['img/pool-dusk.jpg','pool','The pool lit at dusk.'],
-    ['img/pool-edge.jpg','pool','The pool edge meeting the sea horizon.'],
-    ['img/g-housepool.jpg','pool','The house and pool from the garden side.'],
-    ['img/g-poolpalm.jpg','pool','Palms along the pool deck.'],
-    ['img/g-poollounge.jpg','pool','Loungers set out along the water.'],
-    ['img/daybeds.jpg','pool','Woven daybeds under a wide umbrella.'],
-    ['img/cabana.jpg','pool','A shaded cabana above the shoreline.'],
-    ['img/g-poolsteps.jpg','pool','The steps into the pool.'],
-    ['img/aerial.jpg','pool','The property from the air, on the beach among palms.'],
-    ['img/room-magkono.jpg','rooms','Magkono Prestige Suite, three bunk beds.'],
     ['img/room-narra.jpg','rooms','Narra Premier, a king and a queen bed.'],
-    ['img/room-yakal.jpg','rooms','Yakal Signature Escape, two queen beds.'],
-    ['img/room-tugas.jpg','rooms','Tugas Poolside Room, two bunk beds.'],
-    ['img/room-ipil.jpg','rooms','Ipil Deluxe Room, one queen bed.'],
-    ['img/lounge.jpg','living','The open-air lounge on the upper terrace.'],
+    ['img/pool-dusk.jpg','pool','The pool lit at dusk.'],
+    ['img/g-poolsteps.jpg','pool','The steps into the pool.'],
     ['img/dining.jpg','living','The long dining table beside the pool.'],
-    ['img/g-dining2.jpg','living','The covered dining area set for a group.'],
-    ['img/g-kitchen.jpg','living','The kitchen counter and cabinets.'],
+    ['img/daybeds.jpg','pool','Woven daybeds under a wide umbrella.'],
+    ['img/room-magkono.jpg','rooms','Magkono Prestige Suite, three bunk beds.'],
+    ['img/aerial.jpg','pool','The property from the air, on the beach among palms.'],
+    ['img/lounge.jpg','living','The open-air lounge on the upper terrace.'],
     ['img/g-grill.jpg','living','The grill on the terrace.'],
+    ['img/cabana.jpg','pool','A shaded cabana above the shoreline.'],
+    ['img/room-yakal.jpg','rooms','Yakal Signature Escape, two queen beds.'],
+    ['img/hero.jpg','pool','The house behind the pool, with the sea beyond the wall.'],
+    ['img/pool-edge.jpg','pool','The pool edge meeting the sea horizon.'],
+    ['img/g-dining2.jpg','living','The covered dining area set for a group.'],
+    ['img/room-tugas.jpg','rooms','Tugas Poolside Room, two bunk beds.'],
+    ['img/g-housepool.jpg','pool','The house and pool from the garden side.'],
+    ['img/g-kitchen.jpg','living','The kitchen counter and cabinets.'],
+    ['img/room-ipil.jpg','rooms','Ipil Deluxe Room, one queen bed.'],
+    ['img/g-poolpalm.jpg','pool','Palms along the pool deck.'],
     ['img/g-entertain.jpg','living','The screen and sound system in the common area.'],
+    ['img/g-poollounge.jpg','pool','Loungers set out along the water.'],
+    ['img/air-coast.jpg','pool','The coastline running past the property.'],
     ['img/g-vests.jpg','living','Life vests on the rack by the pool.'],
   ];
-  const gal = document.getElementById('gal');
+  const PORTRAIT = new Set(['img/g-grill.jpg', 'img/g-poolsteps.jpg']);
+  const gal = $('#gal');
   let shown = PHOTOS;
-
-  function paint(filter) {
-    shown = filter === 'all' ? PHOTOS : PHOTOS.filter(p => p[1] === filter);
-    gal.textContent = '';
-    shown.forEach((p, i) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Open photograph: ' + p[2]);
-      const im = document.createElement('img');
-      im.src = p[0]; im.alt = p[2]; im.loading = i < 8 ? 'eager' : 'lazy';
-      b.appendChild(im);
-      b.addEventListener('click', () => openAt(i));
-      b.style.animation = reduce ? '' : `panelIn .5s var(--ease) ${Math.min(i, 8) * 40}ms both`;
-      gal.appendChild(b);
-    });
+  function paintGallery(f) {
+    shown = f === 'all' ? PHOTOS : PHOTOS.filter(p => p[1] === f);
+    gal.innerHTML = shown.map((p, i) => {
+      const cls = PORTRAIT.has(p[0]) ? 'tall' : (i % 7 === 0 ? 'big' : '');
+      return '<button type="button" class="' + cls + '" data-i="' + i + '" style="animation-delay:' + Math.min(i, 10) * 35 + 'ms" aria-label="Open photo: ' + esc(p[2]) + '">' +
+             '<img src="' + p[0] + '" alt="' + esc(p[2]) + '" loading="' + (i < 6 ? 'eager' : 'lazy') + '"></button>';
+    }).join('');
   }
-  document.getElementById('filters').addEventListener('click', (e) => {
-    const chip = e.target.closest('.chip'); if (!chip) return;
-    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
-    paint(chip.dataset.f);
+  $('#chips').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    $$('#chips button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    paintGallery(b.dataset.f);
   });
+  paintGallery('all');
 
-  let lb = null, idx = 0;
-  function render() {
-    const p = shown[idx];
-    lb.querySelector('img').src = p[0];
-    lb.querySelector('img').alt = p[2];
-    lb.querySelector('.cap').textContent = p[2];
-    lb.querySelector('.count').textContent = (idx + 1) + ' / ' + shown.length;
+  let lb = null, list = PHOTOS, idx = 0, opener = null;
+  const ICON = d => '<svg class="ic" viewBox="0 0 24 24"><path d="' + d + '"/></svg>';
+  function lbRender() {
+    const p = list[idx];
+    lb.querySelector('img').src = p[0]; lb.querySelector('img').alt = p[2];
+    lb.querySelector('p').textContent = p[2] + '  ·  ' + (idx + 1) + ' of ' + list.length;
   }
-  function openAt(i) {
-    idx = i;
+  function openLb(arr, i) {
+    list = arr; idx = i; opener = document.activeElement;
     if (!lb) {
-      lb = document.createElement('div');
-      lb.className = 'lb';
-      lb.innerHTML = '<button class="x" aria-label="Close">&#10005;</button>' +
-        '<button class="pv" aria-label="Previous">&#8249;</button>' +
-        '<button class="nx" aria-label="Next">&#8250;</button>' +
-        '<img alt=""><p class="cap"></p><p class="count"></p>';
-      lb.querySelector('.x').addEventListener('click', shut);
-      lb.querySelector('.pv').addEventListener('click', () => step(-1));
-      lb.querySelector('.nx').addEventListener('click', () => step(1));
-      lb.addEventListener('click', (e) => { if (e.target === lb) shut(); });
+      lb = document.createElement('div'); lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Photo viewer');
+      lb.innerHTML = '<button class="x" aria-label="Close">' + ICON('M6 6l12 12M18 6L6 18') + '</button>' +
+        '<button class="pv" aria-label="Previous photo">' + ICON('M15 5l-7 7 7 7') + '</button>' +
+        '<button class="nx" aria-label="Next photo">' + ICON('M9 5l7 7-7 7') + '</button><img alt=""><p></p>';
+      lb.querySelector('.x').onclick = closeLb;
+      lb.querySelector('.pv').onclick = () => step(-1);
+      lb.querySelector('.nx').onclick = () => step(1);
+      lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
       document.body.appendChild(lb);
     }
-    lb.hidden = false;
-    document.documentElement.style.overflow = 'hidden';
-    render();
-    lb.querySelector('.x').focus();
+    lb.hidden = false; document.documentElement.style.overflow = 'hidden';
+    lbRender(); lb.querySelector('.x').focus();
   }
-  function shut() { if (lb) lb.hidden = true; document.documentElement.style.overflow = ''; }
-  function step(d) { idx = (idx + d + shown.length) % shown.length; render(); }
+  function closeLb() { lb.hidden = true; document.documentElement.style.overflow = ''; opener && opener.focus(); }
+  function step(d) { idx = (idx + d + list.length) % list.length; lbRender(); }
   document.addEventListener('keydown', (e) => {
     if (!lb || lb.hidden) return;
-    if (e.key === 'Escape') shut();
+    if (e.key === 'Escape') closeLb();
     if (e.key === 'ArrowLeft') step(-1);
     if (e.key === 'ArrowRight') step(1);
   });
-
-  /* any room or rate photo opens the lightbox at the matching picture */
-  document.querySelectorAll('img[data-lb]').forEach((im) => {
-    im.style.cursor = 'zoom-in';
-    im.addEventListener('click', () => {
-      const file = im.getAttribute('src');
-      const i = shown.findIndex(p => p[0] === file);
-      if (i >= 0) openAt(i);
-    });
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('#gal button');
+    if (g) return openLb(shown, +g.dataset.i);
+    const o = e.target.closest('[data-open]');
+    if (o) { const i = PHOTOS.findIndex(p => p[0] === o.dataset.open); if (i >= 0) openLb(PHOTOS, i); }
   });
-
-  paint('all');
-
-  /* photographs wipe up from their own frame. Watch the frame, not the photo:
-     a photo clipped to nothing never counts as on screen, so it would never open. */
-  document.querySelectorAll('.wipe').forEach(el => {
-    if (reduce) { el.classList.remove('pending'); return; }
-    new IntersectionObserver(([e], o) => {
-      if (!e.isIntersecting) return;
-      el.classList.remove('pending'); o.disconnect();
-    }, { threshold: 0.2 }).observe(el.parentElement);
-  });
-
-  /* the four headline numbers count up once */
-  document.querySelectorAll('.facts .n').forEach(el => {
-    const raw = el.textContent.trim();
-    const m = raw.match(/^(\d+)(.*)$/);
-    if (!m || reduce) return;
-    const end = parseInt(m[1], 10), tail = m[2];
-    let started = false;
-    new IntersectionObserver(([e], o) => {
-      if (!e.isIntersecting || started) return;
-      started = true; o.disconnect();
-      const t0 = performance.now(), dur = 1100;
-      (function tick(now) {
-        const k = Math.min(1, (now - t0) / dur);
-        const eased = 1 - Math.pow(1 - k, 3);
-        el.textContent = Math.round(end * eased) + tail;
-        if (k < 1) requestAnimationFrame(tick);
-      })(t0);
-    }, { threshold: 0.6 }).observe(el);
-  });
-
-  const targets = document.querySelectorAll('.reveal');
-  if (reduce || !('IntersectionObserver' in window)) {
-    targets.forEach(el => el.classList.remove('pending'));
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.remove('pending'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
-    targets.forEach(el => io.observe(el));
-    requestAnimationFrame(() => {
-      targets.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.remove('pending'); });
-    });
-  }
 
   /* ---------- quotes ----------
-     Prices come from the rate cards on this page, so the cards stay the one
-     place to change a rate. A night is weekend-priced when it starts on a
-     Saturday or Sunday; a day visit when it falls on one. Holidays are not
-     known here, which the quote says. */
-  const PAGE = '61572305588687';
-  const PHONE = '+639358588508';
-  const peso = n => '₱' + n.toLocaleString('en-PH');
-  const num = s => parseInt(String(s).replace(/[^\d]/g, ''), 10);
-  const cards = [...document.querySelectorAll('.rcard')].map(c => {
-    const m = c.querySelector('.money');
-    return m && { panel: c.closest('.panel').id, name: c.querySelector('h3').textContent.trim(),
-                  cap: num((c.querySelector('.cap') || c.querySelector('h3')).textContent),
-                  wd: num(m.dataset.wd), we: num(m.dataset.we) };
-  }).filter(Boolean);
-  const day = cards.filter(c => c.panel === 'p-day').sort((a, b) => a.cap - b.cap);
-  const rooms = cards.filter(c => c.panel === 'p-night');
-  const [excl1, excl2] = cards.filter(c => c.panel === 'p-excl');
-  const MAX = 27;
+     A night is weekend-priced when it starts on a Saturday or Sunday; a day
+     visit when it falls on one. Holidays are not known here, which the quote says. */
   const isWE = d => d.getDay() === 0 || d.getDay() === 6;
   const fmt = d => d.toLocaleDateString('en-PH', { weekday: 'short', month: 'short', day: 'numeric' });
   const parse = v => { if (!v) return null; const [y, m, d] = v.split('-').map(Number); return new Date(y, m - 1, d); };
+  const num = s => parseInt(String(s).replace(/[^\d]/g, ''), 10);
 
-  /* cheapest set of rooms that sleeps everyone, by trying every combination (5 rooms, 31 sets) */
+  /* cheapest set of rooms that sleeps everyone, trying every combination (5 rooms, 31 sets) */
   function bestRooms(guests, nights) {
-    let best = null;
-    for (let mask = 1; mask < 1 << rooms.length; mask++) {
-      const set = rooms.filter((_, i) => mask & (1 << i));
+    const R = RATES.rooms; let best = null;
+    for (let mask = 1; mask < 1 << R.length; mask++) {
+      const set = R.filter((_, i) => mask & (1 << i));
       if (set.reduce((t, r) => t + r.cap, 0) < guests) continue;
       const cost = nights.reduce((t, n) => t + set.reduce((u, r) => u + (isWE(n) ? r.we : r.wd), 0), 0);
       if (!best || cost < best.cost) best = { set, cost };
@@ -902,92 +802,82 @@
     return best;
   }
   function exclusive(nights) {
-    const we = nights.filter(isWE).length;
-    if (nights.length === 2 && excl2) return { cost: we === 0 ? excl2.wd : we === 2 ? excl2.we : 50000, label: excl2.name };
-    return { cost: nights.reduce((t, n) => t + (isWE(n) ? excl1.we : excl1.wd), 0), label: nights.length + (nights.length === 1 ? ' night' : ' nights') };
+    const [one, two] = RATES.excl, we = nights.filter(isWE).length;
+    if (nights.length === 2) return we === 0 ? two.wd : we === 2 ? two.we : two.mid;
+    return nights.reduce((t, n) => t + (isWE(n) ? one.we : one.wd), 0);
   }
-
-  let lastQuote = '';
   function quote(a, d, guests) {
-    const lines = [];
-    if (!a) return { err: 'Pick the day you arrive.' };
-    if (guests > MAX) return { big: true, text: guests + ' guests is more than we sleep or seat for a day visit (' + MAX + '). Send us the date and we will tell you what can work.' };
+    if (!a) return { err: 'Pick the day you arrive first.' };
+    if (guests > MAX) return { big: true };
     const nights = [];
     if (d && d > a) for (let t = new Date(a); t < d; t.setDate(t.getDate() + 1)) nights.push(new Date(t));
     if (!nights.length) {
-      const pk = day.find(p => p.cap >= guests);
-      const price = isWE(a) ? pk.we : pk.wd;
+      const pk = RATES.day.find(p => p.cap >= guests), price = isWE(a) ? pk.we : pk.wd;
       return { what: 'Day use · ' + fmt(a), total: price,
-               lines: [[pk.name.replace(/guests?/, 'guest package'), peso(price)], [isWE(a) ? 'Weekend rate' : 'Weekday rate', '']],
-               note: 'One session, 8 AM to 5 PM or 1 PM to 8 PM.',
-               summary: 'Day use on ' + fmt(a) + ' for ' + guests };
+               lines: [['Day package, ' + pk.name.toLowerCase(), peso(price)], [isWE(a) ? 'Weekend rate' : 'Weekday rate', '']],
+               note: 'One session, 8 AM to 5 PM or 1 PM to 8 PM.', summary: 'Day use on ' + fmt(a) + ' for ' + guests };
     }
     const span = fmt(a) + ' to ' + fmt(d);
-    const r = guests <= rooms.reduce((t, x) => t + x.cap, 0) ? bestRooms(guests, nights) : null;
+    const sleeps = RATES.rooms.reduce((t, r) => t + r.cap, 0);
+    const r = guests <= sleeps ? bestRooms(guests, nights) : null;
     const x = exclusive(nights);
     const rows = nights.map(n => [fmt(n) + ' night', isWE(n) ? 'weekend' : 'weekday']);
-    if (r && r.cost < x.cost) {
-      return { what: 'Rooms · ' + span, total: r.cost,
-               lines: [[r.set.map(s => s.name.split(' ')[0]).join(' + '), peso(r.cost)], ...rows],
-               alt: 'Or close the whole property to your group: ' + peso(x.cost) + ' exclusive use.',
-               summary: r.set.map(s => s.name.split(' ')[0]).join(' + ') + ', ' + span + ', for ' + guests };
+    if (r && r.cost < x) {
+      const names = r.set.map(s => s.key).join(' + ');
+      return { what: 'Rooms · ' + span, total: r.cost, lines: [[names, peso(r.cost)], ...rows],
+               alt: 'Or close the whole property to your group: ' + peso(x) + ' for exclusive use.',
+               summary: names + ', ' + span + ', for ' + guests };
     }
-    return { what: 'Exclusive use · ' + span, total: x.cost,
-             lines: [['Five rooms, the pool and the shore to yourselves', peso(x.cost)], ...rows],
-             note: 'Check-out at 11 AM.',
-             summary: 'Exclusive use, ' + span + ', for ' + guests };
+    return { what: 'Exclusive use · ' + span, total: x, lines: [['Five rooms, the pool and the shore to yourselves', peso(x)], ...rows],
+             note: 'Check-out at 11 AM.', summary: 'Exclusive use, ' + span + ', for ' + guests };
   }
 
-  function messenger(text) { return 'https://m.me/' + PAGE + '?text=' + encodeURIComponent(text); }
-  function sms(text) { return 'sms:' + PHONE + (/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?') + 'body=' + encodeURIComponent(text); }
-  function sendButtons(text) {
-    return '<div class="send">' +
-      '<a class="btn solid" target="_blank" rel="noopener" href="' + messenger(text) + '">Send on Messenger</a>' +
-      '<a class="btn" href="' + sms(text) + '">Send as text</a>' +
-      '<button class="btn" type="button" data-copy>Copy</button></div>';
-  }
+  const messenger = t => 'https://m.me/' + PAGE + '?text=' + encodeURIComponent(t);
+  const sms = t => 'sms:' + PHONE + (/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?') + 'body=' + encodeURIComponent(t);
+  const sendButtons = t => '<div class="send" data-msg="' + esc(t) + '">' +
+    '<a class="btn gold" target="_blank" rel="noopener" href="' + messenger(t) + '">Send on Messenger</a>' +
+    '<a class="btn line" href="' + sms(t) + '">Send as text</a>' +
+    '<button class="btn line" type="button" data-copy>Copy</button></div>';
   document.addEventListener('click', async (e) => {
     const b = e.target.closest('[data-copy]'); if (!b) return;
     try { await navigator.clipboard.writeText(b.closest('[data-msg]').dataset.msg); b.textContent = 'Copied'; }
     catch { b.textContent = 'Copy failed'; }
   });
 
-  const qEl = document.getElementById('quote');
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const arrive = document.getElementById('arrive'), depart = document.getElementById('depart');
+  const qEl = $('#quote'), arrive = $('#arrive'), depart = $('#depart');
   const today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   arrive.min = depart.min = today.toISOString().slice(0, 10);
   arrive.addEventListener('change', () => { depart.min = arrive.value; if (depart.value && depart.value < arrive.value) depart.value = ''; });
 
-  document.getElementById('bookbar').addEventListener('submit', (e) => {
+  $('#bookbar').addEventListener('submit', (e) => {
     e.preventDefault();
-    const g = Math.max(1, num(document.getElementById('party').value) || 1);
-    const q = quote(parse(arrive.value), parse(depart.value), g);
+    const g = Math.max(1, num($('#party').value) || 1), a = parse(arrive.value);
+    const q = quote(a, parse(depart.value), g);
     qEl.hidden = false;
-    if (q.err) { qEl.innerHTML = '<p class="note">' + q.err + '</p>'; arrive.focus(); return; }
+    if (q.err) { qEl.innerHTML = '<p class="note" style="margin:0">' + q.err + '</p>'; arrive.focus(); return; }
     if (q.big) {
-      const msg = 'Hi Tree Rings! I am planning something for ' + g + ' guests on ' + fmt(parse(arrive.value)) + '. What can you offer?';
-      qEl.innerHTML = '<div><p class="what">Big group</p><p class="alt">' + q.text + '</p></div><div data-msg="' + esc(msg) + '">' + sendButtons(msg) + '</div>';
+      const msg = 'Hi Tree Rings! I am planning something for ' + g + ' guests on ' + fmt(a) + '. What can you offer?';
+      qEl.innerHTML = '<div><p class="what">Big group · ' + g + ' guests</p><p class="alt">That is more than we sleep or seat for a day visit (' + MAX +
+        '). Send us the date and we will tell you what can work.</p></div><div>' + sendButtons(msg) + '</div>';
       return;
     }
     const msg = 'Hi Tree Rings! Is this open? ' + q.summary + ' guests. The site quoted ' + peso(q.total) + '.';
     qEl.innerHTML =
-      '<div><p class="what">' + q.what + ' · ' + g + ' guests</p>' +
-      '<p class="total">' + peso(q.total) + '</p>' +
-      '<ul class="lines">' + q.lines.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul>' +
+      '<div><p class="what">' + q.what + ' · ' + g + ' guests</p><p class="total">' + peso(q.total) + '</p>' +
+      '<ul>' + q.lines.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul>' +
       (q.alt ? '<p class="alt">' + q.alt + '</p>' : '') +
       '<p class="note">' + (q.note ? q.note + ' ' : '') + 'Holidays may be priced higher. We confirm the date and the price when we reply.</p></div>' +
-      '<div data-msg="' + esc(msg) + '"><p class="note" style="margin:0 0 10px">Send this to the resort and we will check the date.</p>' + sendButtons(msg) + '</div>';
+      '<div><p class="note" style="margin:0 0 12px">Send this to the resort and we will check the date for you.</p>' + sendButtons(msg) + '</div>';
   });
 
-  document.getElementById('enquiryform').addEventListener('submit', (e) => {
+  $('#enquiryform').addEventListener('submit', (e) => {
     e.preventDefault();
-    const v = id => document.getElementById(id).value.trim();
+    const v = id => $('#' + id).value.trim();
     const msg = 'Hi Tree Rings! This is ' + v('nm') + '. Dates: ' + v('dt') + '. Guests: ' + v('gs') + '.' +
                 (v('ms') ? ' Occasion: ' + v('ms') + '.' : '') + ' Reach me at ' + v('em') + '.';
-    const el = document.getElementById('said');
-    el.dataset.msg = msg;
-    el.innerHTML = '<p style="margin-bottom:12px">Your message is ready. Choose how to send it:</p>' + sendButtons(msg);
+    const el = $('#said');
+    el.innerHTML = '<p>Your message is ready. Choose how to send it:</p>' + sendButtons(msg);
     el.hidden = false;
   });
 </script>
+</html>
