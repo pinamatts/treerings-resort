@@ -932,6 +932,10 @@
     const via = s.matches('[data-copy]') ? 'copied the message' : /m\.me/.test(s.href) ? 'sent on Messenger' : 'sent as a text';
     const body = { ...lastReq, notes: lastReq.notes + '. Guest ' + via + ' from the website quote.' };
     const key = JSON.stringify(lastReq); if (key === sentReq) return; sentReq = key;
+    /* the same quote from the same phone only reaches the desk once a day */
+    try { const seen = JSON.parse(localStorage.getItem('trSent') || '{}'), now = Date.now();
+          if (seen[key] && now - seen[key] < 864e5) return;
+          seen[key] = now; localStorage.setItem('trSent', JSON.stringify(seen)); } catch {}
     fetch(DB + 'tr_bookings', { method: 'POST', keepalive: true, body: JSON.stringify(body),
       headers: { apikey: DBKEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' } }).catch(() => {});
   });
