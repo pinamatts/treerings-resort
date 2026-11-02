@@ -154,6 +154,19 @@
   .quote li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
   .quote li .v { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .quote .alt { margin-top: 12px; font-size: 15px; }
+  .compare { display: grid; gap: 12px; margin: 22px 0 6px; }
+  @media (min-width: 720px) { .compare { grid-template-columns: 1fr 1fr; } }
+  .compare .col { background: var(--ivory); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; }
+  .compare .col.on { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset; }
+  .compare .k { font: 400 22px/1.2 var(--display); margin: 0; color: var(--navy); }
+  .compare .p { margin: 2px 0 10px; color: var(--ink-2); font-size: 15px; }
+  .compare ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; }
+  .compare li { padding-left: 26px; position: relative; color: var(--ink); }
+  .compare li::before { position: absolute; left: 0; top: 0; font-weight: 500; }
+  .compare li.y::before { content: '✓'; color: var(--gold); }
+  .compare li.n { color: var(--ink-2); } .compare li.n::before { content: '✕'; color: #A8322D; }
+  .compare .both { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--ink-2); text-align: center; }
+  .quote .pickwhy { font-size: 13.5px; color: var(--ink-2); margin: -6px 0 12px; }
   .quote .pick { display: inline-grid; grid-auto-flow: column; gap: 4px; padding: 4px; border-radius: 999px; background: var(--ivory-2); margin-bottom: 14px; }
   .quote .pick button { border: 0; background: none; border-radius: 999px; padding: 8px 16px; font: 500 13px/1 var(--ui); letter-spacing: .06em; color: var(--ink-2); cursor: pointer; }
   .quote .pick button.on { background: var(--navy); color: var(--ivory); }
@@ -429,7 +442,7 @@
 <section class="pad promise">
   <div class="wrap in-view">
     <h2>The pool, the shore and the karaoke, <em>closed to everyone but your group.</em></h2>
-    <p class="lede">Book a room for two or take the whole house for up to thirty. Bring the food you love and cook it here: the kitchen, the grill and the smoker are already waiting.</p>
+    <p class="lede">Book a room for two or take the whole house for up to thirty. Bring the food you love and cook it here: the grill and the smoker are already waiting.</p>
     <ul class="facts">
       <li>Up to 30 guests with extra beds</li><li>Six air-conditioned rooms</li><li>Five-foot infinity pool</li>
       <li>Steps from the beach</li><li>Starlink Wi-Fi</li><li>No corkage fee</li>
@@ -467,7 +480,7 @@
   <div class="wrap">
     <div class="in-view">
       <h2>Simple rates, everything included.</h2>
-      <p class="lede">Every booking includes the pool, the beach, the kitchen and the karaoke. Bring your own food and drink; there is no corkage fee.</p>
+      <p class="lede">Every booking includes the pool, the beach, the griller and the karaoke. Bring your own food and drink; there is no corkage fee.</p>
     </div>
     <div class="ratetools">
       <div class="seg" role="tablist" id="tabs" aria-label="Kind of stay">
@@ -481,10 +494,24 @@
         <button type="button" aria-pressed="false" data-d="we">Weekend</button>
       </div>
     </div>
+    <div class="compare" id="compare">
+      <div class="col">
+        <p class="k">Exclusive use</p>
+        <p class="p">From ₱25,000 a night</p>
+        <ul><li class="y">The 5 guest rooms, for 27 guests, up to 30 with extra beds</li><li class="y">Pool, beach, griller, smoker and karaoke</li>
+            <li class="n">Master bedroom not included</li><li class="n">Main kitchen not included</li></ul>
+      </div>
+      <div class="col">
+        <p class="k">Entire house</p>
+        <p class="p">₱55,000 a night, ₱60,000 on weekends</p>
+        <ul><li class="y">Everything in exclusive use</li><li class="y">Plus the master bedroom</li><li class="y">Plus the main kitchen inside the house</li></ul>
+      </div>
+      <p class="both">Both are private: no other guests come through the gate.</p>
+    </div>
     <div class="rows" id="rows" role="tabpanel"></div>
     <p class="fine" id="fine"></p>
     <ul class="incl">
-      <li>Pool and showers</li><li>Beach access</li><li>Karaoke</li><li>Kitchen and utensils</li><li>Refrigerator</li>
+      <li>Pool and showers</li><li>Beach access</li><li>Karaoke</li><li>Cooking utensils</li><li>Refrigerator</li>
       <li>Griller and smoker</li><li>A gallon of water</li><li>Tables and chairs</li><li>Wi-Fi in rooms</li><li>Parking</li>
     </ul>
   </div>
@@ -609,7 +636,7 @@
         <p>Proper swimming attire only. No jewellery, and no clothing with buttons. There is no lifeguard, so children need watching.</p>
       </div></details>
       <details><summary>Food and drink</summary><div class="in">
-        <p>No corkage fee, so bring what you like. The kitchen, utensils, refrigerator, griller and smoker are yours to use, along with a gallon of drinking water.</p>
+        <p>No corkage fee, so bring what you like. The utensils, refrigerator, griller and smoker are yours to use, along with a gallon of drinking water. The main kitchen inside the house comes with the entire house.</p>
         <p>Breakfast is not included with rooms.</p>
       </div></details>
     </div>
@@ -690,7 +717,7 @@
       /* the rate guide prices a Friday-and-Saturday stay between the two */
       { name: 'Three days, two nights', wd: 45000, we: 55000, mid: 50000, det: 'Five rooms for 27 guests, up to 30 with extra beds. A Friday and Saturday stay is ₱50,000.' },
     ],
-    house: { name: 'The entire house', wd: 55000, we: 60000, img: 'img/g-housepool.jpg', det: 'All six rooms, adding the Couple and Masters rooms. Outdoor refrigerator included. Check out 11 AM.' },
+    house: { name: 'The entire house', wd: 55000, we: 60000, img: 'img/g-housepool.jpg', det: 'Everything in exclusive use, plus the master bedroom and the main kitchen. Check out 11 AM.' },
     addons: [['Karaoke, room bookings', '₱1,000 a day'], ['Use of gasul', '₱500'], ['Refrigerator, room bookings', '₱500'], ['Towel', '₱50'],
              ['Extra pillow', '₱30'], ['Laundry', '₱70 a kilo'], ['Fresh buko', '₱50'], ['Pabili within Carmen', '₱150']],
     fine: {
@@ -758,6 +785,8 @@
       (tab === 'house' ? '<div class="row wide"><h3>Hired on the day</h3><ul class="addons">' +
         RATES.addons.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul></div>' : '');
     fineEl.textContent = RATES.fine[tab];
+    const cmp = $('#compare'); cmp.hidden = !(tab === 'excl' || tab === 'house');
+    $$('.col', cmp).forEach((c, i) => c.classList.toggle('on', (i === 0) === (tab === 'excl')));
   }
   $('#tabs').addEventListener('click', (e) => {
     const b = e.target.closest('button'); if (!b) return;
@@ -936,7 +965,7 @@
     const h = RATES.house, total = nights.reduce((s, n) => s + (isWE(n) ? h.we : h.wd), 0), span = fmt(a) + ' to ' + fmt(d);
     return { what: 'Entire house · ' + span, total,
              lines: [['All six rooms, the pool and the shore to yourselves', peso(total)], ...nights.map(n => [fmt(n) + ' night', (isWE(n) ? 'weekend ' : 'weekday ') + peso(isWE(n) ? h.we : h.wd)])],
-             note: 'Adds the Couple and Masters rooms to the five guest rooms. Check-out at 11 AM.', summary: 'Entire house, ' + span + ', for ' + guests };
+             note: 'Everything in exclusive use, plus the master bedroom and the main kitchen. Check-out at 11 AM.', summary: 'Entire house, ' + span + ', for ' + guests };
   }
 
   const messenger = t => 'https://m.me/' + PAGE + '?text=' + encodeURIComponent(t);
@@ -995,7 +1024,7 @@
     const msg = 'Hi Tree Rings! Is this open? ' + q.summary + ' guests. The site quoted ' + peso(q.total) + '.';
     qEl.innerHTML =
       '<div>' + (overnight ? '<div class="pick" role="group" aria-label="Choose your stay"><button type="button" data-pick="0"' + (wantHouse ? '' : ' class="on"') + '>' +
-        (/^Rooms/.test(base.what) ? 'Rooms' : 'Exclusive use') + '</button><button type="button" data-pick="1"' + (wantHouse ? ' class="on"' : '') + '>Entire house</button></div>' : '') +
+        (/^Rooms/.test(base.what) ? 'Rooms' : 'Exclusive use') + '</button><button type="button" data-pick="1"' + (wantHouse ? ' class="on"' : '') + '>Entire house</button></div><p class="pickwhy">' + (wantHouse ? 'Entire house adds the master bedroom and the main kitchen.' : (/^Rooms/.test(base.what) ? 'Just the rooms you need.' : 'Exclusive use: the 5 guest rooms, pool and beach. Master bedroom and main kitchen not included.')) + '</p>' : '') +
       '<p class="what">' + q.what + ' · ' + g + ' guests</p><p class="total">' + peso(q.total) + '</p>' +
       '<ul>' + q.lines.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul>' +
       (q.alt ? '<p class="alt">' + q.alt + '</p>' : '') +
