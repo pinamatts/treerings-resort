@@ -307,8 +307,8 @@
       (b.notes ? '<p class="note">' + esc(b.notes) + '</p>' : '') +
       (conflict ? '<p class="note" style="color:var(--red)">Heads up: ' + conflict + '</p>' : '') +
       '<div class="row">' + (b.kind === 'request'
-        ? '<button class="btn navy" data-confirm="' + b.id + '">Confirm</button><button class="btn line" data-decline="' + b.id + '">Decline</button>'
-        : '<button class="btn line" data-edit="' + b.id + '">Edit</button>' + (b.kind === 'booked' && !b.down_paid ? '<button class="btn gold" data-paid="' + b.id + '">Down payment received</button>' : '')) +
+        ? '<button class="btn navy" data-confirm="' + b.id + '">Confirm</button><button class="btn gold" data-paylink="' + b.id + '">Payment link</button><button class="btn line" data-decline="' + b.id + '">Decline</button>'
+        : '<button class="btn line" data-edit="' + b.id + '">Edit</button>' + (b.kind === 'booked' && !b.down_paid ? '<button class="btn gold" data-paylink="' + b.id + '">Payment link</button><button class="btn line" data-paid="' + b.id + '">Down payment received</button>' : '')) +
       '</div></div>';
   }
   function clash(b) {
@@ -359,6 +359,22 @@
       on.map(card).join('') +
       '<button class="btn line" type="button" data-newfrom="' + day + '">+ Add booking from ' + fmt(day) + '</button>';
     $('#dayinfo').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  /* ---------- payment link: the pay page with this stay filled in (no names or numbers in the link) ---------- */
+  function payLink(b) {
+    const q = new URLSearchParams({ ci: b.check_in, co: b.check_out, s: b.stay || 'excl' });
+    if (b.guests) q.set('g', b.guests); if (b.quote_total) q.set('t', b.quote_total);
+    return 'https://treeringsresort.com/pay/?' + q.toString();
+  }
+  document.addEventListener('click', async (e) => {
+    const t = e.target.closest('[data-paylink]'); if (!t) return;
+    const b = rows.find(x => x.id === +t.dataset.paylink); if (!b) return;
+    if (!b.quote_total && !confirm('No total price on this booking yet, so the guest will not see the amount to pay. Copy the link anyway? (Tap Edit to add the price.)')) return;
+    const msg = 'Thank you! To lock your date, please pay the 50% down payment and send us your details here:\n' + payLink(b) +
+                '\n\nIt shows the amount, our GCash and BPI QR codes, and our booking form. After paying, send the form and your payment screenshot in this chat.';
+    try { await navigator.clipboard.writeText(msg); toast('Copied. Paste it in the guest\'s chat.'); }
+    catch { prompt('Copy this and send it to the guest:', msg); }
   });
 
   /* ---------- actions on cards ---------- */

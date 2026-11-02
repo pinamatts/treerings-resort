@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0C1A4B">
+<title>Lock Your Date · Tree Rings</title>
+<meta name="description" content="Pay the 50% down payment and send your booking details to Tree Rings Beach Resort.">
+<meta property="og:title" content="Lock your date at Tree Rings Beach Resort">
+<meta property="og:description" content="Pay the 50% down payment by GCash or BPI, then send your details in one tap.">
+<meta property="og:image" content="https://treeringsresort.com/img/hero.jpg">
+<link rel="icon" href="../img/logo-fb.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Federo&family=Jost:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --night: #071030; --navy: #0C1A4B; --navy-2: #14245C;
+    --gold: #C9A24F; --gold-2: #E2C27C; --gold-soft: #F3E6C6;
+    --ivory: #F6F2EA; --ivory-2: #ECE5D6; --paper: #FFFDF8;
+    --ink: #0C1A4B; --ink-2: #4A5478; --line: #D9CFBB; --green: #2F6B45; --red: #A8322D;
+    --display: 'Federo', 'Jost', sans-serif; --ui: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--ivory); color: var(--ink); font: 400 16px/1.55 var(--ui); }
+  button, input, select { font: inherit; color: inherit; }
+  [hidden] { display: none !important; }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 0 16px; }
+
+  header { background: var(--navy) url('../img/pool-dusk.jpg') center/cover; position: relative; color: var(--ivory); padding: calc(18px + env(safe-area-inset-top, 0px)) 0 30px; }
+  header::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,16,48,.72), rgba(7,16,48,.92)); }
+  header .wrap { position: relative; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .mark { width: 38px; height: 38px; fill: none; stroke: var(--gold); stroke-width: 6; flex: none; }
+  .brand b { font: 400 19px/1.1 var(--display); letter-spacing: .08em; display: block; }
+  .brand small { font-size: 10px; letter-spacing: .32em; color: var(--gold-2); text-transform: uppercase; }
+  h1 { font: 400 clamp(30px, 8vw, 40px)/1.08 var(--display); margin: 26px 0 8px; letter-spacing: .01em; }
+  .lede { color: rgba(246,242,234,.8); margin: 0; }
+
+  .sum { background: var(--paper); color: var(--ink); border-radius: 18px; padding: 18px; margin-top: 20px; box-shadow: 0 14px 40px rgba(7,16,48,.35); }
+  .sum .what { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 4px; }
+  .sum .when { font: 400 19px/1.3 var(--display); margin: 0; }
+  .sum dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+  .sum dt { color: var(--ink-2); } .sum dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  .sum .dp dt, .sum .dp dd { color: var(--ink); font-weight: 500; font-size: 18px; }
+  .sum .dp dd { font: 400 26px/1 var(--display); color: var(--navy); }
+
+  main { padding: 8px 0 60px; }
+  .step { margin-top: 30px; }
+  .step h2 { display: flex; align-items: center; gap: 12px; font: 400 23px/1.2 var(--display); margin: 0 0 6px; }
+  .step h2 i { font-style: normal; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gold); color: var(--night); font: 500 15px/1 var(--ui); flex: none; }
+  .hint { color: var(--ink-2); margin: 0 0 14px; font-size: 15px; }
+
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: var(--ivory-2); padding: 4px; border-radius: 14px; }
+  .tabs button { border: 0; background: none; border-radius: 10px; padding: 11px; font-weight: 500; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--paper); box-shadow: 0 1px 3px rgba(12,26,75,.15); }
+  .qr { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-top: 10px; text-align: center; }
+  .qr img { width: min(100%, 300px); height: auto; display: block; margin: 0 auto; image-rendering: pixelated; }
+  .qr .who { font-weight: 500; margin: 10px 0 0; letter-spacing: .02em; }
+  .qr .acct { color: var(--ink-2); font-size: 14px; margin: 2px 0 14px; }
+  .qr .row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .how { margin: 12px 0 0; font-size: 14px; color: var(--ink-2); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 12px 20px; min-height: 48px; font-weight: 500; text-decoration: none; cursor: pointer; letter-spacing: .02em; }
+  .btn:active { transform: translateY(1px); }
+  .gold { background: var(--gold); color: var(--night); }
+  .navy { background: var(--navy); color: var(--ivory); }
+  .line { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+  .wide { width: 100%; }
+
+  .f2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .f3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .f { margin-bottom: 12px; }
+  .f label { display: block; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 4px; }
+  .f input, .f select { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); min-height: 48px; }
+  .f input:focus, .f select:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .err { color: var(--red); min-height: 22px; font-size: 15px; margin: 4px 0 8px; }
+
+  .send { display: grid; gap: 10px; }
+  .after { background: #E6F0E8; color: var(--green); border-radius: 14px; padding: 14px 16px; margin-top: 12px; font-size: 15px; }
+  .rules { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 6px 18px; margin-top: 30px; }
+  .rules li { padding: 12px 0; border-bottom: 1px solid var(--ivory-2); list-style: none; display: grid; grid-template-columns: 120px 1fr; gap: 10px; font-size: 15px; }
+  .rules li:last-child { border: 0; }
+  .rules b { font-weight: 500; }
+  .rules ul { margin: 0; padding: 0; }
+  footer { text-align: center; color: var(--ink-2); font-size: 14px; padding: 10px 16px 40px; }
+  footer a { color: var(--ink); }
+  .toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--night); color: var(--ivory); padding: 10px 18px; border-radius: 999px; font-size: 15px; z-index: 9; }
+  @media (max-width: 380px) { .f3 { grid-template-columns: 1fr 1fr; } .rules li { grid-template-columns: 1fr; gap: 2px; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="disc"><circle cx="100" cy="100" r="88"/></clipPath></defs></svg>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="../"><svg class="mark" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="88"/><path d="M36 110a64 64 0 0 1 128 0"/><path d="M58 110a42 42 0 0 1 84 0"/><path d="M80 110a20 20 0 0 1 40 0"/><g clip-path="url(#disc)"><path d="M4 134q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path d="M4 158q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/></g></svg>
+      <span><b>TREE RINGS</b><small>Beach Resort</small></span></a>
+    <h1>Lock your date.</h1>
+    <p class="lede">Three steps: pay the 50% down payment, fill in your details, and send them to us on Messenger.</p>
+    <div class="sum" id="sum" hidden>
+      <p class="what" id="sWhat"></p>
+      <p class="when" id="sWhen"></p>
+      <dl>
+        <dt>Total</dt><dd id="sTotal"></dd>
+        <div class="dp" style="display:contents"><dt>Down payment, 50%</dt><dd id="sDp"></dd></div>
+        <dt>Balance at the resort</dt><dd id="sBal"></dd>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="step" aria-labelledby="s1">
+    <h2 id="s1"><i>1</i>Pay the down payment</h2>
+    <p class="hint" id="payHint">Scan with GCash, Maya or any bank app. On a phone, save the QR to your photos and upload it in your app.</p>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-pay="gcash">GCash</button>
+      <button role="tab" aria-selected="false" data-pay="bpi">BPI</button>
+    </div>
+    <div class="qr" id="qrbox">
+      <img id="qrImg" src="../img/pay/gcash-qr.png" width="720" height="720" alt="GCash QR code for Tree Rings down payments">
+      <p class="who" id="qrWho">MA*T ER****N M.</p>
+      <p class="acct" id="qrAcct">GCash · InstaPay QR</p>
+      <div class="row">
+        <a class="btn line" id="qrSave" href="../img/pay/gcash-qr.png" download="TreeRings-GCash-QR.png">Save QR to photos</a>
+      </div>
+      <p class="how" id="qrHow">GCash: Pay QR, then Upload QR and pick the saved image.</p>
+    </div>
+  </section>
+
+  <section class="step" aria-labelledby="s2">
+    <h2 id="s2"><i>2</i>Fill in your details</h2>
+    <p class="hint">This is our booking form. It goes to us with your message.</p>
+    <form id="form" novalidate>
+      <div class="f"><label for="nm">Name</label><input id="nm" autocomplete="name" required></div>
+      <div class="f2">
+        <div class="f"><label for="ph">Mobile number</label><input id="ph" inputmode="tel" autocomplete="tel" required></div>
+        <div class="f"><label for="cars">Cars or motors to park</label><input id="cars" inputmode="numeric" placeholder="e.g. 3 cars"></div>
+      </div>
+      <div class="f2">
+        <div class="f"><label for="ci">Check in</label><input id="ci" type="date" required></div>
+        <div class="f"><label for="co">Check out</label><input id="co" type="date" required></div>
+      </div>
+      <div class="f2">
+        <div class="f"><label for="stay">Stay</label>
+          <select id="stay"><option value="excl">Exclusive use</option><option value="house">Entire house</option><option value="rooms">Rooms</option><option value="day">Day use</option></select></div>
+        <div class="f"><label for="tin">Time check-in</label>
+          <select id="tin"><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM or later</option><option>8:00 AM (day use)</option><option>1:00 PM (day use)</option></select></div>
+      </div>
+      <div class="f" id="roomsWrap" hidden><label for="rooms">Which rooms</label><input id="rooms" placeholder="e.g. Magkono and Narra"></div>
+      <div class="f3">
+        <div class="f"><label for="ad">Adults</label><input id="ad" type="number" inputmode="numeric" min="0"></div>
+        <div class="f"><label for="k12">Kids 12 &amp; below</label><input id="k12" type="number" inputmode="numeric" min="0"></div>
+        <div class="f"><label for="k7">Kids 7 &amp; below</label><input id="k7" type="number" inputmode="numeric" min="0"></div>
+      </div>
+      <div class="f2">
+        <div class="f"><label for="tot">Total price (₱)</label><input id="tot" type="number" inputmode="numeric" min="0"></div>
+        <div class="f"><label for="ref">Payment reference no.</label><input id="ref" placeholder="From your receipt"></div>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+    </form>
+  </section>
+
+  <section class="step" aria-labelledby="s3">
+    <h2 id="s3"><i>3</i>Send it to us</h2>
+    <p class="hint">Your booking form is ready to send. Then attach the screenshot of your payment in the same chat.</p>
+    <div class="send">
+      <button class="btn gold wide" type="button" id="sendFb">Send on Messenger</button>
+      <button class="btn line wide" type="button" id="sendSms">Send as a text to 0935 858 8508</button>
+    </div>
+    <div class="after" id="after" hidden></div>
+  </section>
+
+  <div class="rules">
+    <ul>
+      <li><b>Your date</b><span>Locked once the 50% down payment reaches us. We confirm on Messenger.</span></li>
+      <li><b>Balance</b><span>Paid at the resort, on or before your stay.</span></li>
+      <li><b>At check-in</b><span>₱1,000 cash deposit and one valid ID.</span></li>
+      <li><b>Times</b><span>Check in from 2 PM, check out by 11 AM.</span></li>
+      <li><b>Questions</b><span>Call or text 0935 858 8508, or message us on Facebook.</span></li>
+    </ul>
+  </div>
+</main>
+
+<footer>Tree Rings Beach Resort · Luyang, Carmen, Cebu · <a href="../">treeringsresort.com</a></footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+  /* Staff send this page from the front desk with the stay filled in (?ci=&co=&g=&s=&t=). Names and phone
+     numbers never go in the link; the guest types them here. Sending also drops the details into the front desk. */
+  const PAGE = '61572305588687', PHONE = '+639358588508';
+  const DB = 'https://acgnwdgjoinmurxqbtfq.supabase.co/rest/v1/', DBKEY = 'sb_publishable_aTdBk37K9q4iKuPX-Ab0Bw_QJ_-LZ0M';
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const peso = n => '₱' + Number(n).toLocaleString('en-PH');
+  const parse = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+  const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  const fmt = s => parse(s).toLocaleDateString('en-PH', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  const STAY = { excl: 'Exclusive use', house: 'Entire house', rooms: 'Rooms', day: 'Day use' };
+  const PAY = {
+    gcash: { img: '../img/pay/gcash-qr.png', who: 'MA*T ER****N M.', acct: 'GCash · InstaPay QR', file: 'TreeRings-GCash-QR.png', alt: 'GCash QR code for Tree Rings down payments',
+             how: 'GCash: Pay QR, then Upload QR and pick the saved image.' },
+    bpi: { img: '../img/pay/bpi-qr.png', who: 'Matt M', acct: 'BPI · account ending 718 · InstaPay QR', file: 'TreeRings-BPI-QR.png', alt: 'BPI QR code for Tree Rings down payments',
+           how: 'BPI app: Pay QR, then choose the saved image. Other banks: InstaPay QR.' },
+  };
+  let via = 'gcash';
+  function toast(t) { const el = $('#toast'); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2600); }
+
+  /* ---------- the stay from the link ---------- */
+  const q = new URLSearchParams(location.search);
+  const valid = s => /^\d{4}-\d{2}-\d{2}$/.test(s || '');
+  if (valid(q.get('ci'))) $('#ci').value = q.get('ci');
+  if (valid(q.get('co'))) $('#co').value = q.get('co');
+  if (STAY[q.get('s')]) $('#stay').value = q.get('s');
+  if (+q.get('g') > 0) $('#ad').value = Math.min(60, +q.get('g'));
+  if (+q.get('t') > 0) $('#tot').value = Math.round(+q.get('t'));
+  if ($('#stay').value === 'day') $('#tin').value = '8:00 AM (day use)';
+
+  function nights() { const a = $('#ci').value, b = $('#co').value; return valid(a) && valid(b) ? Math.round((parse(b) - parse(a)) / 864e5) : 0; }
+  function paintSum() {
+    const t = +$('#tot').value, a = $('#ci').value, n = nights(), s = $('#stay').value;
+    $('#roomsWrap').hidden = s !== 'rooms';
+    if (!valid(a) || !(t > 0)) { $('#sum').hidden = true; $('#payHint').textContent = 'Send 50% of your total. Scan with GCash, Maya or any bank app; on a phone, save the QR and upload it in your app.'; return; }
+    const dp = Math.ceil(t / 2);
+    $('#sum').hidden = false;
+    $('#sWhat').textContent = STAY[s] + (+$('#ad').value ? ' · ' + (+$('#ad').value + +$('#k12').value + +$('#k7').value) + ' guests' : '');
+    $('#sWhen').textContent = s === 'day' || n < 1 ? 'Day use on ' + fmt(a) : fmt(a) + ' to ' + fmt($('#co').value) + ' · ' + n + ' night' + (n > 1 ? 's' : '');
+    $('#sTotal').textContent = peso(t); $('#sDp').textContent = peso(dp); $('#sBal').textContent = peso(t - dp);
+    $('#payHint').textContent = 'Send ' + peso(dp) + ' by scanning with GCash, Maya or any bank app. On a phone, save the QR to your photos and upload it in your app.';
+  }
+  ['ci', 'co', 'stay', 'ad', 'k12', 'k7', 'tot'].forEach(id => $('#' + id).addEventListener('input', paintSum));
+  $('#ci').addEventListener('change', () => { if (!$('#co').value || $('#co').value <= $('#ci').value) { const d = parse($('#ci').value); d.setDate(d.getDate() + 1); $('#co').value = iso(d); } paintSum(); });
+  paintSum();
+
+  /* ---------- payment tabs ---------- */
+  $$('[data-pay]').forEach(b => b.addEventListener('click', () => {
+    via = b.dataset.pay; const p = PAY[via];
+    $$('[data-pay]').forEach(x => x.setAttribute('aria-selected', x === b));
+    $('#qrImg').src = p.img; $('#qrImg').alt = p.alt; $('#qrWho').textContent = p.who; $('#qrAcct').textContent = p.acct;
+    $('#qrSave').href = p.img; $('#qrSave').download = p.file; $('#qrHow').textContent = p.how;
+  }));
+
+  /* ---------- the booking form, in the format the resort already uses ---------- */
+  function message() {
+    const t = +$('#tot').value, dp = Math.ceil(t / 2), s = $('#stay').value;
+    const pax = (+$('#ad').value || 0) + (+$('#k12').value || 0) + (+$('#k7').value || 0);
+    return [
+      'BOOKING CONFIRMATION', STAY[s].toUpperCase(), '',
+      'Time Check-in: ' + $('#tin').value,
+      'Check-In: ' + fmt($('#ci').value),
+      'Check Out: ' + fmt($('#co').value), '',
+      'Name: ' + $('#nm').value.trim(),
+      'Cell.Number: ' + $('#ph').value.trim(),
+      'Cars / motors to park: ' + ($('#cars').value.trim() || 'none'), '',
+      '✅Room: ' + (s === 'rooms' ? ($('#rooms').value.trim() || 'Rooms') : STAY[s]), '',
+      'Pax: ' + pax,
+      'Adult- ' + ($('#ad').value || 0),
+      '12 years old below- ' + ($('#k12').value || 0),
+      '7 years old below- ' + ($('#k7').value || 0), '',
+      'Total: ' + (t ? peso(t) : 'please confirm'),
+      'DP 50%: ' + (t ? peso(dp) : '') + ' sent via ' + (via === 'gcash' ? 'GCash' : 'BPI') + ($('#ref').value.trim() ? ', ref ' + $('#ref').value.trim() : ''),
+      'Balance: ' + (t ? peso(t - dp) : ''), '',
+      'Payment screenshot attached.'
+    ].join('\n');
+  }
+  function ready() {
+    const e = $('#err');
+    const need = [['nm', 'your name'], ['ph', 'your mobile number'], ['ci', 'your check-in date'], ['co', 'your check-out date']].find(([id]) => !$('#' + id).value.trim());
+    if (need) { e.textContent = 'Please add ' + need[1] + '.'; $('#' + need[0]).focus(); return false; }
+    if ($('#co').value <= $('#ci').value) { e.textContent = 'Check-out has to be after check-in. For a day visit, check out the next day.'; $('#co').focus(); return false; }
+    if (!((+$('#ad').value || 0) + (+$('#k12').value || 0) + (+$('#k7').value || 0))) { e.textContent = 'Please add how many guests are coming.'; $('#ad').focus(); return false; }
+    e.textContent = ''; return true;
+  }
+  let logged = '';
+  function record() {
+    const s = $('#stay').value, key = message(); if (key === logged) return; logged = key;
+    const pax = (+$('#ad').value || 0) + (+$('#k12').value || 0) + (+$('#k7').value || 0);
+    const body = { check_in: $('#ci').value, check_out: $('#co').value, stay: s, guests: Math.min(60, pax), name: $('#nm').value.trim().slice(0, 120),
+                   phone: $('#ph').value.trim().slice(0, 40), quote_total: +$('#tot').value || null,
+                   notes: ('DOWN PAYMENT SENT (guest says) via ' + (via === 'gcash' ? 'GCash' : 'BPI') + ($('#ref').value.trim() ? ', ref ' + $('#ref').value.trim() : '') +
+                           '. Check the receipt in Messenger. Check-in ' + $('#tin').value + ', ' + ($('#cars').value.trim() || 'no') + ' vehicles.' + (s === 'rooms' && $('#rooms').value.trim() ? ' Rooms: ' + $('#rooms').value.trim() + '.' : '')).slice(0, 1000) };
+    fetch(DB + 'tr_bookings', { method: 'POST', keepalive: true, body: JSON.stringify(body), headers: { apikey: DBKEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' } }).catch(() => {});
+  }
+  const copy = async t => { try { await navigator.clipboard.writeText(t); return true; } catch { return false; } };
+  function done(how) {
+    $('#after').hidden = false;
+    $('#after').innerHTML = '<b>Almost done.</b> ' + how + ' Then attach the screenshot of your payment in the same chat, and we confirm your date.';
+  }
+  $('#sendFb').addEventListener('click', async () => {
+    if (!ready()) return; record(); const t = message(); const ok = await copy(t);
+    done(ok ? 'Your form is copied. If it does not appear in the chat, tap and hold the message box and paste it.' : 'Send the message that opens in Messenger.');
+    window.open('https://m.me/' + PAGE + '?text=' + encodeURIComponent(t), '_blank', 'noopener');
+  });
+  $('#sendSms').addEventListener('click', () => {
+    if (!ready()) return; record();
+    done('Send the text that opens.');
+    location.href = 'sms:' + PHONE + (/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?') + 'body=' + encodeURIComponent(message());
+  });
+</script>
+</body>
+</html>
