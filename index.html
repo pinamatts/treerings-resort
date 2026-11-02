@@ -695,6 +695,8 @@
     },
   };
   const PAGE = '61572305588687', PHONE = '+639358588508', MAX = 30, INCLUDED = 27; /* packages cover 27; extra beds take it to 30 at the extra-adult rate */
+  /* front desk database: guests can only add a request and read which dates are taken (treeringsresort.com/desk) */
+  const DB = 'https://acgnwdgjoinmurxqbtfq.supabase.co/rest/v1/', DBKEY = 'sb_publishable_aTdBk37K9q4iKuPX-Ab0Bw_QJ_-LZ0M';
   const peso = n => '₱' + n.toLocaleString('en-PH');
 
   /* ---------- header and phone bar ---------- */
@@ -923,6 +925,16 @@
     '<a class="btn gold" target="_blank" rel="noopener" href="' + messenger(t) + '">Send on Messenger</a>' +
     '<a class="btn line" href="' + sms(t) + '">Send as text</a>' +
     '<button class="btn line" type="button" data-copy>Copy</button></div>';
+  /* each quote a guest sends lands in the front desk as a request, once */
+  let lastReq = null, sentReq = '';
+  document.addEventListener('click', (e) => {
+    const s = e.target.closest('#quote .send a, #quote .send [data-copy]'); if (!s || !lastReq) return;
+    const via = s.matches('[data-copy]') ? 'copied the message' : /m\.me/.test(s.href) ? 'sent on Messenger' : 'sent as a text';
+    const body = { ...lastReq, notes: lastReq.notes + '. Guest ' + via + ' from the website quote.' };
+    const key = JSON.stringify(lastReq); if (key === sentReq) return; sentReq = key;
+    fetch(DB + 'tr_bookings', { method: 'POST', keepalive: true, body: JSON.stringify(body),
+      headers: { apikey: DBKEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' } }).catch(() => {});
+  });
   document.addEventListener('click', async (e) => {
     const b = e.target.closest('[data-copy]'); if (!b) return;
     try { await navigator.clipboard.writeText(b.closest('[data-msg]').dataset.msg); b.textContent = 'Copied'; }
@@ -947,6 +959,9 @@
       return;
     }
     const clash = bookedIn(a, parse(depart.value));
+    const dd = parse(depart.value);
+    lastReq = { check_in: iso(a), check_out: iso(dd && dd > a ? dd : new Date(a.getFullYear(), a.getMonth(), a.getDate() + 1)),
+                stay: /^Day/.test(q.what) ? 'day' : /^Rooms/.test(q.what) ? 'rooms' : 'excl', guests: g, quote_total: q.total, notes: q.summary + ' guests' };
     const msg = 'Hi Tree Rings! Is this open? ' + q.summary + ' guests. The site quoted ' + peso(q.total) + '.';
     qEl.innerHTML =
       '<div><p class="what">' + q.what + ' · ' + g + ' guests</p><p class="total">' + peso(q.total) + '</p>' +
@@ -1009,14 +1024,20 @@
     }
   });
   $$('[data-cal]').forEach(b => b.addEventListener('click', () => { calStart.setMonth(calStart.getMonth() + +b.dataset.cal); paintCal(); }));
-  fetch('booked.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => {
-    if (!j || !Array.isArray(j.booked)) return;
-    j.booked.forEach(([s, e]) => { for (let t = parse(s), end = parse(e); t < end; t.setDate(t.getDate() + 1)) BOOKED.add(iso(t)); });
+  /* taken dates come from two places: the Airbnb calendar (booked.json, refreshed hourly) and the front desk */
+  const addRange = (s, e) => { for (let t = parse(s), end = parse(e); t < end; t.setDate(t.getDate() + 1)) BOOKED.add(iso(t)); };
+  Promise.all([
+    fetch('booked.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch(DB + 'rpc/tr_busy_dates', { method: 'POST', body: '{}', headers: { apikey: DBKEY, 'Content-Type': 'application/json' } })
+      .then(r => r.ok ? r.json() : null).catch(() => null)
+  ]).then(([air, desk]) => {
+    if (air && Array.isArray(air.booked)) air.booked.forEach(([s, e]) => addRange(s, e));
+    if (Array.isArray(desk)) desk.forEach(r => addRange(r.check_in, r.check_out));
+    if (!air && !desk) return;
     $('#dates').hidden = false;
-    $('#calnote').textContent = 'Calendar last changed ' + new Date(j.updated).toLocaleString('en-PH', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) +
-      '. We always confirm your date on Messenger.';
+    $('#calnote').textContent = 'Updated as bookings come in. We always confirm your date on Messenger.';
     paintCal();
-  }).catch(() => {});
+  });
 
   $('#enquiryform').addEventListener('submit', (e) => {
     e.preventDefault();
