@@ -154,6 +154,9 @@
   .quote li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
   .quote li .v { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .quote .alt { margin-top: 12px; font-size: 15px; }
+  .quote .pick { display: inline-grid; grid-auto-flow: column; gap: 4px; padding: 4px; border-radius: 999px; background: var(--ivory-2); margin-bottom: 14px; }
+  .quote .pick button { border: 0; background: none; border-radius: 999px; padding: 8px 16px; font: 500 13px/1 var(--ui); letter-spacing: .06em; color: var(--ink-2); cursor: pointer; }
+  .quote .pick button.on { background: var(--navy); color: var(--ivory); }
   .quote .note { margin-top: 10px; font-size: 13.5px; color: var(--ink-2); }
   .send { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
   .send .btn:first-child { grid-column: 1 / -1; }
@@ -925,6 +928,17 @@
              note: 'Check-out at 11 AM.' + (extraX ? ' Extra beds are priced as adults; children cost less.' : ''), summary: 'Exclusive use, ' + span + ', for ' + guests };
   }
 
+  /* the entire house: all six rooms, priced per night, Saturday and Sunday nights at the weekend rate */
+  let wantHouse = false;
+  function houseQuote(a, d, guests) {
+    const nights = [];
+    for (let t = new Date(a); t < d; t.setDate(t.getDate() + 1)) nights.push(new Date(t));
+    const h = RATES.house, total = nights.reduce((s, n) => s + (isWE(n) ? h.we : h.wd), 0), span = fmt(a) + ' to ' + fmt(d);
+    return { what: 'Entire house · ' + span, total,
+             lines: [['All six rooms, the pool and the shore to yourselves', peso(total)], ...nights.map(n => [fmt(n) + ' night', (isWE(n) ? 'weekend ' : 'weekday ') + peso(isWE(n) ? h.we : h.wd)])],
+             note: 'Adds the Couple and Masters rooms to the five guest rooms. Check-out at 11 AM.', summary: 'Entire house, ' + span + ', for ' + guests };
+  }
+
   const messenger = t => 'https://m.me/' + PAGE + '?text=' + encodeURIComponent(t);
   const sms = t => 'sms:' + PHONE + (/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?') + 'body=' + encodeURIComponent(t);
   const sendButtons = t => '<div class="send" data-msg="' + esc(t) + '">' +
@@ -952,14 +966,20 @@
   });
 
   const qEl = $('#quote'), arrive = $('#arrive'), depart = $('#depart');
+  /* switch between our pick and the entire house */
+  qEl.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-pick]'); if (!b) return;
+    wantHouse = b.dataset.pick === '1'; $('#bookbar').requestSubmit();
+  });
   const today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   arrive.min = depart.min = today.toISOString().slice(0, 10);
   arrive.addEventListener('change', () => { depart.min = arrive.value; if (depart.value && depart.value < arrive.value) depart.value = ''; });
 
   $('#bookbar').addEventListener('submit', (e) => {
     e.preventDefault();
-    const g = Math.max(1, num($('#party').value) || 1), a = parse(arrive.value);
-    const q = quote(a, parse(depart.value), g);
+    const g = Math.max(1, num($('#party').value) || 1), a = parse(arrive.value), dv = parse(depart.value);
+    const base = quote(a, dv, g), overnight = !!(a && dv && dv > a);
+    const q = wantHouse && overnight && !base.err && !base.big ? houseQuote(a, dv, g) : base;
     qEl.hidden = false;
     if (q.err) { qEl.innerHTML = '<p class="note" style="margin:0">' + q.err + '</p>'; arrive.focus(); return; }
     if (q.big) {
@@ -971,10 +991,12 @@
     const clash = bookedIn(a, parse(depart.value));
     const dd = parse(depart.value);
     lastReq = { check_in: iso(a), check_out: iso(dd && dd > a ? dd : new Date(a.getFullYear(), a.getMonth(), a.getDate() + 1)),
-                stay: /^Day/.test(q.what) ? 'day' : /^Rooms/.test(q.what) ? 'rooms' : 'excl', guests: g, quote_total: q.total, notes: q.summary + ' guests' };
+                stay: /^Day/.test(q.what) ? 'day' : /^Rooms/.test(q.what) ? 'rooms' : /^Entire/.test(q.what) ? 'house' : 'excl', guests: g, quote_total: q.total, notes: q.summary + ' guests' };
     const msg = 'Hi Tree Rings! Is this open? ' + q.summary + ' guests. The site quoted ' + peso(q.total) + '.';
     qEl.innerHTML =
-      '<div><p class="what">' + q.what + ' · ' + g + ' guests</p><p class="total">' + peso(q.total) + '</p>' +
+      '<div>' + (overnight ? '<div class="pick" role="group" aria-label="Choose your stay"><button type="button" data-pick="0"' + (wantHouse ? '' : ' class="on"') + '>' +
+        (/^Rooms/.test(base.what) ? 'Rooms' : 'Exclusive use') + '</button><button type="button" data-pick="1"' + (wantHouse ? ' class="on"' : '') + '>Entire house</button></div>' : '') +
+      '<p class="what">' + q.what + ' · ' + g + ' guests</p><p class="total">' + peso(q.total) + '</p>' +
       '<ul>' + q.lines.map(([k, v]) => '<li><span>' + k + '</span><span class="v">' + v + '</span></li>').join('') + '</ul>' +
       (q.alt ? '<p class="alt">' + q.alt + '</p>' : '') +
       (clash ? '<p class="warn">Heads up: ' + clash + ' already shows as booked on our calendar. Send it anyway and we will suggest the nearest open dates.</p>' : '') +
