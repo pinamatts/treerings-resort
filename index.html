@@ -66,6 +66,9 @@
   .btn.gold { background: var(--gold); border-color: var(--gold); color: var(--navy); }
   .btn.gold:hover { background: var(--gold-2); border-color: var(--gold-2); }
   .btn.line:hover { background: var(--ivory); color: var(--navy); border-color: var(--ivory); }
+  .btn.navy { background: var(--navy); border-color: var(--navy); color: var(--ivory); }
+  .btn.navy:hover { background: var(--navy-2); border-color: var(--navy-2); }
+  .quote .book { width: 100%; white-space: normal; text-align: center; }
   .light .btn.line:hover, .quote .btn.line:hover, .said .btn.line:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
 
   /* the mark, drawn from the logo: outer ring, two sunrise arcs, the sun, three waves */
@@ -701,7 +704,10 @@
 
   /* ---------- header and phone bar ---------- */
   const mast = $('#mast'), mbar = $('#mbar');
-  new IntersectionObserver(([e]) => { mast.classList.toggle('stuck', !e.isIntersecting); mbar.classList.toggle('show', !e.isIntersecting); },
+  /* the header turns solid as soon as anything scrolls under it */
+  const solid = () => mast.classList.toggle('stuck', scrollY > 24);
+  addEventListener('scroll', solid, { passive: true }); solid();
+  new IntersectionObserver(([e]) => { mbar.classList.toggle('show', !e.isIntersecting); },
     { rootMargin: '-80px 0px 0px 0px' }).observe($('#top'));
   $$('[data-goquote]').forEach(a => a.addEventListener('click', (e) => {
     e.preventDefault();
@@ -974,7 +980,10 @@
       (clash ? '<p class="warn">Heads up: ' + clash + ' already shows as booked on our calendar. Send it anyway and we will suggest the nearest open dates.</p>' : '') +
       '<div class="dp"><span>To lock the date: 50% down payment</span><b>' + peso(Math.ceil(q.total / 2)) + '</b><span>Balance of ' + peso(q.total - Math.ceil(q.total / 2)) + ' at the resort, on or before your stay.</span></div>' +
       '<p class="note">' + (q.note ? q.note + ' ' : '') + 'Holidays may be priced higher. We confirm the date and the price when we reply.</p></div>' +
-      '<div><p class="note" style="margin:0 0 12px">Send this to the resort and we will check the date for you.</p>' + sendButtons(msg) + '</div>';
+      (clash ? '<div><p class="note" style="margin:0 0 12px">Send this to the resort and we will check the date for you.</p>' + sendButtons(msg) + '</div>'
+             : '<div><p class="note" style="margin:0 0 12px">Your dates are open on our calendar. Ready to book?</p>' +
+               '<a class="btn navy book" href="pay/?' + new URLSearchParams({ ci: lastReq.check_in, co: lastReq.check_out, s: lastReq.stay, g: g, t: q.total }) + '">Book now · pay ' + peso(Math.ceil(q.total / 2)) + '</a>' +
+               '<p class="note" style="margin:22px 0 12px">Questions first? Send this quote and we will reply.</p>' + sendButtons(msg) + '</div>');
   });
 
   /* ---------- open dates, from booked.json (written every hour from the Airbnb calendar) ----------
