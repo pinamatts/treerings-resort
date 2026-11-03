@@ -1,7 +1,8 @@
 """Turn the resort's calendar feed(s) into booked.json for the website.
 
 AIRBNB_ICAL holds one or more iCal export links (Airbnb, or any other calendar
-that exports .ics), separated by spaces or new lines. Only the dates leave this
+that exports .ics), separated by spaces or new lines. The workflow appends the
+BOOKING_ICAL secret (Booking.com's export) to it. Only the dates leave this
 script: no guest names, no booking codes. Each range is [first night, check-out
 day), matching how the site reads it. booked.json is rewritten only when the
 dates change, so the repo is not committed to every hour for nothing.

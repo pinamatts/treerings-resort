@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Read the calendar feed
         env:
-          AIRBNB_ICAL: ${{ secrets.AIRBNB_ICAL }}
+          AIRBNB_ICAL: ${{ secrets.AIRBNB_ICAL }} ${{ secrets.BOOKING_ICAL }}
         run: python3 .github/sync_calendar.py
       - name: Publish if the dates changed
         run: |
