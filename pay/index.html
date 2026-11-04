@@ -29,7 +29,9 @@
   [hidden] { display: none !important; }
   .wrap { max-width: 620px; margin: 0 auto; padding: 0 16px; }
 
-  header { background: var(--navy) url('../img/pool-dusk.jpg') center/cover; position: relative; color: var(--ivory); padding: calc(18px + env(safe-area-inset-top, 0px)) 0 30px; }
+  .alert { background: var(--gold); color: var(--navy); font-size: 13.5px; line-height: 1.35; text-align: center; padding: calc(8px + env(safe-area-inset-top, 0px)) 20px 8px; }
+  .alert a { color: var(--navy); font-weight: 500; white-space: nowrap; }
+  header { background: var(--navy) url('../img/pool-dusk.jpg') center/cover; position: relative; color: var(--ivory); padding: 18px 0 30px; }
   header::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,16,48,.72), rgba(7,16,48,.92)); }
   header .wrap { position: relative; }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
@@ -92,6 +94,7 @@
 </style>
 </head>
 <body>
+<div class="alert" role="note">Only pay after you have talked to us at <a href="tel:+639471757239">0947 175 7239</a>. A fake Facebook page is copying us. <a href="../#official">See which page is real</a>.</div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="disc"><circle cx="100" cy="100" r="88"/></clipPath></defs></svg>
 
 <header>
@@ -169,7 +172,7 @@
     <p class="hint">Your booking form is ready to send. Then attach the screenshot of your payment in the same chat.</p>
     <div class="send">
       <button class="btn gold wide" type="button" id="sendFb">Send on Messenger</button>
-      <button class="btn line wide" type="button" id="sendSms">Send as a text to 0935 858 8508</button>
+      <button class="btn line wide" type="button" id="sendSms">Send as a text to 0947 175 7239</button>
     </div>
     <div class="after" id="after" hidden></div>
   </section>
@@ -180,7 +183,7 @@
       <li><b>Balance</b><span>Paid at the resort, on or before your stay.</span></li>
       <li><b>At check-in</b><span>₱1,000 cash deposit and one valid ID.</span></li>
       <li><b>Times</b><span>Check in from 2 PM, check out by 11 AM.</span></li>
-      <li><b>Questions</b><span>Call or text 0935 858 8508, or message us on Facebook.</span></li>
+      <li><b>Questions</b><span>Call or text 0947 175 7239, or message us on Facebook.</span></li>
     </ul>
   </div>
 </main>
@@ -191,7 +194,7 @@
 <script>
   /* Staff send this page from the front desk with the stay filled in (?ci=&co=&g=&s=&t=). Names and phone
      numbers never go in the link; the guest types them here. Sending also drops the details into the front desk. */
-  const PAGE = '61572305588687', PHONE = '+639358588508';
+  const PAGE = '61572305588687', PHONE = '+639471757239';
   const DB = 'https://acgnwdgjoinmurxqbtfq.supabase.co/rest/v1/', DBKEY = 'sb_publishable_aTdBk37K9q4iKuPX-Ab0Bw_QJ_-LZ0M';
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
   const peso = n => '₱' + Number(n).toLocaleString('en-PH');

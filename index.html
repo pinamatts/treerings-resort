@@ -92,6 +92,33 @@
   @media (max-width: 1020px) { .mast nav { display: none; } }
   @media (max-width: 560px) { .mast .btn { display: none; } }
 
+  /* ---------- fake-page warning ---------- */
+  .alert { background: var(--gold); color: var(--navy); font-size: 13.5px; line-height: 1.35; letter-spacing: .02em; text-align: center; }
+  .alert p { padding: 8px max(20px, env(safe-area-inset-left)); }
+  .alert a { color: var(--navy); font-weight: 500; white-space: nowrap; }
+  .official { scroll-margin-top: 96px; }
+  .official .vs { display: grid; gap: 18px; margin-top: 48px; }
+  @media (min-width: 860px) { .official .vs { grid-template-columns: 1fr 1fr; } }
+  .official article { border: 1px solid var(--line); border-radius: 18px; padding: clamp(22px, 3vw, 34px); background: #FFFDF8; }
+  .official article.real { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset; }
+  .official article.fake { background: transparent; border-style: dashed; }
+  .official .tag { display: inline-block; font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .official .real .tag { background: var(--navy); color: var(--ivory); }
+  .official .fake .tag { background: #A8322D; color: #fff; }
+  .official h3 { margin-top: 16px; color: var(--navy); }
+  .official .fake h3 { text-decoration: line-through; text-decoration-color: #A8322D; text-decoration-thickness: 2px; }
+  .official ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 9px; color: var(--ink-2); }
+  .official li { padding-left: 26px; position: relative; }
+  .official .real li::before { content: '\2713'; position: absolute; left: 0; color: var(--gold); font-weight: 500; }
+  .official .fake li::before { content: '\2715'; position: absolute; left: 0; color: #A8322D; }
+  .official .real .btn { margin-top: 24px; }
+  .official .warn { margin-top: 20px; color: #A8322D; font-weight: 500; }
+  .official .check { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 28px; display: grid; gap: 12px; }
+  @media (min-width: 860px) { .official .check { grid-template-columns: 200px 1fr; } }
+  .official .check h3 { margin: 0; font-size: 1.4rem; }
+  .official .check ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-2); }
+  .official .check b { color: var(--navy); font-weight: 500; }
+
   /* ---------- hero ---------- */
   .hero { position: relative; min-height: 100svh; display: grid; grid-template-rows: 1fr auto; isolation: isolate; overflow: hidden; }
   .hero > img, .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
@@ -404,6 +431,7 @@
 </svg>
 
 <header class="mast" id="mast">
+  <div class="alert" role="note"><p>A fake Facebook page is copying our name and photos. <a href="#official">See which page is real</a> before you pay.</p></div>
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Tree Rings Beach Resort, back to top">
       <svg class="mark" viewBox="0 0 200 200" aria-hidden="true"><circle class="r" pathLength="1" cx="100" cy="100" r="88"/><path class="r" pathLength="1" d="M36 110a64 64 0 0 1 128 0"/><path class="r" pathLength="1" d="M58 110a42 42 0 0 1 84 0"/><path class="r" pathLength="1" d="M80 110a20 20 0 0 1 40 0"/><g clip-path="url(#disc)"><path class="r w" pathLength="1" d="M4 110q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 134q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 158q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/></g></svg>
@@ -532,6 +560,48 @@
   </div>
 </section>
 
+<section class="pad light official" id="official">
+  <div class="wrap">
+    <div class="in-view">
+      <h2>Book only with our real page.</h2>
+      <p class="lede">A fake Facebook page is using our name, logo and photos to collect down payments. Here is how to tell the two apart.</p>
+    </div>
+    <div class="vs in-view">
+      <article class="real">
+        <span class="tag">Official</span>
+        <h3>Tree Rings Beach Resort</h3>
+        <ul>
+          <li>Links to this website, treeringsresort.com</li>
+          <li>About 8,400 followers, and follows a few other pages</li>
+          <li>Instagram: @treeringsbeach</li>
+          <li>Calls and texts from 0947 175 7239</li>
+        </ul>
+        <a class="btn navy" href="https://www.facebook.com/profile.php?id=61572305588687" target="_blank" rel="noopener">Open our official page</a>
+      </article>
+      <article class="fake">
+        <span class="tag">Fake</span>
+        <h3>&ldquo;Tree Rings Beach Resort&rdquo;</h3>
+        <ul>
+          <li>Same name, logo and photos, copied from our page</li>
+          <li>About 13,000 followers, and follows 0 pages</li>
+          <li>Instagram: @treeringsbeachresorts, with an extra &ldquo;s&rdquo;</li>
+          <li>Email: beachresorttreerings@gmail.com</li>
+          <li>Does not link to this website</li>
+        </ul>
+        <p class="warn">Do not message it or send it any money. Please report it to Facebook.</p>
+      </article>
+    </div>
+    <div class="check in-view">
+      <h3>Before you pay</h3>
+      <ol>
+        <li><b>Call us at <a href="tel:+639471757239">0947 175 7239</a>.</b> If no one picks up, ask for a callback. If we have not talked to you by phone, do not pay.</li>
+        <li>Ask for a video call with our booking staff if you want to be sure.</li>
+        <li>Pay only to the QR codes on <a href="pay/">treeringsresort.com/pay</a>, or in person at any Cebu Express branch (Mandaue, Mabolo, Camputhaw, Talisay, Consolacion) or at the resort in Luyang, Carmen.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="pad light" id="dates" hidden>
   <div class="wrap">
     <div class="in-view">
@@ -650,7 +720,7 @@
       <p class="lede">Message us with what you have in mind and how many are coming. We reply with what is open.</p>
       <div class="ways">
         <a class="btn gold" href="https://m.me/61572305588687" target="_blank" rel="noopener">Message on Messenger</a>
-        <a class="btn line" href="tel:+639358588508">Call 0935 858 8508</a>
+        <a class="btn line" href="tel:+639471757239">Call 0947 175 7239</a>
       </div>
       <dl class="info">
         <dt>Where</dt><dd>Luyang, Carmen, Cebu, about two hours north of Cebu City by road</dd>
@@ -682,7 +752,7 @@
   <div class="wrap">
     <svg class="mark" viewBox="0 0 200 200" aria-hidden="true"><circle class="r" pathLength="1" cx="100" cy="100" r="88"/><path class="r" pathLength="1" d="M36 110a64 64 0 0 1 128 0"/><path class="r" pathLength="1" d="M58 110a42 42 0 0 1 84 0"/><path class="r" pathLength="1" d="M80 110a20 20 0 0 1 40 0"/><g clip-path="url(#disc)"><path class="r w" pathLength="1" d="M4 110q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 134q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 158q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/></g></svg>
     <p class="tag">Where nature, comfort, and exclusivity meet</p>
-    <p>Tree Rings Beach Resort &middot; Luyang, Carmen, Cebu &middot; <a href="tel:+639358588508">0935 858 8508</a></p>
+    <p>Tree Rings Beach Resort &middot; Luyang, Carmen, Cebu &middot; <a href="tel:+639471757239">0947 175 7239</a></p>
   </div>
 </footer>
 
@@ -727,7 +797,7 @@
       house: 'Saturday and Sunday nights are weekend rates. Holidays may differ, and rates may change with demand.',
     },
   };
-  const PAGE = '61572305588687', PHONE = '+639358588508', MAX = 30, INCLUDED = 27; /* packages cover 27; extra beds take it to 30 at the extra-adult rate */
+  const PAGE = '61572305588687', PHONE = '+639471757239', MAX = 30, INCLUDED = 27; /* packages cover 27; extra beds take it to 30 at the extra-adult rate */
   /* front desk database: guests can only add a request and read which dates are taken (treeringsresort.com/desk) */
   const DB = 'https://acgnwdgjoinmurxqbtfq.supabase.co/rest/v1/', DBKEY = 'sb_publishable_aTdBk37K9q4iKuPX-Ab0Bw_QJ_-LZ0M';
   const peso = n => '₱' + n.toLocaleString('en-PH');
