@@ -381,6 +381,7 @@
                    transform: rotate(45deg); transition: transform .35s var(--ease), margin .35s var(--ease); }
   details[open] summary::after { transform: rotate(225deg); margin-top: 14px; }
   details .in { padding-bottom: 26px; color: var(--ink-2); display: grid; gap: 10px; max-width: 64ch; }
+  details .in a { color: inherit; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
 
   /* ---------- contact ---------- */
   .contact { display: grid; gap: 56px 70px; grid-template-columns: 1fr; }
@@ -412,6 +413,9 @@
   footer .mark { width: 72px; height: 72px; }
   footer p { color: var(--mist); font-size: 14.5px; }
   footer .tag { font-family: var(--display); color: var(--gold); letter-spacing: .16em; text-transform: uppercase; font-size: 1rem; }
+  footer .family { font-size: 13px; letter-spacing: .02em; opacity: .8; }
+  footer .family a { color: inherit; text-decoration: underline; text-decoration-color: rgba(201,162,79,.55); text-underline-offset: 3px; }
+  footer .family a:hover { color: var(--gold); }
 
   /* phone: booking stays one thumb away */
   .mbar { position: fixed; z-index: 60; inset: auto 12px calc(12px + env(safe-area-inset-bottom)) 12px; display: none;
@@ -712,6 +716,10 @@
         <p>No corkage fee, so bring what you like. The utensils, refrigerator, griller and smoker are yours to use, along with a gallon of drinking water. The main kitchen inside the house comes with the entire house.</p>
         <p>Breakfast is not included with rooms.</p>
       </div></details>
+      <details><summary>Taking a bit of Cebu home</summary><div class="in">
+        <p>For pasalubong without the extra luggage, our sister shop <a href="https://morningmartph.com/" target="_blank" rel="noopener">Morning Mart</a> sends Cebu favourites like otap, rosquillos and dried fish anywhere in the Philippines. It is also on <a href="https://shopee.ph/morningmartph" target="_blank" rel="noopener">Shopee</a> and <a href="https://www.lazada.com.ph/shop/morning-mart-ph" target="_blank" rel="noopener">Lazada</a>.</p>
+        <p>To ship a box to family abroad or send something across the islands, <a href="https://cebuexpress.com/" target="_blank" rel="noopener">Cebu Express</a>, from the same family, has branches in Mandaue, Mabolo, Cebu City, Talisay and Consolacion. They also book ferry and airline tickets for the trip home.</p>
+      </div></details>
     </div>
   </div>
 </section>
@@ -756,6 +764,7 @@
     <svg class="mark" viewBox="0 0 200 200" aria-hidden="true"><circle class="r" pathLength="1" cx="100" cy="100" r="88"/><path class="r" pathLength="1" d="M36 110a64 64 0 0 1 128 0"/><path class="r" pathLength="1" d="M58 110a42 42 0 0 1 84 0"/><path class="r" pathLength="1" d="M80 110a20 20 0 0 1 40 0"/><g clip-path="url(#disc)"><path class="r w" pathLength="1" d="M4 110q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 134q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="r w" pathLength="1" d="M4 158q12-9 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/></g></svg>
     <p class="tag">Where nature, comfort, and exclusivity meet</p>
     <p>Tree Rings Beach Resort &middot; Luyang, Carmen, Cebu &middot; <a href="tel:+639471757239">0947 175 7239</a></p>
+    <p class="family">From the same family: <a href="https://cebuexpress.com/" target="_blank" rel="noopener">Cebu Express</a> &middot; <a href="https://morningmartph.com/" target="_blank" rel="noopener">Morning Mart</a></p>
   </div>
 </footer>
 
